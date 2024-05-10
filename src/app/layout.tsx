@@ -1,6 +1,11 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
+import { cn } from "~/lib/utils";
+import { ThemeProvider } from "next-themes";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+import { ModeToggle } from "~/components/DropMenu";
+import { NavigationMenuDemo } from "~/components/NavMenu";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +25,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        {metadata.icons.map((icon) => (
+          <link key={icon.rel} {...icon} />
+        ))}
+        <style>{}</style>
+      </head>
+      <body className={cn(inter.variable, "font-sans")}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
