@@ -4,6 +4,7 @@ import { ButtonLoading } from "~/components/ButtonLoading";
 import Chat from "~/components/Chat";
 import { ModeToggle } from "~/components/DropMenu";
 import { NavigationMenuDemo } from "~/components/NavMenu";
+import RightSidePage from "~/components/RightSidePage";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 
@@ -95,6 +96,7 @@ export default function HomePage() {
 
   // Event handlers
   function handleClick() {
+    //TODO:Remeber to add check not to fetch if user has not written anything
     fetchChatStream();
   }
 
@@ -105,41 +107,44 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen flex-col">
-      <div className="m-auto flex items-center justify-between pl-8 pr-8 pt-4">
+    <div className="flex h-screen flex-col">
+      <div className=" flex items-center justify-between pl-8 pr-8 pt-4">
         <h1 className="text-2xl font-bold">BLENDI MALIQI</h1>
         <NavigationMenuDemo />
         <ModeToggle />
       </div>
-      <div
-        style={{ whiteSpace: "pre-line" }}
-        className="mt-40 flex w-2/4 flex-col items-center justify-center"
-      >
-        <Chat messages={messages} />
-        <div className="m-auto mt-10 flex w-2/3 items-center space-x-4">
-          <Input
-            disabled={loading === true ? true : false}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={handleKeyPress}
-            type="text"
-            value={message}
-            placeholder='E.g. "Tell me about Blendi"'
-          />
-          <Button
-            disabled={loading === true ? true : false}
-            onClick={() => setMessages([])}
-          >
-            Clear
-          </Button>
-          {loading === false ? (
-            <Button type="submit" className="w-1/4" onClick={handleClick}>
-              Send
+
+      <div className="flex w-screen flex-row overflow-hidden">
+        <main
+          style={{ whiteSpace: "pre-line" }}
+          className="min-w-1/3 ml-8 mt-24 flex w-1/3 flex-col"
+        >
+          <Chat messages={messages} />
+          <div className="m-auto mt-10 flex w-full items-center space-x-4">
+            <Input
+              disabled={loading}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyPress}
+              type="text"
+              value={message}
+              placeholder='E.g. "Tell me about Blendi"'
+            />
+            <Button disabled={loading} onClick={() => setMessages([])}>
+              Clear
             </Button>
-          ) : (
-            <ButtonLoading />
-          )}
+            {!loading ? (
+              <Button type="submit" className="w-1/4" onClick={handleClick}>
+                Send
+              </Button>
+            ) : (
+              <ButtonLoading />
+            )}
+          </div>
+        </main>
+        <div className=" w-3/4 overflow-y-auto pl-8 pr-8">
+          <RightSidePage />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

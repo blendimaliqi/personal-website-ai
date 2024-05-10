@@ -37,11 +37,11 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
   return (
     <div
       ref={chatContainerRef}
-      className="flex h-96 w-2/3 flex-col space-y-4 overflow-auto border-2 p-4"
+      className=" flex h-3/4  flex-col  space-y-4 overflow-y-auto border-2 p-4"
     >
       {filteredMessages.length > 0 ? (
         filteredMessages.map((msg, index) => (
-          <div key={index} className={`chat-message ${msg.role} space-x-1`}>
+          <div key={index} className={` space-x-1`}>
             <strong>
               {msg.role === "user" ? "You" : msg.role.toUpperCase()}:
             </strong>
@@ -52,7 +52,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
           </div>
         ))
       ) : (
-        <p className="flex flex-grow items-center justify-center text-xl text-muted-foreground">
+        <p className="flex  items-center justify-center text-xl text-muted-foreground">
           {
             "I am Blendi's personal AI assistant.\n I know everything there is to know about his skills, past projects, work experience, education and personal traits.\n\n Feel free to ask :)"
           }
