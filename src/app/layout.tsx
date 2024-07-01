@@ -3,7 +3,6 @@ import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { ModeToggle } from "~/components/DropMenu";
 import { NavigationMenuDemo } from "~/components/NavMenu";
 

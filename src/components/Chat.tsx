@@ -37,7 +37,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
   return (
     <div
       ref={chatContainerRef}
-      className=" flex h-3/4  flex-col  space-y-4 overflow-y-auto border-2 p-4"
+      className=" flex h-3/4 min-h-96 flex-col  space-y-4 overflow-y-auto border-2 p-4"
     >
       {filteredMessages.length > 0 ? (
         filteredMessages.map((msg, index) => (

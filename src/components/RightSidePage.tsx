@@ -5,7 +5,7 @@ function RightSidePage() {
     <div className="mt-24 min-h-screen w-full ">
       <div>
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          Work experience
+          Projects experience
         </h1>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           {/* short lead about my work experience and skills. Ihave worked in mastercard, sos sikkerhetsgruppen, digitalkey app, and paradisreiser  */}
@@ -15,7 +15,7 @@ function RightSidePage() {
           project management, and team collaboration.
         </p>
         <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-          Mastercard
+          Mastercard - Frontend Developer March 2023 - Present
         </h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           I am in a small frontend team and we are currently leading the effort
@@ -39,7 +39,7 @@ function RightSidePage() {
           Technologies: react, java, typescript, figma, jest, playwright
         </blockquote>
         <h2 className="mt-24 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-          SOS Sikkerhetsgruppen
+          SOS Sikkerhetsgruppen Jan 2022 - Jan 2023
         </h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           I had the opportunity to work on the latest Bluetooth technology and
@@ -66,33 +66,7 @@ function RightSidePage() {
           Technologies: react-native, x-code, android studio
         </blockquote>
         <h2 className="mt-20 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-          DigitalKey app (Voglio)
-        </h2>
-        <p className="leading-7 [&:not(:first-child)]:mt-6">
-          During my time at Voglio, I was part of the team responsible for
-          developing a flutter app called DigitalKey. My primary role was to
-          work with the backend team to ensure that the app's requirements were
-          met with new API solutions. Working on DigitalKey was an incredibly
-          rewarding experience. I was able to use my skills in frontend
-          development to make changes to the app's user interface and design. I
-          also contributed drawings and suggestions to the overall design of the
-          app, which helped to improve its usability and functionality. One of
-          the biggest challenges I faced while working on DigitalKey was
-          creating the authentication flow and making offline mode for the
-          application. This required a lot of communication and collaboration,
-          but ultimately, we were able to create a well-functioning app that was
-          able to deliver on its promise. Overall, working on DigitalKey was a
-          great learning experience for me. I was able to use my skills in
-          frontend development and design to help create a useful and
-          user-friendly app. Additionally, the experience of working with a team
-          helped me to develop my communication and collaboration skills, which
-          will be invaluable in my future work.
-        </p>
-        <blockquote className="mt-6 border-l-2 pl-2 italic">
-          Technologies: Flutter
-        </blockquote>
-        <h2 className="mt-20 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-          Paradisreiser
+          Paradisreiser - Fullstack Developer Sept 2022 - Nov 2022
         </h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           As a part of my work experience with Paradisreiser, I was tasked with
@@ -118,6 +92,33 @@ function RightSidePage() {
         <blockquote className="mb-20 mt-6 border-l-2 pl-2 italic">
           Technologies: React, C#, Flutter
         </blockquote>
+        <h2 className="mt-20 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+          DigitalKey app (Voglio) -  Jun 2022 - Nov 2022  
+        </h2>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">
+          During my time at Voglio, I was part of the team responsible for
+          developing a flutter app called DigitalKey. My primary role was to
+          work with the backend team to ensure that the app's requirements were
+          met with new API solutions. Working on DigitalKey was an incredibly
+          rewarding experience. I was able to use my skills in frontend
+          development to make changes to the app's user interface and design. I
+          also contributed drawings and suggestions to the overall design of the
+          app, which helped to improve its usability and functionality. One of
+          the biggest challenges I faced while working on DigitalKey was
+          creating the authentication flow and making offline mode for the
+          application. This required a lot of communication and collaboration,
+          but ultimately, we were able to create a well-functioning app that was
+          able to deliver on its promise. Overall, working on DigitalKey was a
+          great learning experience for me. I was able to use my skills in
+          frontend development and design to help create a useful and
+          user-friendly app. Additionally, the experience of working with a team
+          helped me to develop my communication and collaboration skills, which
+          will be invaluable in my future work.
+        </p>
+        <blockquote className="mt-6 mb-10 border-l-2 pl-2 italic">
+          Technologies: Flutter
+        </blockquote>
+
       </div>
     </div>
   );

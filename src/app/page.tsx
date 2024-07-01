@@ -1,12 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { ButtonLoading } from "~/components/ButtonLoading";
 import Chat from "~/components/Chat";
 import { ModeToggle } from "~/components/DropMenu";
+import LazyComponent from "~/components/LazyComponent";
 import { NavigationMenuDemo } from "~/components/NavMenu";
 import RightSidePage from "~/components/RightSidePage";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { ChevronRight } from "lucide-react";
+
+const LazyAbout = React.lazy(() => import("./about/page"));
 
 // Define the Role and Message types
 type Role = "system" | "user" | "assistant";
@@ -29,6 +33,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [message, setMessage] = useState("");
+  const [chatPosition, setChatPosition] = useState("center");
 
   // Function to handle streaming chat
   async function fetchChatStream() {
@@ -114,12 +119,21 @@ export default function HomePage() {
         <ModeToggle />
       </div>
 
-      <div className="flex w-screen flex-row overflow-hidden">
+      <div
+        className={`flex w-screen justify-${chatPosition} flex-row overflow-hidden `}
+      >
         <main
           style={{ whiteSpace: "pre-line" }}
           className="min-w-1/3 ml-8 mt-24 flex w-1/3 flex-col"
         >
-          <Chat messages={messages} />
+          <div className="flex flex-row items-center justify-center ">
+            <Chat messages={messages} />
+            <ChevronRight
+              size={97}
+              className="  cursor-pointer"
+              onClick={() => setChatPosition("start")}
+            />
+          </div>
           <div className="m-auto mt-10 flex w-full items-center space-x-4">
             <Input
               disabled={loading}
@@ -141,9 +155,11 @@ export default function HomePage() {
             )}
           </div>
         </main>
-        <div className=" w-3/4 overflow-y-auto pl-8 pr-8">
-          <RightSidePage />
-        </div>
+        {chatPosition === "start" && (
+          <div className=" w-3/4 overflow-y-auto pl-8 pr-8">
+            <RightSidePage />
+          </div>
+        )}
       </div>
     </div>
   );
