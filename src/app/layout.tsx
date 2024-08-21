@@ -11,6 +11,14 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+export const metadata = {
+  title: "Blendi Maliqi Portfolio",
+  description: "Personal portfolio of Blendi Maliqi",
+  icons: {
+    icon: "/tabicon.jpg",
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
