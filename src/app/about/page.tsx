@@ -36,7 +36,7 @@ const AboutMePage = () => {
         <CardHeader>
           <CardTitle>Blendi</CardTitle>
           <CardDescription>
-            Frontend Developer and Full-Stack Enthusiast
+            Web developer and Full-Stack Enthusiast
           </CardDescription>
         </CardHeader>
         <CardContent>

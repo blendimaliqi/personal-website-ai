@@ -3,36 +3,45 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="mt-12 bg-gray-100 py-8">
-      <div className="container mx-auto px-4">
+    <footer className="border-t bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 dark:from-gray-800 dark:to-gray-900 dark:text-gray-200">
+      <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col items-center justify-between md:flex-row">
-          <div className="mb-4 text-gray-600 md:mb-0">
-            © 2024 Blendi. All rights reserved.
+          <div className="mb-4 text-center md:mb-0 md:text-left">
+            <h3 className="mb-2 text-2xl font-bold">Blendi Maliqi</h3>
+            <p className="text-sm opacity-75">
+              Web Developer & Full-Stack Enthusiast
+            </p>
           </div>
           <div className="flex space-x-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/blendimaliqi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-800"
+              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              aria-label="GitHub"
             >
-              <FaGithub size={24} />
+              <FaGithub className="h-6 w-6" />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/blendimaliqi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-800"
+              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              aria-label="LinkedIn"
             >
-              <FaLinkedin size={24} />
+              <FaLinkedin className="h-6 w-6" />
             </a>
             <a
-              href="mailto:your.email@example.com"
-              className="text-gray-600 hover:text-gray-800"
+              href="mailto:blendi.maliqi93@gmail.com"
+              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              aria-label="Email"
             >
-              <FaEnvelope size={24} />
+              <FaEnvelope className="h-6 w-6" />
             </a>
           </div>
+        </div>
+        <div className="mt-8 text-center text-sm opacity-75">
+          © 2024 Blendi Maliqi. All rights reserved.
         </div>
       </div>
     </footer>
