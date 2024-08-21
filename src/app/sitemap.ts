@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://blendimaliqi.com"; // Replace with your actual domain
+  const baseUrl = "https://blendimaliqi.com";
 
   return [
     {
@@ -28,12 +28,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    // If you have an API route that should be publicly accessible, include it
-    // {
-    //   url: `${baseUrl}/api/openai-stream`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.5,
-    // },
   ];
 }

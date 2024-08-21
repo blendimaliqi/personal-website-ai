@@ -6,7 +6,6 @@ import RightSidePage from "~/components/RightSidePage";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 
-// Define the Role and Message types
 type Role = "system" | "user" | "assistant";
 
 interface Message {

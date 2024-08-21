@@ -52,7 +52,6 @@ const StructuredData = () => {
     sameAs: [
       "https://linkedin.com/in/blendimaliqi",
       "https://github.com/blendimaliqi",
-      // Add other social media profiles
     ],
   };
 
