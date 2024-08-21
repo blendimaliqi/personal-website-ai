@@ -1,5 +1,12 @@
 "use client";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUp,
+  ChevronLeft,
+  ChevronRight,
+  Paperclip,
+  Send,
+  Trash2,
+} from "lucide-react";
 import React, { useState } from "react";
 import { ButtonLoading } from "~/components/ButtonLoading";
 import Chat from "~/components/Chat";
@@ -109,7 +116,7 @@ export default function HomePage() {
           <div className="flex-grow overflow-y-auto p-8">
             <Chat messages={messages} />
           </div>
-          <div className="flex items-center space-x-4 p-4">
+          <div className="flex flex-row space-x-4 p-4">
             <div className="relative flex-grow">
               <Input
                 disabled={loading}
@@ -118,31 +125,22 @@ export default function HomePage() {
                 type="text"
                 value={message}
                 placeholder='E.g. "Tell me about Blendi"'
-                className="pr-24"
+                className="h-14 rounded-3xl pr-16"
+                style={{
+                  outline: "none",
+                  boxShadow: "none",
+                  borderColor: "inherit",
+                }}
               />
-              <div className="absolute bottom-0 right-0 top-0 flex items-center">
-                <Button
-                  disabled={loading}
-                  onClick={() => setMessages([])}
-                  variant="ghost"
-                  size="sm"
-                  className="h-full"
-                >
-                  Clear
-                </Button>
-                {!loading ? (
-                  <Button
-                    type="submit"
-                    onClick={handleClick}
-                    size="sm"
-                    className="h-full"
-                  >
-                    Send
-                  </Button>
-                ) : (
-                  <ButtonLoading />
-                )}
-              </div>
+              <Button
+                type="submit"
+                onClick={handleClick}
+                size="icon"
+                className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full"
+                disabled={loading || message.trim() === ""}
+              >
+                <ArrowUp className="h-5 w-5" />
+              </Button>
             </div>
           </div>
         </main>

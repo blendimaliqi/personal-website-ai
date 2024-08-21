@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
 import HeaderClient from "~/components/HeaderClient";
-import Footer from "~/components/Footer"; // Import the Footer component
+import Footer from "~/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,8 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={cn(inter.variable, "font-sans")}>
+    <html
+      lang="en"
+      className={cn(inter.variable, "font-sans")}
+      suppressHydrationWarning
+    >
+      <body
+        className={cn("min-h-screen bg-background")}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -27,8 +34,20 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <HeaderClient />
             <main className="flex-grow">{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function() {
+            const theme = localStorage.getItem('theme') || 'system';
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.classList.add(theme === 'system' ? systemTheme : theme);
+          })();
+        `,
+          }}
+        />
       </body>
     </html>
   );
