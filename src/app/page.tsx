@@ -103,13 +103,7 @@ export default function HomePage() {
     }
   }
   return (
-    <div className="flex h-screen flex-col">
-      <div className="flex items-center justify-between pl-8 pr-8 pt-4">
-        <h1 className="text-2xl font-bold">BLENDI MALIQI</h1>
-        <NavigationMenuDemo />
-        <ModeToggle />
-      </div>
-
+    <div className="flex h-[calc(100vh-90px)] flex-col">
       <div className="relative flex flex-grow justify-center overflow-hidden">
         <main className="flex w-full max-w-4xl flex-col">
           <div className="flex-grow overflow-y-auto p-8">
@@ -154,7 +148,7 @@ export default function HomePage() {
         </main>
 
         <div
-          className={`absolute right-0 top-0 h-full w-3/4 transform overflow-y-auto bg-background transition-transform duration-300 ease-in-out ${
+          className={`absolute right-0 top-0 h-full w-3/4 transform overflow-y-auto bg-background transition-transform duration-500 ease-in-out ${
             isRightSideOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >

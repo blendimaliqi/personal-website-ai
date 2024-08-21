@@ -118,6 +118,35 @@ function RightSidePage() {
         <blockquote className="mb-20 mt-6 border-l-2 pl-2 italic">
           Technologies: React, C#, Flutter
         </blockquote>
+        <h2 className="mt-20 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+          Encryption and Cloud Security for Public Transport Ticketing
+        </h2>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">
+          Here's a translation of the text into English, with some improvements
+          and additional details: Encryption and Cloud Security for Public
+          Transport Ticketing This project involved developing an encryption
+          solution for public transport ticketing for Entur, a Norwegian
+          mobility company, through Capgemini. The primary objective was to
+          encrypt the generation of electronic tickets and manage QR codes for
+          physical tickets, all hosted on the Azure Cloud platform. Our team was
+          responsible for implementing crucial security measures, including:
+          Encryption and decryption processes Digital signature creation and
+          verification Key management for securing information transferred
+          between various system components The solution was built as a Spring
+          Boot application, leveraging the Java Crypto API for cryptographic
+          operations. We adopted a test-driven development (TDD) approach, which
+          resulted in high test coverage through comprehensive unit testing and
+          acceptance testing. Key aspects of the project: Utilized Azure Cloud
+          for hosting and scalability Implemented robust security measures for
+          sensitive ticketing data Ensured compliance with relevant data
+          protection regulations Focused on creating a seamless and secure user
+          experience for public transport passengers Collaborated closely with
+          Entur and Capgemini stakeholders to meet specific requirements
+        </p>
+        <blockquote className="mb-20 mt-6 border-l-2 pl-2 italic">
+          Java, Spring Boot, Java Cryptography API, Test Driven Development,
+          Docker
+        </blockquote>
       </div>
     </div>
   );
