@@ -4,6 +4,7 @@ import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
 import HeaderClient from "~/components/HeaderClient";
 import Footer from "~/components/Footer";
+import Head from "next/head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,6 +22,11 @@ export default function RootLayout({
       className={cn(inter.variable, "font-sans")}
       suppressHydrationWarning
     >
+      <Head>
+        {/* Add your favicon link here */}
+        <link rel="icon" href="/tabicon.jpg" type="image/jpeg" />
+        <title>Your Page Title</title>
+      </Head>
       <body
         className={cn("min-h-screen bg-background")}
         suppressHydrationWarning

@@ -1,5 +1,5 @@
 export const metadata = {
   title: "Blendi Maliqi Portfolio",
   description: "Personal portfolio of Blendi Maliqi",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/tabicon.jpg" }],
 };
