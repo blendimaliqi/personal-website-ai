@@ -1,62 +1,58 @@
 import React, { useEffect, useRef } from "react";
 
-// Message interface definition
 interface Message {
   role: "system" | "user" | "assistant";
   content: string;
 }
 
-// ChatProps interface definition
 interface ChatProps {
   messages: Message[];
 }
 
-// Function to decode escaped newline characters and quotes
 const decodeSpecialChars = (text: string): string => {
   return text
-    .replace(/\\"/g, '"') // Replace escaped quotes with plain quotes
-    .replace(/\\n/g, "\n") // Replace escaped newlines with actual newlines
-    .replace(/\\r\\n/g, "\n"); // Handle carriage returns if necessary
+    .replace(/\\"/g, '"')
+    .replace(/\\n/g, "\n")
+    .replace(/\\r\\n/g, "\n");
 };
 
 const Chat: React.FC<ChatProps> = ({ messages }) => {
-  // Filter out messages with role "system"
   const filteredMessages = messages.filter((msg) => msg.role !== "system");
-
-  // Reference to the chat container
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to the bottom when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }
   }, [messages]);
 
   return (
     <div
       ref={chatContainerRef}
-      className=" flex h-3/4  flex-col  space-y-4 overflow-y-auto border-2 p-4"
+      className="scrollbar-hide flex h-full flex-col space-y-4 overflow-y-auto"
     >
       {filteredMessages.length > 0 ? (
         filteredMessages.map((msg, index) => (
-          <div key={index} className={` space-x-1`}>
-            <strong>
-              {msg.role === "user" ? "You" : msg.role.toUpperCase()}:
+          <div key={index} className={`space-y-1 rounded-lg p-4`}>
+            <strong className=" text-gray-600 dark:text-gray-400">
+              {msg.role === "user" ? "You" : "Assistant"}:
             </strong>
-            {/* Decode escaped special characters */}
-            <p style={{ whiteSpace: "pre-line" }}>
+            <p style={{ whiteSpace: "pre-wrap" }}>
               {decodeSpecialChars(msg.content)}
             </p>
           </div>
         ))
       ) : (
-        <p className="flex  items-center justify-center text-xl text-muted-foreground">
-          {
-            "I am Blendi's personal AI assistant.\n I know everything there is to know about his skills, past projects, work experience, education and personal traits.\n\n Feel free to ask :)"
-          }
-        </p>
+        <div className="flex h-full items-center justify-center">
+          <p className="text-center  text-muted-foreground">
+            {
+              "I am Blendi's personal AI assistant.\nI know everything there is to know about his skills, past projects, work experience, education, hobbies and personal traits.\n\nFeel free to ask :)"
+            }
+          </p>
+        </div>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 "use client";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import { ButtonLoading } from "~/components/ButtonLoading";
 import Chat from "~/components/Chat";
@@ -17,7 +18,6 @@ interface Message {
 }
 
 export default function HomePage() {
-  // Define initial messages with the appropriate roles
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "system",
@@ -27,8 +27,8 @@ export default function HomePage() {
   ]);
 
   const [loading, setLoading] = useState<boolean>(false);
-
   const [message, setMessage] = useState("");
+  const [isRightSideOpen, setIsRightSideOpen] = useState(false);
 
   // Function to handle streaming chat
   async function fetchChatStream() {
@@ -93,10 +93,7 @@ export default function HomePage() {
       console.error("Fetch Error:", error);
     }
   }
-
-  // Event handlers
   function handleClick() {
-    //TODO:Remeber to add check not to fetch if user has not written anything
     fetchChatStream();
   }
 
@@ -105,45 +102,71 @@ export default function HomePage() {
       fetchChatStream();
     }
   }
-
   return (
     <div className="flex h-screen flex-col">
-      <div className=" flex items-center justify-between pl-8 pr-8 pt-4">
+      <div className="flex items-center justify-between pl-8 pr-8 pt-4">
         <h1 className="text-2xl font-bold">BLENDI MALIQI</h1>
         <NavigationMenuDemo />
         <ModeToggle />
       </div>
 
-      <div className="flex w-screen flex-row overflow-hidden">
-        <main
-          style={{ whiteSpace: "pre-line" }}
-          className="min-w-1/3 ml-8 mt-24 flex w-1/3 flex-col"
-        >
-          <Chat messages={messages} />
-          <div className="m-auto mt-10 flex w-full items-center space-x-4">
-            <Input
-              disabled={loading}
-              onChange={(e) => setMessage(e.target.value)}
-              onKeyDown={handleKeyPress}
-              type="text"
-              value={message}
-              placeholder='E.g. "Tell me about Blendi"'
-            />
-            <Button disabled={loading} onClick={() => setMessages([])}>
-              Clear
-            </Button>
-            {!loading ? (
-              <Button type="submit" className="w-1/4" onClick={handleClick}>
-                Send
-              </Button>
-            ) : (
-              <ButtonLoading />
-            )}
+      <div className="relative flex flex-grow justify-center overflow-hidden">
+        <main className="flex w-full max-w-4xl flex-col">
+          <div className="flex-grow overflow-y-auto p-8">
+            <Chat messages={messages} />
+          </div>
+          <div className="flex items-center space-x-4 p-4">
+            <div className="relative flex-grow">
+              <Input
+                disabled={loading}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={handleKeyPress}
+                type="text"
+                value={message}
+                placeholder='E.g. "Tell me about Blendi"'
+                className="pr-24"
+              />
+              <div className="absolute bottom-0 right-0 top-0 flex items-center">
+                <Button
+                  disabled={loading}
+                  onClick={() => setMessages([])}
+                  variant="ghost"
+                  size="sm"
+                  className="h-full"
+                >
+                  Clear
+                </Button>
+                {!loading ? (
+                  <Button
+                    type="submit"
+                    onClick={handleClick}
+                    size="sm"
+                    className="h-full"
+                  >
+                    Send
+                  </Button>
+                ) : (
+                  <ButtonLoading />
+                )}
+              </div>
+            </div>
           </div>
         </main>
-        <div className=" w-3/4 overflow-y-auto pl-8 pr-8">
+
+        <div
+          className={`absolute right-0 top-0 h-full w-3/4 transform overflow-y-auto bg-background transition-transform duration-300 ease-in-out ${
+            isRightSideOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
           <RightSidePage />
         </div>
+
+        <button
+          className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-l-md bg-primary p-2 text-primary-foreground"
+          onClick={() => setIsRightSideOpen(!isRightSideOpen)}
+        >
+          {isRightSideOpen ? <ChevronRight /> : <ChevronLeft />}
+        </button>
       </div>
     </div>
   );
