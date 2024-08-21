@@ -103,7 +103,7 @@ const SkillsSection = () => {
     <section className="py-12">
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-center text-3xl font-bold">Skills</h2>
-        <Tabs defaultValue="Core Competencies" className="w-full">
+        <Tabs defaultValue="Primary Skills" className="w-full">
           <TabsList className="mb-8 grid w-full grid-cols-2 lg:grid-cols-4">
             {skillCategories.map((category, index) => (
               <TabsTrigger key={index} value={category.name} className="px-4 ">
