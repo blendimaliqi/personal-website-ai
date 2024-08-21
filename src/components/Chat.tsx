@@ -72,8 +72,9 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
             </div>
           </div>
           <p className="text-center text-muted-foreground">
-            Ask me anything about my skills, past projects, work experience,
-            education or hobbies :)
+            {`I have trained an AI model with information about my skills, past projects, work experience, education or hobbies.`}
+
+            {` Feel free to ask :)`}
           </p>
         </div>
       )}

@@ -28,7 +28,7 @@ const SkillCategory = ({ title, skills }: any) => (
 const SkillsSection = () => {
   const skillCategories = [
     {
-      name: "Core Competencies",
+      name: "Primary Skills",
       skills: [
         { name: "TypeScript", years: 3 },
         { name: "React", years: 3 },
