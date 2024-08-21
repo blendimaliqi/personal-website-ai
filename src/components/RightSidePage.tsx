@@ -38,6 +38,37 @@ function RightSidePage() {
         <blockquote className="mt-6 border-l-2 pl-2 italic">
           Technologies: react, java, typescript, figma, jest, playwright
         </blockquote>
+        <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+          Kjøpskontrakt (Side Project)
+        </h2>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">
+          Kjøpskontrakt (
+          <a
+            href="https://kjopskontrakt.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            kjopskontrakt.no
+          </a>
+          ) is a SAAS product I developed as a side project. It creates buying
+          contracts for selling cars in Norway. The application is built using
+          modern web technologies and best practices, showcasing my ability to
+          create full-stack applications from scratch. Key features and
+          technologies: - Built with Next.js 14, leveraging the latest features
+          for optimal performance - Utilized the shadcn component library with
+          Tailwind CSS for a polished UI - Implemented backend functionality
+          using Supabase - Integrated Stripe for secure payment processing -
+          Developed robust user authentication, including email verification and
+          password recovery flows. It has already had real world usecases where
+          people have used this service to sell cars. This project demonstrates
+          my proficiency in creating end-to-end solutions, from frontend design
+          to backend implementation and third-party integrations. I am
+          interested in all of it!
+        </p>
+        <blockquote className="mt-6 border-l-2 pl-2 italic">
+          Technologies: Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe
+        </blockquote>
         <h2 className="mt-24 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           SOS Sikkerhetsgruppen
         </h2>
