@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
 import HeaderClient from "~/components/HeaderClient";
-import Footer from "~/components/Footer";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -90,7 +89,6 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <HeaderClient />
             <main className="flex-grow">{children}</main>
-            <Footer />
           </div>
         </ThemeProvider>
         <Script id="theme-switcher" strategy="beforeInteractive">
