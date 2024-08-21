@@ -1,17 +1,7 @@
 "use client";
-import {
-  ArrowUp,
-  ChevronLeft,
-  ChevronRight,
-  Paperclip,
-  Send,
-  Trash2,
-} from "lucide-react";
+import { ArrowUp, ChevronLeft, ChevronRight, X } from "lucide-react";
 import React, { useState } from "react";
-import { ButtonLoading } from "~/components/ButtonLoading";
 import Chat from "~/components/Chat";
-import { ModeToggle } from "~/components/DropMenu";
-import { NavigationMenuDemo } from "~/components/NavMenu";
 import RightSidePage from "~/components/RightSidePage";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -100,6 +90,7 @@ export default function HomePage() {
       console.error("Fetch Error:", error);
     }
   }
+
   function handleClick() {
     fetchChatStream();
   }
@@ -109,6 +100,12 @@ export default function HomePage() {
       fetchChatStream();
     }
   }
+
+  // Function to check if there are any assistant messages
+  const hasAssistantResponded = messages.some(
+    (msg) => msg.role === "assistant",
+  );
+
   return (
     <div className="flex h-[calc(100vh-90px)] flex-col">
       <div className="relative flex flex-grow justify-center overflow-hidden">
@@ -142,6 +139,16 @@ export default function HomePage() {
                 <ArrowUp className="h-5 w-5" />
               </Button>
             </div>
+            {hasAssistantResponded && !loading && (
+              <Button
+                onClick={() => setMessages([])}
+                size="icon"
+                className="h-14 w-14 rounded-full"
+                variant="outline"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            )}
           </div>
         </main>
 

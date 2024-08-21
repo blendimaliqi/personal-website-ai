@@ -1,3 +1,4 @@
+import { Mail } from "lucide-react";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
@@ -21,7 +22,14 @@ const AboutMePage = () => {
           />
           <AvatarFallback>BL</AvatarFallback>
         </Avatar>
-        <h1 className="text-4xl font-bold">About Me</h1>
+        <h1 className="pb-2 text-4xl font-bold">About Me</h1>
+
+        <a
+          href="mailto:blendi.maliqi93@gmail.com"
+          className="text-md text-muted-foreground transition-colors hover:text-blue-600"
+        >
+          blendi.maliqi93@gmail.com
+        </a>
       </div>
 
       <Card className="mb-8">

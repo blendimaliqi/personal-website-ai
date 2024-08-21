@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Mail } from "lucide-react";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -46,11 +48,32 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
           </div>
         ))
       ) : (
-        <div className="flex h-full items-center justify-center">
-          <p className="text-center  text-muted-foreground">
-            {
-              "I am Blendi's personal AI assistant.\nI know everything there is to know about his skills, past projects, work experience, education, hobbies and personal traits.\n\nFeel free to ask :)"
-            }
+        <div className="flex h-full flex-col justify-between">
+          <div className="flex flex-1 flex-col items-center justify-center">
+            <Avatar className="mb-4 h-40 w-40">
+              <AvatarImage
+                src="/blendi.jpg"
+                alt="Blendi"
+                className="object-cover object-[15%_50%]"
+              />
+            </Avatar>
+            <div className="flex flex-col items-center justify-center rounded-lg pt-3">
+              <p className="text-center text-2xl font-medium">Blendi Maliqi</p>
+              <p className="text-center text-muted-foreground">Web developer</p>
+            </div>
+            <div className="flex items-center justify-center">
+              <Mail className="mr-2 text-muted-foreground" size={24} />
+              <a
+                href="mailto:blendi.maliqi93@gmail.com"
+                className="text-muted-foreground transition-colors hover:text-blue-600"
+              >
+                blendi.maliqi93@gmail.com
+              </a>
+            </div>
+          </div>
+          <p className="text-center text-muted-foreground">
+            Ask me anything about my skills, past projects, work experience,
+            education or hobbies :)
           </p>
         </div>
       )}
