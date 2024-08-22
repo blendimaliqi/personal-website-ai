@@ -113,11 +113,11 @@ function WorkExperienceCard({
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-gray-600">{experience.shortDescription}</p>
+          <p className="text-sm ">{experience.shortDescription}</p>
         </CardContent>
       </div>
       <CardFooter>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs ">
           <span className="font-semibold">Technologies:</span>{" "}
           {experience.technologies}
         </p>
@@ -135,7 +135,7 @@ function RightSidePage() {
       <h1 className="mb-8 text-4xl font-extrabold tracking-tight lg:text-5xl">
         Work Experience
       </h1>
-      <p className="mb-12 text-lg text-gray-700">
+      <p className="mb-12 text-lg">
         I have worked in various companies and projects, gaining valuable
         experience in frontend development, cross-platform mobile development,
         and backend. Click on a card to learn more about each experience.
@@ -175,8 +175,8 @@ function RightSidePage() {
             </div>
           </DialogHeader>
           <ScrollArea className="mt-4 max-h-[60vh]">
-            <p className="mb-4 text-gray-700">{selectedExperience?.content}</p>
-            <p className="text-sm text-gray-600">
+            <p className="mb-4 ">{selectedExperience?.content}</p>
+            <p className="text-sm">
               <span className="font-semibold">Technologies:</span>{" "}
               {selectedExperience?.technologies}
             </p>
