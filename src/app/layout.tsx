@@ -88,7 +88,7 @@ export default function RootLayout({
         >
           <div className="flex min-h-screen flex-col">
             <HeaderClient />
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow px-4 sm:px-6 lg:px-8">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

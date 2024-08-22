@@ -101,13 +101,19 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="py-12">
+    <section className="py-8 sm:py-12">
       <div className="container mx-auto px-4">
-        <h2 className="mb-8 text-center text-3xl font-bold">Skills</h2>
+        <h2 className="mb-6 text-center text-2xl font-bold sm:mb-8 sm:text-3xl">
+          Skills
+        </h2>
         <Tabs defaultValue="Primary Skills" className="w-full">
-          <TabsList className="mb-8 grid w-full grid-cols-2 lg:grid-cols-4">
+          <TabsList className="mb-6 grid w-full grid-cols-2 sm:mb-8 sm:grid-cols-4">
             {skillCategories.map((category, index) => (
-              <TabsTrigger key={index} value={category.name} className="px-4">
+              <TabsTrigger
+                key={index}
+                value={category.name}
+                className="px-2 py-1 text-xs sm:px-4 sm:text-sm"
+              >
                 {category.name}
               </TabsTrigger>
             ))}
