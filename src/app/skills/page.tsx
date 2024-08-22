@@ -123,21 +123,12 @@ const SkillsSection = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="mt-12 bg-gray-800 py-4 text-white">
-    <div className="container mx-auto px-4 text-center">
-      <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </div>
-  </footer>
-);
-
 const SkillsPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-grow">
         <SkillsSection />
       </main>
-      <Footer />
     </div>
   );
 };
