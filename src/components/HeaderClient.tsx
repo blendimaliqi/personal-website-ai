@@ -1,19 +1,17 @@
 "use client";
-
-import Link from "next/link";
 import { NavigationMenuDemo } from "./NavMenu";
 import { ModeToggle } from "./DropMenu";
 
 export default function HeaderClient() {
   return (
-    <header className="mb-2 bg-background shadow-sm">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="text-2xl font-bold ">
-          BLENDI MALIQI
-        </Link>
-        <div className="flex items-center space-x-4">
+    <header className="mb-2 bg-background p-4 shadow-sm">
+      <div className="mx-auto max-w-md px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex-1" />
           <NavigationMenuDemo />
-          <ModeToggle />
+          <div className="flex flex-1 justify-end">
+            <ModeToggle />
+          </div>
         </div>
       </div>
     </header>

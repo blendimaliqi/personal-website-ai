@@ -106,7 +106,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="flex h-[calc(100vh-80px)] flex-col">
+    <div className="flex h-[calc(100vh-150px)] flex-col">
       <div className="relative flex flex-grow justify-center overflow-hidden">
         <main className="flex w-full max-w-4xl flex-col">
           <div className="flex-grow overflow-y-auto p-8">
