@@ -2,7 +2,8 @@
 import { ArrowUp, ChevronLeft, ChevronRight, X } from "lucide-react";
 import React, { useState } from "react";
 import Chat from "~/components/Chat";
-import RightSidePage from "~/components/RightSidePage";
+import RightSidePage from "~/components/RIghtSideCardPage";
+
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 

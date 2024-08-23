@@ -19,6 +19,7 @@ const AboutMePage = () => {
           <Image
             width={160}
             height={160}
+            quality={100}
             priority
             src="/blendi.jpg"
             alt="Blendi"

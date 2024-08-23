@@ -96,28 +96,30 @@ function WorkExperienceCard({
     >
       <div>
         <CardHeader className="pb-4">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-start space-x-3">
             <Image
               src={experience.logo}
               alt={`${experience.title} logo`}
-              width={60}
-              height={60}
-              className="rounded-full object-cover"
+              width={40}
+              height={40}
+              className="flex-shrink-0 rounded-full object-cover"
             />
-            <div>
-              <CardTitle className="text-xl">{experience.title}</CardTitle>
-              <CardDescription className="mt-1 text-sm">
+            <div className="min-w-0 flex-1">
+              <CardTitle className="break-words text-sm font-semibold sm:text-base md:text-lg">
+                {experience.title}
+              </CardTitle>
+              <CardDescription className="mt-1 text-xs sm:text-sm">
                 {experience.description}
               </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm ">{experience.shortDescription}</p>
+          <p className="text-xs sm:text-sm">{experience.shortDescription}</p>
         </CardContent>
       </div>
       <CardFooter>
-        <p className="text-xs ">
+        <p className="text-xs">
           <span className="font-semibold">Technologies:</span>{" "}
           {experience.technologies}
         </p>
