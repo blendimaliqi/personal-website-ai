@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Mail } from "lucide-react";
+import Image from "next/image";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -51,7 +52,10 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-1 flex-col items-center justify-center">
             <Avatar className="mb-4 h-40 w-40">
-              <AvatarImage
+              <Image
+                width={160}
+                height={160}
+                priority
                 src="/blendi.jpg"
                 alt="Blendi"
                 className="object-cover object-[15%_50%]"

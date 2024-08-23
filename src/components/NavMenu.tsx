@@ -22,7 +22,7 @@ export function NavigationMenuDemo() {
       <NavigationMenuList className="flex space-x-4">
         {navItems.map((item) => (
           <NavigationMenuItem key={item.title}>
-            <Link href={item.href} legacyBehavior passHref>
+            <Link href={item.href} passHref prefetch legacyBehavior>
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),

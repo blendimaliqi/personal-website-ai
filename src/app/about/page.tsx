@@ -9,18 +9,21 @@ import {
   CardDescription,
   CardContent,
 } from "~/components/ui/card";
+import Image from "next/image";
 
 const AboutMePage = () => {
   return (
     <div className="container mx-auto mb-14 px-4 py-8">
       <div className="mb-8 flex flex-col items-center">
         <Avatar className="mb-4 h-40 w-40">
-          <AvatarImage
+          <Image
+            width={160}
+            height={160}
+            priority
             src="/blendi.jpg"
             alt="Blendi"
             className="object-cover object-[15%_50%]"
           />
-          <AvatarFallback>BL</AvatarFallback>
         </Avatar>
         <h1 className="pb-2 text-4xl font-bold">About Me</h1>
 
