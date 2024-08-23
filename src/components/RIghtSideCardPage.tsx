@@ -136,9 +136,10 @@ function RightSidePage() {
         Work Experience
       </h1>
       <p className="mb-12 text-lg">
-        I have worked in various companies and projects, gaining valuable
-        experience in frontend development, cross-platform mobile development,
-        and backend. Click on a card to learn more about each experience.
+        As a consultant, I have worked in various companies and projects,
+        gaining valuable experience in frontend development, cross-platform
+        mobile development, and backend. Click on a card to learn more about
+        each experience.
       </p>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {workExperiences.map((experience, index) => (
