@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import {
   Card,
@@ -15,19 +14,17 @@ const AboutMePage = () => {
   return (
     <div className="container mx-auto mb-14 px-4 py-8">
       <div className="mb-8 flex flex-col items-center">
-        <Avatar className="mb-4 h-40 w-40">
+        <div className="relative mb-4 h-40 w-40 overflow-hidden rounded-full">
           <Image
-            width={160}
-            height={160}
-            quality={100}
-            priority
+            fill
             src="/blendi.jpg"
             alt="Blendi"
             className="object-cover"
             style={{ objectPosition: "15% center" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
           />
-        </Avatar>
+        </div>
         <h1 className="pb-2 text-4xl font-bold">About Me</h1>
 
         <a
