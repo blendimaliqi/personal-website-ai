@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Mail } from "lucide-react";
 import Image from "next/image";
 
@@ -40,7 +39,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
       {filteredMessages.length > 0 ? (
         filteredMessages.map((msg, index) => (
           <div key={index} className={`space-y-1 rounded-lg p-4`}>
-            <strong className=" text-gray-600 dark:text-gray-400">
+            <strong className="text-gray-600 dark:text-gray-400">
               {msg.role === "user" ? "You" : "Assistant"}:
             </strong>
             <p style={{ whiteSpace: "pre-wrap" }}>
@@ -51,17 +50,17 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
       ) : (
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-1 flex-col items-center justify-center">
-            <Avatar className="mb-4 h-40 w-40">
+            <div className="relative mb-4 h-40 w-40 overflow-hidden rounded-full">
               <Image
-                width={160}
-                height={160}
-                quality={100}
-                priority
+                fill
                 src="/blendi.jpg"
                 alt="Blendi"
-                className="object-cover object-[15%_50%]"
+                className="object-cover"
+                style={{ objectPosition: "15% center" }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
               />
-            </Avatar>
+            </div>
             <div className="flex flex-col items-center justify-center rounded-lg pt-3">
               <p className="text-center text-2xl font-medium">Blendi Maliqi</p>
               <p className="text-center text-muted-foreground">Web developer</p>
@@ -76,9 +75,8 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
               </a>
             </div>
           </div>
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-muted-foreground ">
             {`I have trained an AI model with information about my skills, past projects, work experience, education or hobbies.`}
-
             {` Feel free to ask :)`}
           </p>
         </div>
