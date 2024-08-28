@@ -39,9 +39,7 @@ const AboutMePage = () => {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Blendi</CardTitle>
-          <CardDescription>
-            Web developer and Full-Stack Enthusiast
-          </CardDescription>
+          <CardDescription>Full-Stack Web Developer</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="mb-4">
