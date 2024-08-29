@@ -75,6 +75,21 @@ export default function RootLayout({
       className={cn(inter.variable, "font-sans")}
       suppressHydrationWarning
     >
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZF3LS48WEW"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZF3LS48WEW');
+          `}
+        </Script>
+      </head>
       <body
         className={cn("min-h-screen bg-background")}
         suppressHydrationWarning
