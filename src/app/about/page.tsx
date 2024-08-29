@@ -22,7 +22,7 @@ const AboutMePage = () => {
             className="object-cover"
             style={{ objectPosition: "15% center" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority
+            priority={true}
           />
         </div>
         <h1 className="pb-2 text-4xl font-bold">About Me</h1>

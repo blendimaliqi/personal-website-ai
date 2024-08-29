@@ -58,7 +58,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
                 className="object-cover"
                 style={{ objectPosition: "15% center" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority
+                priority={true}
               />
             </div>
             <div className="flex flex-col items-center justify-center rounded-lg pt-3">

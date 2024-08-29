@@ -101,6 +101,7 @@ function WorkExperienceCard({
               src={experience.logo}
               alt={`${experience.title} logo`}
               width={40}
+              priority={true}
               height={40}
               className="flex-shrink-0 rounded-full object-cover"
             />
@@ -165,6 +166,7 @@ function RightSidePage() {
                   src={selectedExperience.logo}
                   alt={`${selectedExperience.title} logo`}
                   width={80}
+                  priority={true}
                   height={80}
                   className="rounded-full object-cover"
                 />
