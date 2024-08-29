@@ -24,7 +24,7 @@ export const metadata: Metadata = {
       "Professional portfolio of Blendi Maliqi, showcasing web development projects and skills.",
     images: [
       {
-        url: "https://www.blendimaliqi.com/blendi.jpg",
+        url: "/bm.png",
         width: 1200,
         height: 630,
         alt: "Blendi Maliqi Portfolio",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     title: "Blendi Maliqi | Web Developer Portfolio",
     description:
       "Professional portfolio of Blendi Maliqi, showcasing web development projects and skills.",
-    images: ["https://www.blendimaliqi.com/blendi.jpg"],
+    images: ["/bm.png"],
   },
-  icons: [{ rel: "icon", url: "/tabicon.jpg", type: "image/jpeg" }],
+  icons: [{ rel: "icon", url: "/bm.png", type: "image/jpeg" }],
 };
 
 const StructuredData = () => {
