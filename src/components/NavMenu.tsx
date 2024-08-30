@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -16,7 +17,11 @@ const navItems = [
   { title: "About", href: "/about" },
 ];
 
-export function NavigationMenuDemo() {
+export function NavMenu() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname === href;
+
   return (
     <NavigationMenu>
       <NavigationMenuList className="flex space-x-4">
@@ -26,7 +31,12 @@ export function NavigationMenuDemo() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  "px-4  text-lg transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none",
+                  "px-4 text-lg transition-colors",
+                  "hover:bg-accent hover:text-accent-foreground",
+                  "dark:hover:bg-accent/80 dark:hover:text-accent-foreground",
+                  isActive(item.href)
+                    ? "bg-accent text-accent-foreground dark:bg-accent/90 dark:text-accent-foreground"
+                    : "text-foreground dark:text-foreground",
                 )}
               >
                 {item.title}

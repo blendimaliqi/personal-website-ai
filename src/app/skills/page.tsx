@@ -181,7 +181,7 @@ const SkillsSection: React.FC = () => {
           Skills
         </h2>
         <SkillLevelLegend />
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <h3 className="mb-2 text-lg font-semibold">Filter by Level</h3>
           <select
             value={selectedLevel}
@@ -197,8 +197,8 @@ const SkillsSection: React.FC = () => {
               </option>
             ))}
           </select>
-        </div>
-        <Tabs defaultValue={skillCategories[0]!.name} className="w-full">
+        </div> */}
+        <Tabs defaultValue={skillCategories[0]!.name} className="mt-24 w-full">
           <TabsList className="mb-6 grid w-full grid-cols-2 gap-2 sm:mb-8 sm:grid-cols-4">
             {skillCategories.map((category, index) => (
               <TabsTrigger

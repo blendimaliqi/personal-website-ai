@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { NavigationMenuDemo } from "./NavMenu";
+import { NavMenu } from "./NavMenu";
 import { ModeToggle } from "./DropMenu";
 import { Menu } from "lucide-react";
 
@@ -21,7 +21,7 @@ export default function HeaderClient() {
 
           {/* Desktop Navigation */}
           <div className="hidden flex-1 justify-center md:flex">
-            <NavigationMenuDemo />
+            <NavMenu />
           </div>
 
           {/* Mobile Hamburger Menu */}
@@ -43,7 +43,7 @@ export default function HeaderClient() {
         {/* Mobile Menu (conditionally rendered) */}
         {mobileMenuOpen && (
           <div className="mt-4 md:hidden">
-            <NavigationMenuDemo />
+            <NavMenu />
           </div>
         )}
       </div>
