@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Mail } from "lucide-react";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -31,6 +32,38 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
     }
   }, [messages]);
 
+  const markdownComponents: Record<string, React.FC<any>> = {
+    p: ({ children }) => <p className="mb-4">{children}</p>,
+    ul: ({ children }) => <ul className="mb-4 list-disc pl-6">{children}</ul>,
+    ol: ({ children }) => (
+      <ol className="mb-4 list-decimal pl-6">{children}</ol>
+    ),
+    li: ({ children }) => <li className="mb-1">{children}</li>,
+    h1: ({ children }) => (
+      <h1 className="mb-4 text-2xl font-bold">{children}</h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="mb-3 text-xl font-bold">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-2 text-lg font-bold">{children}</h3>
+    ),
+    code: ({ node, inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || "");
+      return inline ? (
+        <code className="rounded bg-gray-100 px-1 dark:bg-gray-800" {...props}>
+          {children}
+        </code>
+      ) : (
+        <pre className="mb-4 rounded bg-gray-100 p-2 dark:bg-gray-800">
+          <code className={className} {...props}>
+            {children}
+          </code>
+        </pre>
+      );
+    },
+  };
+
   return (
     <div
       ref={chatContainerRef}
@@ -42,9 +75,12 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
             <strong className="text-gray-600 dark:text-gray-400">
               {msg.role === "user" ? "You" : "Assistant"}:
             </strong>
-            <p style={{ whiteSpace: "pre-wrap" }}>
+            <ReactMarkdown
+              className="markdown-content prose dark:prose-invert max-w-none"
+              components={markdownComponents}
+            >
               {decodeSpecialChars(msg.content)}
-            </p>
+            </ReactMarkdown>
           </div>
         ))
       ) : (
