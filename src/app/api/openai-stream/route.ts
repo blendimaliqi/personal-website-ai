@@ -20,7 +20,7 @@ const openai = new OpenAI({
 
 export async function POST(req: NextRequest) {
   try {
-    const { message } = await req.json();
+    const { message, threadId } = await req.json();
 
     if (!message || typeof message !== "string" || message.trim() === "") {
       return NextResponse.json(
@@ -35,7 +35,17 @@ export async function POST(req: NextRequest) {
       throw new Error("ASSISTANT_MODEL_ID is not set in environment variables");
     }
     const assistant = await openai.beta.assistants.retrieve(modelId);
-    const thread = await openai.beta.threads.create();
+
+    // Use the provided threadId or create a new one
+    const thread = threadId
+      ? await openai.beta.threads.retrieve(threadId)
+      : await openai.beta.threads.create();
+
+    // Add the new message to the thread
+    await openai.beta.threads.messages.create(thread.id, {
+      role: "user",
+      content: message,
+    });
 
     // Add all messages from conversationHistory to the thread
     for (const historyMessage of conversationHistory) {

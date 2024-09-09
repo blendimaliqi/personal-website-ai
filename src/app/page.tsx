@@ -1,6 +1,6 @@
 "use client";
 import { ArrowUp, ChevronLeft, ChevronRight, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Chat from "~/components/Chat";
 import RightSidePage from "~/components/RIghtSideCardPage";
 import { Button } from "~/components/ui/button";
@@ -18,7 +18,7 @@ export default function HomePage() {
     {
       role: "system",
       content:
-        'You are a helpful assistant representing the software developer Blendi Maliqi. Follow the "Blendi_cover_letter.pdf" on how to respond.',
+        'You are a helpful assistant representing the software developer Blendi Maliqi. Follow the "blendiai.pdf" on how to respond.',
     },
   ]);
 
@@ -105,6 +105,24 @@ export default function HomePage() {
     (msg) => msg.role === "assistant",
   );
 
+  // Add this new function to reset the conversation
+  const resetConversation = useCallback(async () => {
+    setMessages([
+      {
+        role: "system",
+        content:
+          'You are a helpful assistant representing the software developer Blendi Maliqi. Follow the "blendiai.pdf" on how to respond.',
+      },
+    ]);
+    setMessage("");
+
+    try {
+      await fetch("/api/openai-stream/reset", { method: "POST" });
+    } catch (error) {
+      console.error("Error resetting conversation:", error);
+    }
+  }, []);
+
   return (
     <div className="flex h-[calc(100vh-150px)] flex-col">
       <div className="relative flex flex-grow justify-center overflow-hidden">
@@ -140,7 +158,7 @@ export default function HomePage() {
             </div>
             {hasAssistantResponded && !loading && (
               <Button
-                onClick={() => setMessages([])}
+                onClick={resetConversation}
                 size="icon"
                 className="h-14 w-14 rounded-full"
                 variant="outline"
