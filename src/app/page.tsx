@@ -25,6 +25,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState("");
   const [isRightSideOpen, setIsRightSideOpen] = useState(false);
+  const [threadId, setThreadId] = useState<string | null>(null); // Store threadId
 
   // Function to handle streaming chat
   async function fetchChatStream() {
@@ -34,7 +35,7 @@ export default function HomePage() {
       const response = await fetch("/api/openai-stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, threadId }), // Ensure threadId is included
       });
 
       if (!response.ok || !response.body) {
@@ -81,6 +82,13 @@ export default function HomePage() {
           return updatedMessages;
         });
       }
+
+      // Extract the threadId from the response headers
+      const newThreadId = response.headers.get("x-thread-id");
+      if (newThreadId) {
+        setThreadId(newThreadId);
+      }
+
       setLoading(false);
 
       // Clear the input field
@@ -115,6 +123,7 @@ export default function HomePage() {
       },
     ]);
     setMessage("");
+    setThreadId(null); // Reset threadId
 
     try {
       await fetch("/api/openai-stream/reset", { method: "POST" });
