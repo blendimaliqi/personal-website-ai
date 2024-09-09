@@ -20,7 +20,9 @@ const openai = new OpenAI({
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("Received request");
     const { message, threadId } = await req.json();
+    console.log("Parsed request body:", { message, threadId });
 
     if (!message || typeof message !== "string" || message.trim() === "") {
       return NextResponse.json(
@@ -60,10 +62,12 @@ export async function POST(req: NextRequest) {
     const headers = new Headers({
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
+      "Cache-Control": "no-cache", // Add this line
     });
 
     const readableStream = new ReadableStream({
       start(controller) {
+        console.log("Starting stream");
         const stream = openai.beta.threads.runs.stream(thread.id, {
           assistant_id: assistant.id,
           instructions: systemMessage.content,
@@ -78,6 +82,7 @@ export async function POST(req: NextRequest) {
               delta: import("openai/resources/beta/threads/messages").TextDelta,
             ) => {
               const newContent = delta.value ?? "";
+              console.log("Received text delta:", newContent);
 
               accumulatedResponse += newContent;
 
@@ -90,6 +95,7 @@ export async function POST(req: NextRequest) {
             },
           )
           .on("end", () => {
+            console.log("Stream ended");
             conversationHistory.push({
               role: "assistant",
               content: accumulatedResponse,
