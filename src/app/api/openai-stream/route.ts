@@ -39,17 +39,9 @@ export async function POST(req: NextRequest) {
     const assistant = await openai.beta.assistants.retrieve(modelId);
 
     // Use the provided threadId or create a new one
-    let thread;
-    if (threadId) {
-      try {
-        thread = await openai.beta.threads.retrieve(threadId);
-      } catch (error) {
-        console.error("Error retrieving thread:", error);
-        thread = await openai.beta.threads.create();
-      }
-    } else {
-      thread = await openai.beta.threads.create();
-    }
+    const thread = threadId
+      ? await openai.beta.threads.retrieve(threadId)
+      : await openai.beta.threads.create();
 
     // Add the new message to the thread
     await openai.beta.threads.messages.create(thread.id, {
@@ -71,7 +63,6 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
       "Cache-Control": "no-cache", // Add this line
-      "x-thread-id": thread.id, // Include threadId in headers
     });
 
     const readableStream = new ReadableStream({
