@@ -138,7 +138,7 @@ export default function HomePage() {
                 onKeyDown={handleKeyPress}
                 type="text"
                 value={message}
-                placeholder='"Who is Blendis biggest client?"'
+                placeholder='"Question here?"'
                 className="h-14 rounded-3xl pr-16"
                 style={{
                   outline: "none",
