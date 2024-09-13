@@ -25,6 +25,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState("");
   const [isRightSideOpen, setIsRightSideOpen] = useState(false);
+  const [threadId, setThreadId] = useState<string | null>(null);
 
   // Function to handle streaming chat
   async function fetchChatStream() {
@@ -34,7 +35,7 @@ export default function HomePage() {
       const response = await fetch("/api/openai-stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, threadId }),
       });
 
       if (!response.ok || !response.body) {
@@ -46,45 +47,32 @@ export default function HomePage() {
       const reader = response.body.getReader();
       const decoder = new TextDecoder("utf-8");
 
-      // Add an empty assistant message to accumulate the response
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-
-      let accumulatedBuffer = "";
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
         const chunk = decoder.decode(value);
-        accumulatedBuffer += chunk;
+        const lines = chunk.split("\n\n");
 
-        // Extract all JSON objects using regex
-        const regex = /{"role":"assistant","content":"(.*?)"}/g;
-        let match;
-        let latestContent = "";
-
-        while ((match = regex.exec(accumulatedBuffer)) !== null) {
-          // Remove any citation markers using regex
-          latestContent = match[1]?.replace(/【\d+:\d+†.*?】/g, "") ?? "";
-        }
-
-        // Update the last assistant message with the cumulative content
-        setMessages((prev) => {
-          const updatedMessages = [...prev];
-          const lastAssistantMessage =
-            updatedMessages[updatedMessages.length - 1];
-          if (lastAssistantMessage) {
-            updatedMessages[updatedMessages.length - 1] = {
-              ...lastAssistantMessage,
-              content: latestContent,
-            };
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const jsonData = line.slice(6);
+            try {
+              const parsedData = JSON.parse(jsonData);
+              setMessages((prev) => {
+                const updatedMessages = [...prev];
+                updatedMessages[updatedMessages.length - 1] = parsedData;
+                return updatedMessages;
+              });
+            } catch (error) {
+              console.error("Error parsing JSON:", error);
+            }
           }
-          return updatedMessages;
-        });
+        }
       }
       setLoading(false);
-
-      // Clear the input field
       setMessage("");
     } catch (error) {
       console.error("Fetch Error:", error);
@@ -117,6 +105,7 @@ export default function HomePage() {
       },
     ]);
     setMessage("");
+    setThreadId(null); // Reset threadId
 
     try {
       await fetch("/api/openai-stream/reset", { method: "POST" });

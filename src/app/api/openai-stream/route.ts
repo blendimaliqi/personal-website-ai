@@ -60,52 +60,63 @@ export async function POST(req: NextRequest) {
     }
 
     const headers = new Headers({
-      "Content-Type": "application/json",
-      "Transfer-Encoding": "chunked",
-      "Cache-Control": "no-cache", // Add this line
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
 
+    let accumulatedResponse = "";
+
     const readableStream = new ReadableStream({
-      start(controller) {
+      async start(controller) {
         console.log("Starting stream");
         const stream = openai.beta.threads.runs.stream(thread.id, {
           assistant_id: assistant.id,
           instructions: systemMessage.content,
         });
 
-        let accumulatedResponse = "";
+        try {
+          for await (const chunk of stream as AsyncIterable<MessageChunk>) {
+            if (
+              chunk.event === "thread.message.created" ||
+              chunk.event === "thread.message.delta"
+            ) {
+              let newContent = "";
+              if (chunk.event === "thread.message.created") {
+                const textContent = chunk.data.content.find(
+                  (c) => c.type === "text",
+                );
+                newContent = textContent?.text?.value ?? "";
+              } else if (chunk.event === "thread.message.delta") {
+                const deltaContent = chunk.data.delta.content?.[0];
+                if (deltaContent && "text" in deltaContent) {
+                  newContent = deltaContent.text?.value ?? "";
+                }
+              }
 
-        stream
-          .on(
-            "textDelta",
-            (
-              delta: import("openai/resources/beta/threads/messages").TextDelta,
-            ) => {
-              const newContent = delta.value ?? "";
               console.log("Received text delta:", newContent);
 
               accumulatedResponse += newContent;
 
               controller.enqueue(
-                JSON.stringify({
+                `data: ${JSON.stringify({
                   role: "assistant",
                   content: accumulatedResponse,
-                }) + "\n",
+                })}\n\n`,
               );
-            },
-          )
-          .on("end", () => {
-            console.log("Stream ended");
-            conversationHistory.push({
-              role: "assistant",
-              content: accumulatedResponse,
-            });
-            controller.close();
-          })
-          .on("error", (err) => {
-            console.error("Streaming error:", err);
-            controller.error(err);
+            }
+          }
+        } catch (error) {
+          console.error("Streaming error:", error);
+          controller.error(error);
+        } finally {
+          console.log("Stream ended");
+          conversationHistory.push({
+            role: "assistant",
+            content: accumulatedResponse,
           });
+          controller.close();
+        }
       },
     });
 
@@ -118,3 +129,17 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+type MessageChunk =
+  | {
+      event: "thread.message.created";
+      data: { content: Array<{ type: string; text?: { value: string } }> };
+    }
+  | {
+      event: "thread.message.delta";
+      data: { delta: { content?: Array<MessageContentDelta> } };
+    };
+
+type MessageContentDelta =
+  | { text: { value: string } }
+  | { image_file: { file_id: string } };
