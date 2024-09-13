@@ -111,10 +111,10 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
               </a>
             </div>
           </div>
-          {/* <p className="text-center text-muted-foreground ">
+          <p className="text-center text-muted-foreground ">
             {`I have trained an AI model with information about my skills, past projects, work experience, education or hobbies.`}
             {` Feel free to ask :)`}
-          </p> */}
+          </p>
         </div>
       )}
     </div>
