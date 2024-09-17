@@ -122,7 +122,7 @@ export default function HomePage() {
             <Chat messages={messages} />
           </div>
           <div className="flex flex-row space-x-4 p-4">
-            <div className="relative flex-grow">
+            {/* <div className="relative flex-grow">
               <Input
                 disabled={loading}
                 onChange={(e) => setMessage(e.target.value)}
@@ -146,7 +146,7 @@ export default function HomePage() {
               >
                 <ArrowUp className="h-5 w-5" />
               </Button>
-            </div>
+            </div> */}
             {hasAssistantResponded && !loading && (
               <Button
                 onClick={resetConversation}
