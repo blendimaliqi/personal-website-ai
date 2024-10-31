@@ -91,6 +91,86 @@ Learn how to use advanced TypeScript features in your React applications:
 More content coming soon...
     `,
   },
+  {
+    title: "Web Accessibility: Building Inclusive React Applications",
+    description:
+      "A comprehensive guide to implementing accessibility features in React applications, including ARIA attributes, keyboard navigation, and semantic HTML.",
+    date: "2024-03-25",
+    slug: "web-accessibility-react-applications",
+    readTime: "10 min read",
+    content: `
+# Web Accessibility: Building Inclusive React Applications
+
+Creating accessible web applications is not just a good practice—it's essential for ensuring your content reaches all users. This guide explores implementing accessibility features in React applications.
+
+## Understanding Web Accessibility
+
+Web accessibility (a11y) means designing and developing websites that people with disabilities can use. This includes:
+
+- Visual impairments
+- Hearing impairments
+- Motor impairments
+- Cognitive disabilities
+
+## Key Accessibility Features in React
+
+### 1. Semantic HTML
+
+Using semantic HTML elements is crucial for accessibility:
+
+- Use \`<button>\` for clickable actions
+- Use \`<nav>\` for navigation menus
+- Use \`<main>\`, \`<article>\`, and \`<section>\` appropriately
+- Implement proper heading hierarchy (\`<h1>\` through \`<h6>\`)
+
+### 2. ARIA Attributes
+
+ARIA attributes enhance accessibility when HTML semantics aren't enough:
+
+- aria-label
+- aria-describedby
+- aria-expanded
+- aria-hidden
+- role attributes
+
+### 3. Keyboard Navigation
+
+Ensure your application is fully navigable via keyboard:
+
+- Implement proper focus management
+- Use proper tab order
+- Add visible focus indicators
+- Handle keyboard events appropriately
+
+### 4. Color and Contrast
+
+Consider visual accessibility:
+
+- Maintain WCAG 2.1 contrast ratios
+- Don't rely solely on color to convey information
+- Provide sufficient color contrast
+- Test with color blindness simulators
+
+## Testing Accessibility
+
+Regular testing is crucial:
+
+1. Use automated tools like axe-core
+2. Test with screen readers
+3. Perform keyboard navigation testing
+4. Conduct user testing with people with disabilities
+
+## Best Practices
+
+1. Start with accessibility in mind
+2. Use component libraries that prioritize accessibility
+3. Document accessibility features
+4. Regular audit and testing
+5. Stay updated with WCAG guidelines
+
+Remember: Accessibility benefits everyone, not just users with disabilities. By implementing these features, you're creating a better experience for all users.
+    `,
+  },
 ];
 
 interface Props {

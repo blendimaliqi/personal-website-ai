@@ -27,6 +27,14 @@ const articles: Article[] = [
     slug: "typescript-best-practices-react",
     readTime: "8 min read",
   },
+  {
+    title: "Web Accessibility: Building Inclusive React Applications",
+    description:
+      "A comprehensive guide to implementing accessibility features in React applications, including ARIA attributes, keyboard navigation, and semantic HTML.",
+    date: "2024-03-25",
+    slug: "web-accessibility-react-applications",
+    readTime: "10 min read",
+  },
 ];
 
 const ArticlesPage = () => {
