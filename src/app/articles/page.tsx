@@ -12,6 +12,14 @@ interface Article {
 
 const articles: Article[] = [
   {
+    title: "React Performance Optimization Techniques",
+    description:
+      "Learn advanced techniques for optimizing React applications, including code splitting, memoization, virtualization, and performance profiling.",
+    date: "2024-04-01",
+    slug: "react-performance-optimization",
+    readTime: "14 min read",
+  },
+  {
     title: "Testing React Applications: A Complete Guide",
     description:
       "Learn how to implement comprehensive testing strategies in React applications using Jest, React Testing Library, and Cypress.",
