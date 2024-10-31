@@ -12,6 +12,14 @@ interface Article {
 
 const articles: Article[] = [
   {
+    title: "Modern State Management in React: A Comprehensive Guide",
+    description:
+      "Exploring different state management solutions in React, from useState and useReducer to advanced libraries like Redux Toolkit and Zustand.",
+    date: "2024-03-28",
+    slug: "modern-state-management-react",
+    readTime: "12 min read",
+  },
+  {
     title: "Building Modern Web Applications with Next.js 13",
     description:
       "Exploring the new features and best practices in Next.js 13, including the App Router and Server Components.",
