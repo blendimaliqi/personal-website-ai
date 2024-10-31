@@ -12,6 +12,14 @@ interface Article {
 
 const articles: Article[] = [
   {
+    title: "Testing React Applications: A Complete Guide",
+    description:
+      "Learn how to implement comprehensive testing strategies in React applications using Jest, React Testing Library, and Cypress.",
+    date: "2024-03-30",
+    slug: "testing-react-applications",
+    readTime: "15 min read",
+  },
+  {
     title: "Modern State Management in React: A Comprehensive Guide",
     description:
       "Exploring different state management solutions in React, from useState and useReducer to advanced libraries like Redux Toolkit and Zustand.",
