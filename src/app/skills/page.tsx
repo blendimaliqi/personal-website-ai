@@ -133,6 +133,7 @@ const SkillsSection: React.FC = () => {
         { name: "Next.js", level: "Advanced" },
         { name: "Shadcn", level: "Advanced" },
         { name: "Spring Boot", level: "Intermediate" },
+        { name: ".NET", level: "Beginner" },
         { name: "React Native", level: "Intermediate" },
         { name: "Flutter", level: "Intermediate" },
         { name: "Sanity", level: "Intermediate" },

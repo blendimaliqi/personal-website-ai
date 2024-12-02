@@ -80,6 +80,8 @@ const AboutMePage = () => {
             <Badge>React Native</Badge>
             <Badge>Java</Badge>
             <Badge>Spring Boot</Badge>
+            <Badge>C#</Badge>
+            <Badge>.NET</Badge>
           </div>
         </CardContent>
       </Card>
