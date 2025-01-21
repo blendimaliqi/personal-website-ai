@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
           <div className="text-center sm:text-left">
             <h2 className="text-lg font-semibold">Blendi Maliqi</h2>
-            <p className="text-sm opacity-75">Full-stack Web Developer</p>
+            <p className="text-sm opacity-75">Software developer</p>
           </div>
           <div className="flex space-x-4">
             {/* <a

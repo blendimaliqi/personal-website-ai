@@ -76,9 +76,9 @@ const StructuredData = () => {
     "@type": "Person",
     name: "Blendi Maliqi",
     url: "https://blendimaliqi.com",
-    jobTitle: "Web Developer",
+    jobTitle: "Software developer",
     description:
-      "Professional web developer specializing in Next.js, React and .NET",
+      "Professional software developer specializing in Next.js, React and .NET",
     sameAs: [
       "https://linkedin.com/in/blendimaliqi",
       "https://github.com/blendimaliqi",

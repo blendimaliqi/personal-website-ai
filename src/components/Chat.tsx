@@ -99,7 +99,9 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
             </div>
             <div className="flex flex-col items-center justify-center rounded-lg pt-3">
               <p className="text-center text-2xl font-medium">Blendi Maliqi</p>
-              <p className="text-center text-muted-foreground">Web developer</p>
+              <p className="text-center text-muted-foreground">
+                Software developer
+              </p>
             </div>
             <div className="flex items-center justify-center">
               <Mail className="mr-2 text-muted-foreground" size={24} />
