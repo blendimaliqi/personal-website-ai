@@ -58,7 +58,8 @@ const AboutMePage = () => {
           </p>
           <p className="mb-4">
             Outside of my professional life, I'm an enthusiast of strength
-            training. I also enjoy playing the guitar and am an avid gamer.
+            training. I also enjoy playing the guitar and love multiplayer
+            comptetitive games.
           </p>
         </CardContent>
       </Card>
