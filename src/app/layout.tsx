@@ -13,29 +13,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Blendi Maliqi | Web Developer Portfolio",
+  title: "Blendi Maliqi | Software Developer",
   description:
-    "Professional portfolio of Blendi Maliqi, showcasing web development projects and skills in Next.js, React, and more.",
-  keywords: "web developer, frontend developer, Next.js, React, portfolio",
+    "Experienced Software Developer specializing in modern web development with Next.js, React, .NET and cloud technologies. View featured projects and technical expertise.",
+  keywords:
+    "software developer, full-stack developer, Next.js, React, .NET, cloud architecture, web development",
   authors: [{ name: "Blendi Maliqi" }],
   openGraph: {
-    title: "Blendi Maliqi | Web Developer Portfolio",
+    title: "Blendi Maliqi | Software Developer",
     description:
-      "Professional portfolio of Blendi Maliqi, showcasing web development projects and skills.",
+      "Experienced Software Developer delivering scalable web solutions with modern technologies. Specialized in Next.js, React, .NET and cloud architecture.",
     images: [
       {
         url: "/bm.png",
         width: 1200,
         height: 630,
-        alt: "Blendi Maliqi Portfolio",
+        alt: "Blendi Maliqi - Software Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blendi Maliqi | Web Developer Portfolio",
+    title: "Blendi Maliqi | Software Developer",
     description:
-      "Professional portfolio of Blendi Maliqi, showcasing web development projects and skills.",
+      "Experienced Software Developer delivering scalable web solutions with modern technologies. Specialized in Next.js, React, .NET and cloud architecture.",
     images: ["/bm.png"],
   },
   icons: [{ rel: "icon", url: "/bm.png", type: "image/jpeg" }],
@@ -48,7 +49,8 @@ const StructuredData = () => {
     name: "Blendi Maliqi",
     url: "https://blendimaliqi.com",
     jobTitle: "Web Developer",
-    description: "Professional web developer specializing in Next.js and React",
+    description:
+      "Professional web developer specializing in Next.js, React and .NET",
     sameAs: [
       "https://linkedin.com/in/blendimaliqi",
       "https://github.com/blendimaliqi",
