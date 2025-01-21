@@ -25,9 +25,9 @@ export const metadata: Metadata = {
       "Experienced Software Developer delivering scalable web solutions with modern technologies. Specialized in Next.js, React, .NET and cloud architecture.",
     images: [
       {
-        url: "/bm.png",
-        width: 1200,
-        height: 630,
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
         alt: "Blendi Maliqi - Software Developer",
       },
     ],
@@ -37,9 +37,37 @@ export const metadata: Metadata = {
     title: "Blendi Maliqi | Software Developer",
     description:
       "Experienced Software Developer delivering scalable web solutions with modern technologies. Specialized in Next.js, React, .NET and cloud architecture.",
-    images: ["/bm.png"],
+    images: ["/android-chrome-512x512.png"],
   },
-  icons: [{ rel: "icon", url: "/bm.png", type: "image/jpeg" }],
+  icons: [
+    { rel: "icon", url: "/favicon.ico", type: "image/x-icon" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
+    {
+      rel: "icon",
+      url: "/favicon-16x16.png",
+      sizes: "16x16",
+      type: "image/png",
+    },
+    {
+      rel: "icon",
+      url: "/favicon-32x32.png",
+      sizes: "32x32",
+      type: "image/png",
+    },
+    {
+      rel: "icon",
+      url: "/android-chrome-192x192.png",
+      sizes: "192x192",
+      type: "image/png",
+    },
+    {
+      rel: "icon",
+      url: "/android-chrome-512x512.png",
+      sizes: "512x512",
+      type: "image/png",
+    },
+  ],
+  manifest: "/site.webmanifest",
 };
 
 const StructuredData = () => {
