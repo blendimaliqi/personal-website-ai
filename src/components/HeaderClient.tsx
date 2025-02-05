@@ -11,7 +11,7 @@ export default function HeaderClient() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="mb-2 bg-background p-4 shadow-sm">
+    <header className="sticky top-0 z-50 mb-2 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto max-w-7xl px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo or Brand Name (optional) */}
@@ -28,14 +28,15 @@ export default function HeaderClient() {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Toggle menu"
             >
               <HamburgerIcon />
             </button>
           </div>
 
           {/* Mode Toggle (visible on all screen sizes) */}
-          <div className="flex items-center">
+          <div className="ml-4 flex items-center border-l pl-4">
             <ModeToggle />
           </div>
         </div>

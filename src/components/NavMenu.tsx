@@ -24,19 +24,18 @@ export function NavMenu() {
 
   return (
     <NavigationMenu>
-      <NavigationMenuList className="flex space-x-4">
+      <NavigationMenuList className="flex space-x-6">
         {navItems.map((item) => (
           <NavigationMenuItem key={item.title}>
             <Link href={item.href} passHref prefetch legacyBehavior>
               <NavigationMenuLink
                 className={cn(
-                  navigationMenuTriggerStyle(),
-                  "px-4 text-lg transition-colors",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  "dark:hover:bg-accent/80 dark:hover:text-accent-foreground",
+                  "relative px-3 py-2 text-lg transition-colors duration-200",
+                  "hover:text-foreground/80",
+                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200",
                   isActive(item.href)
-                    ? "bg-accent text-accent-foreground dark:bg-accent/90 dark:text-accent-foreground"
-                    : "text-foreground dark:text-foreground",
+                    ? "text-foreground after:scale-x-100"
+                    : "text-foreground/60 hover:after:scale-x-100",
                 )}
               >
                 {item.title}
