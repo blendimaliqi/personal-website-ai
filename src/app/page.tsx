@@ -77,8 +77,14 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-3 pb-6">
       <main className="relative mx-auto w-full max-w-4xl">
-        <div className="flex flex-col space-y-3">
-          <Chat messages={messages} />
+        <h1 className="sr-only">Chat with Blendi's AI Assistant</h1>
+        <section
+          className="flex flex-col space-y-3"
+          aria-label="Chat Interface"
+        >
+          <article className="chat-messages" role="log" aria-live="polite">
+            <Chat messages={messages} />
+          </article>
 
           <div className="flex w-full flex-row space-x-4">
             <div className="relative flex-grow">
@@ -89,12 +95,14 @@ export default function HomePage() {
                 value={message}
                 placeholder="Ask me anything about my background..."
                 className="h-14 rounded-3xl pr-16"
+                aria-label="Chat message input"
               />
               <Button
                 onClick={handleSendMessage}
                 size="icon"
                 className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full"
                 disabled={loading || message.trim() === ""}
+                aria-label="Send message"
               >
                 <ArrowUp className="h-5 w-5" />
               </Button>
@@ -105,12 +113,13 @@ export default function HomePage() {
                 size="icon"
                 className="h-14 w-14 rounded-full"
                 variant="outline"
+                aria-label="Clear chat history"
               >
                 <X className="h-5 w-5" />
               </Button>
             )}
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
