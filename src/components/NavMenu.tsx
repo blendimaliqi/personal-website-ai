@@ -31,11 +31,9 @@ export function NavMenu() {
               <NavigationMenuLink
                 className={cn(
                   "relative px-3 py-2 text-lg transition-colors duration-200",
-                  "hover:text-foreground/80",
-                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200",
                   isActive(item.href)
-                    ? "text-foreground after:scale-x-100"
-                    : "text-foreground/60 hover:after:scale-x-100",
+                    ? "font-medium text-foreground"
+                    : "text-foreground/60 hover:text-foreground",
                 )}
               >
                 {item.title}
