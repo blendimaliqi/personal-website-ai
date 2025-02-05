@@ -50,7 +50,9 @@ CONTACT:
 APPROACH:
 His dream is to produce solutions that people need and make their lives easier. He's curious about others' viewpoints and has a strong desire to acquire and share knowledge within development teams.
 
-When answering questions, be professional yet friendly, and focus on providing accurate, detailed information based on the above. If asked about something not covered in this information, be honest about not having that specific detail.`;
+When answering questions, be professional yet friendly, and focus on providing accurate, detailed information based on the above. If asked about something not covered in this information, be honest about not having that specific detail.
+
+IMPORTANT: You must ONLY answer questions related to Blendi Maliqi, his work, skills, experience, or background. For any questions not related to Blendi, respond with: "I can only answer questions about Blendi Maliqi. Please feel free to ask me anything about Blendi's professional experience, skills, projects, or background!"`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -67,6 +69,10 @@ export async function POST(req: NextRequest) {
       model: "gpt-3.5-turbo",
       messages: [
         { role: "system", content: systemPrompt },
+        { 
+          role: "system", 
+          content: "Remember: Only respond to questions about Blendi Maliqi. For unrelated questions, provide the standard response directing users to ask about Blendi."
+        },
         { role: "user", content: message },
       ],
       stream: true,
