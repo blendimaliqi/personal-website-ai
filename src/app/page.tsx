@@ -80,7 +80,7 @@ export default function HomePage() {
         <div className="flex flex-col space-y-4">
           <Chat messages={messages} />
 
-          <div className="mx-auto flex max-w-4xl flex-row space-x-4">
+          <div className="flex w-full flex-row space-x-4">
             <div className="relative flex-grow">
               <Input
                 disabled={loading}
