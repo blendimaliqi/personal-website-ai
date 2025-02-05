@@ -1,28 +1,60 @@
 import { OpenAI } from "openai";
 import { NextRequest, NextResponse } from "next/server";
 
-type Message = {
-  role: "system" | "user" | "assistant";
-  content: string;
-};
-
-const systemMessage: Message = {
-  role: "system",
-  content:
-    'You are a helpful assistant representing the software developer Blendi Maliqi. Follow the "blendiai.pdf" on how to respond.',
-};
-
-let conversationHistory: Message[] = [systemMessage];
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_APIKEY,
 });
 
+const systemPrompt = `You are an AI assistant representing Blendi Maliqi, a software developer. Here is detailed information about Blendi:
+
+PROFESSIONAL PROFILE:
+- Currently working as a Consultant at Omegapoint (2021-Present)
+- Frontend Developer with expertise in React, TypeScript, and modern web technologies
+- Application Manager with experience in mobile development
+- Bachelor's degree in Informatics - Design and Development of IT Systems from Østfold University College
+- Additional Bachelor's in Marketing and Brand Management from Kristiania University College
+
+TECHNICAL SKILLS:
+- Frontend: React, TypeScript, JavaScript, Next.js, Tailwind CSS, HTML/CSS
+- Backend: .NET, C#, Spring Boot
+- Mobile: Flutter, React Native
+- Cloud & Tools: Azure, Git, Firebase, REST API
+- Testing: Playwright, Jest, JUnit
+- Design: Figma, UX design, Prototyping
+
+RECENT PROJECTS:
+1. Mastercard (2023-Present)
+   - Service Migration Frontend Developer
+   - Working with React.js, TypeScript, and Mastercard's design system
+   - Leading frontend architecture and migration planning
+
+2. Kjøpskontrakt (2024)
+   - Full-stack SAAS product for car sales contracts in Norway
+   - Built with Next.js 14, Tailwind CSS, Supabase, and Stripe
+
+3. Sikkerhetsgruppen AS (2022-2023)
+   - Developed Bluetooth wristband integration for emergency alarms
+   - Implemented geolocation and push notification features
+   - Published apps on both Android and iOS
+
+4. Other notable projects include work for Paradisreiser AS, Voglio, and Entur
+
+PERSONAL:
+Blendi is a positive and sociable person who enjoys working in teams but is also effective independently. He has a passion for creating user-friendly solutions and continuously learning new technologies. In his spare time, he enjoys working out at the gym, playing guitar, gaming, and programming.
+
+CONTACT:
+- Email: blendi.maliqi93@gmail.com
+- LinkedIn: https://www.linkedin.com/in/blendimaliqi/
+- GitHub: https://github.com/blendimaliqi
+- Phone: +47 415 896 21
+APPROACH:
+His dream is to produce solutions that people need and make their lives easier. He's curious about others' viewpoints and has a strong desire to acquire and share knowledge within development teams.
+
+When answering questions, be professional yet friendly, and focus on providing accurate, detailed information based on the above. If asked about something not covered in this information, be honest about not having that specific detail.`;
+
 export async function POST(req: NextRequest) {
   try {
-    console.log("Received request");
-    const { message, threadId } = await req.json();
-    console.log("Parsed request body:", { message, threadId });
+    const { message } = await req.json();
 
     if (!message || typeof message !== "string" || message.trim() === "") {
       return NextResponse.json(
@@ -31,115 +63,50 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    conversationHistory.push({ role: "user", content: message });
-    const modelId = process.env.ASSISTANT_MODEL_ID;
-    if (!modelId) {
-      throw new Error("ASSISTANT_MODEL_ID is not set in environment variables");
-    }
-    const assistant = await openai.beta.assistants.retrieve(modelId);
-
-    // Use the provided threadId or create a new one
-    const thread = threadId
-      ? await openai.beta.threads.retrieve(threadId)
-      : await openai.beta.threads.create();
-
-    // Add the new message to the thread
-    await openai.beta.threads.messages.create(thread.id, {
-      role: "user",
-      content: message,
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: message },
+      ],
+      stream: true,
     });
 
-    // Add all messages from conversationHistory to the thread
-    for (const historyMessage of conversationHistory) {
-      if (historyMessage.role !== "system") {
-        await openai.beta.threads.messages.create(thread.id, {
-          role: historyMessage.role as "user" | "assistant",
-          content: historyMessage.content,
-        });
-      }
-    }
-
-    const headers = new Headers({
-      "Content-Type": "text/event-stream",
-      "Cache-Control": "no-cache, no-transform",
-      Connection: "keep-alive",
-    });
-
-    let accumulatedResponse = "";
-
-    const readableStream = new ReadableStream({
+    const stream = new ReadableStream({
       async start(controller) {
-        console.log("Starting stream");
-        const stream = openai.beta.threads.runs.stream(thread.id, {
-          assistant_id: assistant.id,
-          instructions: systemMessage.content,
-        });
+        const encoder = new TextEncoder();
+        let accumulatedResponse = "";
 
-        try {
-          for await (const chunk of stream as AsyncIterable<MessageChunk>) {
-            if (
-              chunk.event === "thread.message.created" ||
-              chunk.event === "thread.message.delta"
-            ) {
-              let newContent = "";
-              if (chunk.event === "thread.message.created") {
-                const textContent = chunk.data.content.find(
-                  (c) => c.type === "text",
-                );
-                newContent = textContent?.text?.value ?? "";
-              } else if (chunk.event === "thread.message.delta") {
-                const deltaContent = chunk.data.delta.content?.[0];
-                if (deltaContent && "text" in deltaContent) {
-                  newContent = deltaContent.text?.value ?? "";
-                }
-              }
-
-              console.log("Received text delta:", newContent);
-
-              accumulatedResponse += newContent;
-
-              controller.enqueue(
+        for await (const chunk of response) {
+          const content = chunk.choices[0]?.delta?.content || "";
+          if (content) {
+            accumulatedResponse += content;
+            controller.enqueue(
+              encoder.encode(
                 `data: ${JSON.stringify({
                   role: "assistant",
                   content: accumulatedResponse,
                 })}\n\n`,
-              );
-            }
+              ),
+            );
           }
-        } catch (error) {
-          console.error("Streaming error:", error);
-          controller.error(error);
-        } finally {
-          console.log("Stream ended");
-          conversationHistory.push({
-            role: "assistant",
-            content: accumulatedResponse,
-          });
-          controller.close();
         }
+        controller.close();
       },
     });
 
-    return new Response(readableStream, { headers });
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (error) {
-    console.error("Error in POST handler:", error);
+    console.error("Error in OpenAI stream:", error);
     return NextResponse.json(
-      { error: "An unexpected error occurred" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
 }
-
-type MessageChunk =
-  | {
-      event: "thread.message.created";
-      data: { content: Array<{ type: string; text?: { value: string } }> };
-    }
-  | {
-      event: "thread.message.delta";
-      data: { delta: { content?: Array<MessageContentDelta> } };
-    };
-
-type MessageContentDelta =
-  | { text: { value: string } }
-  | { image_file: { file_id: string } };

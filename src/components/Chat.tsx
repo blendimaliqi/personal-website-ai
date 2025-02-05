@@ -12,17 +12,11 @@ interface ChatProps {
   messages: Message[];
 }
 
-const decodeSpecialChars = (text: string): string => {
-  return text
-    .replace(/\\"/g, '"')
-    .replace(/\\n/g, "\n")
-    .replace(/\\r\\n/g, "\n");
-};
-
 const Chat: React.FC<ChatProps> = ({ messages }) => {
-  const filteredMessages = messages.filter((msg) => msg.role !== "system");
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
 
+  // Scroll to bottom when messages array changes (new message added)
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTo({
@@ -30,61 +24,39 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
         behavior: "smooth",
       });
     }
-  }, [messages]);
+  }, [messages.length]);
 
-  const markdownComponents: Record<string, React.FC<any>> = {
-    p: ({ children }) => <p className="mb-4">{children}</p>,
-    ul: ({ children }) => <ul className="mb-4 list-disc pl-6">{children}</ul>,
-    ol: ({ children }) => (
-      <ol className="mb-4 list-decimal pl-6">{children}</ol>
-    ),
-    li: ({ children }) => <li className="mb-1">{children}</li>,
-    h1: ({ children }) => (
-      <h1 className="mb-4 text-2xl font-bold">{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="mb-3 text-xl font-bold">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="mb-2 text-lg font-bold">{children}</h3>
-    ),
-    code: ({ node, inline, className, children, ...props }) => {
-      const match = /language-(\w+)/.exec(className || "");
-      return inline ? (
-        <code className="rounded bg-gray-100 px-1 dark:bg-gray-800" {...props}>
-          {children}
-        </code>
-      ) : (
-        <pre className="mb-4 rounded bg-gray-100 p-2 dark:bg-gray-800">
-          <code className={className} {...props}>
-            {children}
-          </code>
-        </pre>
-      );
-    },
-  };
+  // Scroll while streaming content
+  useEffect(() => {
+    if (messages.length > 0 && lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [messages[messages.length - 1]?.content]);
 
   return (
-    <div
-      ref={chatContainerRef}
-      className="scrollbar-hide flex h-full flex-col space-y-4 overflow-y-auto"
-    >
-      {filteredMessages.length > 0 ? (
-        filteredMessages.map((msg, index) => (
-          <div key={index} className={`space-y-1 rounded-lg p-4`}>
+    <div ref={chatContainerRef} className="flex flex-col space-y-4">
+      {messages.length > 0 ? (
+        messages.map((msg, index) => (
+          <div
+            key={index}
+            ref={index === messages.length - 1 ? lastMessageRef : undefined}
+            className={`space-y-1 rounded-lg p-4 ${
+              msg.role === "user" ? "bg-muted/50" : ""
+            }`}
+          >
             <strong className="text-gray-600 dark:text-gray-400">
               {msg.role === "user" ? "You" : "Assistant"}:
             </strong>
-            <ReactMarkdown
-              className="markdown-content prose max-w-none dark:prose-invert"
-              components={markdownComponents}
-            >
-              {decodeSpecialChars(msg.content)}
+            <ReactMarkdown className="prose max-w-none dark:prose-invert">
+              {msg.content}
             </ReactMarkdown>
           </div>
         ))
       ) : (
-        <div className="flex h-full flex-col justify-between">
+        <div className="flex h-[calc(100vh-300px)] flex-col justify-between">
           <div className="flex flex-1 flex-col items-center justify-center">
             <div className="relative mb-4 h-40 w-40 overflow-hidden rounded-full">
               <Image
@@ -113,10 +85,6 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
               </a>
             </div>
           </div>
-          {/* <p className="text-center text-muted-foreground ">
-            {`I have trained an AI model with information about my skills, past projects, work experience, education or hobbies.`}
-            {` Feel free to ask :)`}
-          </p> */}
         </div>
       )}
     </div>
