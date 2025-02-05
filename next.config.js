@@ -6,6 +6,10 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    domains: ["blendimaliqi.com"],
+    unoptimized: true,
+  },
   async redirects() {
     return [
       // Redirect from HTTP to HTTPS
