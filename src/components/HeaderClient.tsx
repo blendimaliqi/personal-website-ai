@@ -12,7 +12,7 @@ export default function HeaderClient() {
 
   return (
     <header className="sticky top-0 z-50 mb-24 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto max-w-7xl px-4 py-4">
+      <div className="mx-auto max-w-7xl px-4 py-6">
         <div className="flex items-center justify-between">
           {/* Logo or Brand Name (optional) */}
           <div className="flex items-center">
