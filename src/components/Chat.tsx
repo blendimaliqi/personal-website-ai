@@ -58,10 +58,10 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
   };
 
   return (
-    <div className="relative h-[calc(100vh-300px)]">
+    <div className="relative h-[calc(100vh-450px)]">
       <div
         ref={chatContainerRef}
-        className="flex h-full flex-col space-y-4 overflow-y-auto pr-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-700 dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
+        className="flex h-full flex-col space-y-3 overflow-y-auto pr-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-700 dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
         onScroll={handleScroll}
       >
         {messages.length > 0 ? (
@@ -69,7 +69,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
             <div
               key={index}
               ref={index === messages.length - 1 ? lastMessageRef : undefined}
-              className={`space-y-1 rounded-lg p-4 ${
+              className={`space-y-1 rounded-lg p-3 ${
                 msg.role === "user" ? "bg-muted/50" : ""
               }`}
             >
@@ -84,7 +84,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
         ) : (
           <div className="flex h-full flex-col justify-between">
             <div className="flex flex-1 flex-col items-center justify-center">
-              <div className="relative mb-4 h-40 w-40 overflow-hidden rounded-full">
+              <div className="relative mb-3 h-32 w-32 overflow-hidden rounded-full">
                 <Image
                   src="/blendi.jpg"
                   alt="Blendi"
@@ -94,7 +94,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
                   priority
                 />
               </div>
-              <div className="flex flex-col items-center justify-center rounded-lg pt-3">
+              <div className="flex flex-col items-center justify-center rounded-lg pt-2">
                 <p className="text-center text-2xl font-medium">
                   Blendi Maliqi
                 </p>

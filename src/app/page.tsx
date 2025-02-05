@@ -75,9 +75,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-200px)] flex-col">
-      <main className="relative mx-auto flex h-full w-full max-w-4xl flex-col">
-        <div className="flex flex-col space-y-4">
+    <div className="flex flex-col gap-3 pb-6">
+      <main className="relative mx-auto w-full max-w-4xl">
+        <div className="flex flex-col space-y-3">
           <Chat messages={messages} />
 
           <div className="flex w-full flex-row space-x-4">
