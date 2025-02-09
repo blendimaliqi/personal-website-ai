@@ -4,6 +4,16 @@ import React, { useState } from "react";
 import Chat from "~/components/Chat";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Chat with Blendi | AI Assistant",
+  description:
+    "Interact with Blendi Maliqi's AI assistant to learn more about his background, skills, and experience in software development.",
+  alternates: {
+    canonical: "https://blendimaliqi.com",
+  },
+};
 
 interface Message {
   role: "system" | "user" | "assistant";

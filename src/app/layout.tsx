@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "software developer, full-stack developer, Next.js, React, .NET, cloud architecture, web development",
   authors: [{ name: "Blendi Maliqi" }],
   metadataBase: new URL("https://blendimaliqi.com"),
+  alternates: {
+    canonical: "https://blendimaliqi.com",
+  },
   openGraph: {
     title: "Blendi Maliqi | Software Developer",
     description:

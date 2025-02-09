@@ -9,6 +9,16 @@ import {
   CardContent,
 } from "~/components/ui/card";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Me | Blendi Maliqi",
+  description:
+    "Learn more about Blendi Maliqi, a software developer specializing in modern web development technologies.",
+  alternates: {
+    canonical: "https://blendimaliqi.com/about",
+  },
+};
 
 const AboutMePage = () => {
   return (

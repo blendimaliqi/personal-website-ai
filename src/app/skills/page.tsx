@@ -4,6 +4,16 @@ import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Skills | Blendi Maliqi",
+  description:
+    "Explore Blendi Maliqi's technical skills and expertise in software development, including React, TypeScript, .NET, and more.",
+  alternates: {
+    canonical: "https://blendimaliqi.com/skills",
+  },
+};
 
 type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
 
