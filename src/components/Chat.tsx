@@ -58,7 +58,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
   };
 
   return (
-    <div className="relative h-[calc(100vh-450px)]">
+    <div className="relative h-[calc(100vh-400px)]">
       <div
         ref={chatContainerRef}
         className="flex h-full flex-col space-y-3 overflow-y-auto pr-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-700 dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
