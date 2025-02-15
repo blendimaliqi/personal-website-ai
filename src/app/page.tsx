@@ -94,13 +94,13 @@ export default function HomePage() {
                 onKeyDown={handleKeyPress}
                 value={message}
                 placeholder="Ask me anything about my background..."
-                className="h-14 rounded-3xl pr-16"
+                className="h-14 w-full rounded-3xl pr-16 sm:w-auto"
                 aria-label="Chat message input"
               />
               <Button
                 onClick={handleSendMessage}
                 size="icon"
-                className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full"
+                className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full sm:h-12 sm:w-12"
                 disabled={loading || message.trim() === ""}
                 aria-label="Send message"
               >
