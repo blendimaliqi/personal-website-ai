@@ -86,21 +86,21 @@ export default function HomePage() {
             <Chat messages={messages} />
           </article>
 
-          <div className="flex w-full flex-row space-x-4">
-            <div className="relative flex-grow">
+          <div className="flex w-full flex-row justify-center space-x-4">
+            <div className="relative w-full flex-grow">
               <Input
                 disabled={loading}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={handleKeyPress}
                 value={message}
                 placeholder="Ask me anything about my background..."
-                className="h-14 w-full rounded-3xl pr-16 sm:w-auto"
+                className="h-14 w-full rounded-3xl pr-16"
                 aria-label="Chat message input"
               />
               <Button
                 onClick={handleSendMessage}
                 size="icon"
-                className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full sm:h-12 sm:w-12"
+                className="absolute right-2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full"
                 disabled={loading || message.trim() === ""}
                 aria-label="Send message"
               >
