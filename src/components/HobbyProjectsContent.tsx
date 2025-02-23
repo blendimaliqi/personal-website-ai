@@ -29,6 +29,7 @@ interface HobbyProject {
   logo: string;
   githubUrl?: string;
   chromeStoreUrl?: string;
+  websiteUrl?: string;
 }
 
 const hobbyProjects: HobbyProject[] = [
@@ -119,6 +120,38 @@ It has already had real world usecases where people have used this service to se
     logo: "/logocar.jpg",
     githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",
   },
+  {
+    title: "Borgen Bilsalg",
+    description: "Frontend Developer",
+    shortDescription: "Car dealership landing page with Next.js",
+    content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business! I created a clean and professional website to showcase his inventory and services.
+
+The project had a clear focus: create a professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation, combining it with  Tailwind CSS for styling.
+
+Key features of the website include:
+- Responsive design that looks great on all devices
+- Smooth animations using Framer Motion for enhanced user experience
+- Modern UI components from shadcn/ui library
+- Vehicle showcase section with detailed information
+- Contact form for customer inquiries
+- Services section highlighting the dealership's offerings
+- Image optimization for fast loading times
+
+I also put effort into SEO optimization so that the dealership would have strong online visibility:
+- Implemented Next.js metadata API for dynamic SEO tags
+- Set up comprehensive meta descriptions and titles for all pages
+- Added structured data for better search engine understanding
+- Assisted with Google Search Console setup and monitoring
+- Created and optimized Google Business Profile, linking it to the website
+- Implemented proper semantic HTML structure for better crawlability
+
+The project was a perfect blend of modern web development practices and practical business needs. It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
+    technologies:
+      "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
+    logo: "/borgen_logo.png",
+    githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
+    websiteUrl: "https://www.borgenbilsalg.no/",
+  },
 ];
 
 function HobbyProjectCard({
@@ -184,6 +217,17 @@ function HobbyProjectCard({
               onClick={(e) => e.stopPropagation()}
             >
               Available on Chrome Web Store
+            </a>
+          )}
+          {project.websiteUrl && (
+            <a
+              href={project.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:text-blue-800"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Visit Website
             </a>
           )}
         </div>
@@ -270,6 +314,16 @@ function HobbyProjectsContent() {
                   className="text-sm text-blue-600 hover:text-blue-800"
                 >
                   Get it on Chrome Web Store
+                </a>
+              )}
+              {selectedProject?.websiteUrl && (
+                <a
+                  href={selectedProject.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-blue-600 hover:text-blue-800"
+                >
+                  Visit Live Website
                 </a>
               )}
             </div>
