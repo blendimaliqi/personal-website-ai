@@ -110,6 +110,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Viewport Meta Tag */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZF3LS48WEW"
