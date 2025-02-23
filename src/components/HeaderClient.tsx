@@ -11,7 +11,7 @@ export default function HeaderClient() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 mb-24 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 mb-8 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto max-w-7xl px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo or Brand Name (optional) */}
@@ -43,7 +43,7 @@ export default function HeaderClient() {
 
         {/* Mobile Menu (conditionally rendered) */}
         {mobileMenuOpen && (
-          <div className="mt-4 md:hidden">
+          <div className="absolute left-0 right-0 top-full mt-2 bg-background/95 px-4 py-4 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
             <NavMenu />
           </div>
         )}

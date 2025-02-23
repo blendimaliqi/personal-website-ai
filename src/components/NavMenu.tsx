@@ -25,13 +25,13 @@ export function NavMenu() {
 
   return (
     <NavigationMenu>
-      <NavigationMenuList className="flex space-x-6">
+      <NavigationMenuList className="flex flex-col space-y-2 md:flex-row md:space-x-6 md:space-y-0">
         {navItems.map((item) => (
-          <NavigationMenuItem key={item.title}>
+          <NavigationMenuItem key={item.title} className="w-full md:w-auto">
             <Link href={item.href} passHref prefetch legacyBehavior>
               <NavigationMenuLink
                 className={cn(
-                  "relative px-3 py-2 text-lg transition-colors duration-200",
+                  "block w-full px-3 py-2 text-center text-lg transition-colors duration-200 md:inline-block md:w-auto",
                   isActive(item.href)
                     ? "font-medium text-foreground"
                     : "text-foreground/60 hover:text-foreground",
