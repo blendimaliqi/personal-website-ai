@@ -69,6 +69,7 @@ One of the unique features is the AI assistant that I trained on my personal dat
     technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
     logo: "/android-chrome-512x512.png",
     githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
+    websiteUrl: "https://blendimaliqi.com/",
   },
   {
     title: "Kjøpskontrakt",
@@ -86,6 +87,7 @@ It has already had real world usecases where people have used this service to se
     technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
     logo: "/logocar.jpg",
     githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",
+    websiteUrl: "https://kjopskontrakt.no/",
   },
   {
     title: "Borgen Bilsalg",
@@ -118,5 +120,37 @@ The project was a perfect blend of modern web development practices and practica
     logo: "/borgen_logo.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
+  },
+  {
+    title: "Film Med Gutta",
+    description: "Full-stack Developer",
+    shortDescription: "A private movie-tracking platform for my friend group",
+    content: `Film Med Gutta (Movies with the Boys) is a private movie-tracking platform I built for my friend group to document and discuss our shared movie experiences. The application allows us to add movies we've watched together, rate them, and engage in discussions through a comment system.
+
+Key Features:
+- Movie tracking and management
+- Rating and comment system
+- Private access (Discord server members only)
+- Real-time updates
+- Responsive design
+
+The platform serves as a digital hub for our movie-watching community, allowing us to:
+- Keep track of all movies we watch together
+- Share our thoughts and ratings
+- Engage in discussions through comments
+- Access movie information through TMDB integration
+- Maintain privacy with Discord-based authentication
+
+The technical implementation leverages modern web technologies:
+- Frontend built with Next.js 13 and TypeScript for type safety
+- Styling with Tailwind CSS for a responsive and modern UI
+- Backend powered by Sanity.io as a headless CMS
+- Authentication handled through NextAuth.js with Discord OAuth2
+- Integration with TMDB API for comprehensive movie data`,
+    technologies:
+      "Next.js 13, TypeScript, Tailwind CSS, Sanity.io, NextAuth.js, TMDB API",
+    logo: "/fmg.png",
+    githubUrl: "https://github.com/blendimaliqi/filmogtekken",
+    websiteUrl: "https://filmmedgutta.vercel.app/",
   },
 ];
