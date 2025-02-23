@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     "software developer, full-stack developer, Next.js, React, .NET, cloud architecture, web development",
   authors: [{ name: "Blendi Maliqi" }],
   metadataBase: new URL("https://blendimaliqi.com"),
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   alternates: {
     canonical: "https://blendimaliqi.com",
   },
@@ -110,11 +116,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Viewport Meta Tag */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZF3LS48WEW"
