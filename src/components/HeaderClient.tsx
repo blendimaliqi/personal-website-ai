@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavMenu } from "./NavMenu";
 import { ModeToggle } from "./DropMenu";
 import { Menu } from "lucide-react";
@@ -9,6 +9,26 @@ const HamburgerIcon = () => <Menu className="h-6 w-6" />;
 
 export default function HeaderClient() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        hamburgerButtonRef.current &&
+        !hamburgerButtonRef.current.contains(event.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 mb-8 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -27,6 +47,7 @@ export default function HeaderClient() {
           {/* Mobile Hamburger Menu */}
           <div className="md:hidden">
             <button
+              ref={hamburgerButtonRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-muted-foreground transition-colors hover:text-foreground"
               aria-label="Toggle menu"
@@ -43,7 +64,10 @@ export default function HeaderClient() {
 
         {/* Mobile Menu (conditionally rendered) */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-full mt-2 w-2/4  bg-white px-4 py-4 text-slate-950 opacity-95 shadow-lg  dark:bg-slate-950 dark:text-white md:hidden">
+          <div
+            ref={mobileMenuRef}
+            className="absolute left-0 right-0 top-full mt-2 w-2/4  bg-white px-4 py-4 text-slate-950 opacity-95 shadow-lg  dark:bg-slate-950 dark:text-white md:hidden"
+          >
             <div className="flex w-full flex-col">
               <NavMenu />
             </div>
