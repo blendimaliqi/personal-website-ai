@@ -53,8 +53,7 @@ function HobbyProjectsContent() {
                   width={80}
                   height={80}
                   priority={true}
-                  className="rounded-full object-cover"
-                  style={{ width: "auto", height: "auto" }}
+                  className="h-20 w-20 flex-shrink-0 rounded-full object-cover"
                 />
               )}
               <div>

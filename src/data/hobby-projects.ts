@@ -117,7 +117,7 @@ I also put effort into SEO optimization so that the dealership would have strong
 The project was a perfect blend of modern web development practices and practical business needs. It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
     technologies:
       "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
-    logo: "/borgen_logo.png",
+    logo: "/android-chrome-512x512.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
   },
