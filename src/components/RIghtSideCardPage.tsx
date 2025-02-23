@@ -47,14 +47,6 @@ I am working closely with different teams and PO's to understand their unique re
     logo: "/mastercard.png",
   },
   {
-    title: "Kjøpskontrakt",
-    description: "Full-stack Developer",
-    shortDescription: "SAAS for car sales contracts in Norway",
-    content: `Kjøpskontrakt (kjopskontrakt.no) is a SAAS product I developed as a side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices, showcasing my ability to create full-stack applications from scratch. Key features and technologies: - Built with Next.js 14, leveraging the latest features for optimal performance - Utilized the shadcn component library with Tailwind CSS for a polished UI - Implemented backend functionality using Supabase - Integrated Stripe for secure payment processing - Developed robust user authentication, including email verification and password recovery flows. It has already had real world usecases where people have used this service to sell cars. This project demonstrates my proficiency in creating end-to-end solutions, from frontend design to backend implementation and third-party integrations. I am interested in all of it!`,
-    technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
-    logo: "/logocar.jpg",
-  },
-  {
     title: "SOS Sikkerhetsgruppen",
     description: "React Native Developer",
     shortDescription: "Bluetooth-enabled mobile app development",
