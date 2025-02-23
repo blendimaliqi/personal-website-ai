@@ -15,7 +15,7 @@ For existing applications, we are working with and improving legacy technologies
 This approach allows integration with existing systems while allowing for modernization where possible and appropriate. It also requires a deep understanding of both current best practices and legacy systems, as well as adherence to Mastercard's UI/UX standards.
 I am working closely with different teams and PO's to understand their unique requirements and ensure that the frontend aligns with their goals and Mastercard's guidelines. As the project progresses, I am continuously iterating and improving the frontend to deliver the best possible user experience, whether that involves incremental updates to legacy systems or more substantial overhauls using modern frameworks.`,
     technologies: "React, Java, TypeScript, Figma, Jest, Playwright",
-    logo: "/mastercard.png",
+    logo: "/mastercard-logo.png",
   },
   {
     title: "SOS Sikkerhetsgruppen",

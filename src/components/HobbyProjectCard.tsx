@@ -27,9 +27,9 @@ export function HobbyProjectCard({ project, onClick }: HobbyProjectCardProps) {
               src={project.logo}
               alt={`${project.title} logo`}
               width={40}
-              priority={true}
               height={40}
-              className="flex-shrink-0 rounded-full object-cover"
+              priority={true}
+              className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
             />
             <div className="min-w-0 flex-1">
               <CardTitle className="break-words text-sm font-semibold sm:text-base md:text-lg">

@@ -33,7 +33,7 @@ export function WorkExperienceCard({
               width={40}
               height={40}
               priority={true}
-              className="flex-shrink-0 rounded-full object-cover"
+              className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
               style={{ objectFit: "cover" }}
             />
             <div className="min-w-0 flex-1">
