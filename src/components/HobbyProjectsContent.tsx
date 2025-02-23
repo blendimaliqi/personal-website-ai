@@ -37,16 +37,18 @@ const hobbyProjects: HobbyProject[] = [
     description: "Chrome Extension Developer",
     shortDescription:
       "A Chrome extension for precise volume control in YouTube Music",
-    content: `Like many YouTube Music users, I found myself constantly frustrated with the default volume controls. The built-in volume slider was too coarse, often leaving me with audio that was either too loud or too quiet for my liking. This personal pain point motivated me to create a solution.
+    content: `I found myself constantly frustrated with the default volume controls in Youtube Music webapp. The built-in volume slider was too rough, which resulted with audio that was too loud even at the lowest levels, leaving very little space on the slider to control volume for my liking. This personal pain point motivated me to create a solution.
 
-I developed this Chrome extension to add a more precise volume control slider to YouTube Music. What started as a personal solution has now become a useful tool for other users who faced the same issue. Key features include:
+I developed this Chrome extension to add a more precise volume control slider to YouTube Music. Since this worked good for me i thought others could use it too and therefore put it on the chrome webstore. Key features include:
 
 - Custom volume control slider with fine-grained adjustments
-- Integration with YouTube Music's audio system
-- Clean and intuitive user interface
+- Logarithmic volume scaling for better control at lower volumes
+- Persistent volume settings between sessions
+- Clean and intuitive user interface that replaces the default YouTube Music slider
 - Real-time volume adjustment
-
-The extension is now available on the Chrome Web Store, helping other users who, like me, wanted more control over their listening experience.`,
+- Works automatically on music.youtube.com
+- All volume preferences are saved locally in the browser.
+`,
     technologies: "JavaScript, Chrome Extension API, HTML, CSS",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Youtube_Music_icon.svg/1200px-Youtube_Music_icon.svg.png",
     githubUrl: "https://github.com/blendimaliqi/youtube-music-volume-control",
@@ -83,22 +85,19 @@ This project not only solved a real-world problem (and made a good weeding gift)
     githubUrl: "https://github.com/blendimaliqi/event-photos",
   },
   {
-    title: "Personal Website AI",
+    title: "Portfolio website",
     description: "Full-stack Developer",
     shortDescription: "AI-enhanced personal portfolio website",
-    content: `You're looking at this project right now! This website serves as both my portfolio and a playground for experimenting with modern web technologies. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance.
+    content: `You're looking at this project right now! This website serves as both my portfolio and platform for showcasing my latest projects. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance. The site extensively uses shadcn/ui components along with Tailwind CSS for styling, creating a clean and modern design system.
 
-The site showcases my work while incorporating modern design principles and AI capabilities. Key features include:
+One of the unique features is the AI assistant that I trained on my personal data, including:
+- My work experience and career history
+- Personal hobbies and interests
+- Technical skills and competencies
+- CV and professional background
+- Project portfolio and achievements
 
-- Modern, responsive design using Tailwind CSS and shadcn/ui components
-- Server-side rendering for optimal performance
-- AI-powered interactions for enhanced user experience
-- Dynamic portfolio showcase
-- Blog capabilities
-- Dark mode support
-- Optimized images and assets
-
-This project represents my commitment to staying current with web development best practices while creating something that's both functional and aesthetically pleasing. It's constantly evolving as I add new features and improvements.`,
+`,
     technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
     logo: "/android-chrome-512x512.png",
     githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
