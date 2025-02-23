@@ -111,9 +111,10 @@ function WorkExperienceCard({
               src={experience.logo}
               alt={`${experience.title} logo`}
               width={40}
-              priority={true}
               height={40}
+              priority={true}
               className="flex-shrink-0 rounded-full object-cover"
+              style={{ objectFit: "cover" }}
             />
             <div className="min-w-0 flex-1">
               <CardTitle className="break-words text-sm font-semibold sm:text-base md:text-lg">
@@ -176,9 +177,10 @@ function RightSidePage() {
                   src={selectedExperience.logo}
                   alt={`${selectedExperience.title} logo`}
                   width={80}
-                  priority={true}
                   height={80}
+                  priority={true}
                   className="rounded-full object-cover"
+                  style={{ objectFit: "cover" }}
                 />
               )}
               <div>

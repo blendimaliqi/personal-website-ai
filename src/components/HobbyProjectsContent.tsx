@@ -27,9 +27,7 @@ function HobbyProjectsContent() {
       </h1>
       <p className="mb-12 text-lg">
         These are my personal projects that I've developed to explore new
-        technologies, solve real-world problems, and continue learning. Each
-        project represents a unique challenge and demonstrates different aspects
-        of my technical abilities.
+        technologies, solve real-world problems, and continue learning.
       </p>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {hobbyProjects.map((project: HobbyProject, index: number) => (
@@ -53,9 +51,10 @@ function HobbyProjectsContent() {
                   src={selectedProject.logo}
                   alt={`${selectedProject.title} logo`}
                   width={80}
-                  priority={true}
                   height={80}
+                  priority={true}
                   className="rounded-full object-cover"
+                  style={{ width: "auto", height: "auto" }}
                 />
               )}
               <div>
