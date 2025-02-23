@@ -43,8 +43,10 @@ export default function HeaderClient() {
 
         {/* Mobile Menu (conditionally rendered) */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-full mt-2 bg-background/95 px-4 py-4 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
-            <NavMenu />
+          <div className="absolute left-0 right-0 top-full mt-2 w-2/4  bg-white px-4 py-4 text-slate-950 opacity-95 shadow-lg  dark:bg-slate-950 dark:text-white md:hidden">
+            <div className="flex w-full flex-col">
+              <NavMenu />
+            </div>
           </div>
         )}
       </div>
