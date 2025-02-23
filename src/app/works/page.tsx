@@ -1,6 +1,6 @@
 import React from "react";
-import RightSidePage from "~/components/RIghtSideCardPage";
 import { Metadata } from "next";
+import WorksContent from "./WorksContent";
 
 export const metadata: Metadata = {
   title: "Work Experience | Blendi Maliqi",
@@ -11,15 +11,10 @@ export const metadata: Metadata = {
   },
 };
 
-type Props = {};
-
-function WorkExpereiencePage({}: Props) {
+export default function WorksPage() {
   return (
-    <div className="mx-auto flex max-w-6xl px-4 ">
-      {/* <RightSidePage /> */}
-      <RightSidePage />
+    <div className="mx-auto flex max-w-6xl px-4">
+      <WorksContent />
     </div>
   );
 }
-
-export default WorkExpereiencePage;
