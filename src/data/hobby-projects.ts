@@ -19,7 +19,7 @@ I developed this Chrome extension to add a more precise volume control slider to
 - All volume preferences are saved locally in the browser.
 `,
     technologies: "JavaScript, Chrome Extension API, HTML, CSS",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Youtube_Music_icon.svg/1200px-Youtube_Music_icon.svg.png",
+    logo: "/icon128.png",
     githubUrl: "https://github.com/blendimaliqi/youtube-music-volume-control",
     chromeStoreUrl:
       "https://chromewebstore.google.com/detail/youtube-music-volume-cont/hmbkfihljlgkkhnlcifdgooddhjahmga",
