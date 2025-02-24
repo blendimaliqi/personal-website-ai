@@ -11,15 +11,6 @@ const Footer = () => {
             <p className="text-xs opacity-75">Software developer</p>
           </div>
           <div className="flex space-x-4">
-            {/* <a
-              href="https://github.com/blendimaliqi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
-              aria-label="GitHub"
-            >
-              <FaGithub className="h-6 w-6" />
-            </a> */}
             <a
               href="https://linkedin.com/in/blendimaliqi"
               target="_blank"
@@ -28,6 +19,15 @@ const Footer = () => {
               aria-label="LinkedIn"
             >
               <FaLinkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://github.com/blendimaliqi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              aria-label="GitHub"
+            >
+              <FaGithub className="h-5 w-5" />
             </a>
             <a
               href="mailto:blendi.maliqi93@gmail.com"
