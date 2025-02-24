@@ -4,13 +4,20 @@ import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
 import HeaderClient from "~/components/HeaderClient";
 import Footer from "~/components/Footer";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "Blendi Maliqi | Software Developer",
@@ -20,12 +27,6 @@ export const metadata: Metadata = {
     "software developer, full-stack developer, Next.js, React, .NET, cloud architecture, web development",
   authors: [{ name: "Blendi Maliqi" }],
   metadataBase: new URL("https://blendimaliqi.com"),
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   alternates: {
     canonical: "https://blendimaliqi.com",
   },
