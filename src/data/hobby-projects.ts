@@ -67,7 +67,7 @@ One of the unique features is the AI assistant that I trained on my personal dat
 - Project portfolio and achievements
 `,
     technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
-    logo: "/android-chrome-512x512.png",
+    logo: "/android-chrome-192x192.png",
     githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
     websiteUrl: "https://blendimaliqi.com/",
   },
@@ -117,7 +117,7 @@ I also put effort into SEO optimization so that the dealership would have strong
 The project was a perfect blend of modern web development practices and practical business needs. It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
     technologies:
       "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
-    logo: "/android-chrome-512x512.png",
+    logo: "/borgenbilsalg-512x.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
   },
