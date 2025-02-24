@@ -2,26 +2,6 @@ import { HobbyProject } from "@/types/hobby-project";
 
 export const hobbyProjects: HobbyProject[] = [
   {
-    title: "YouTube Music Volume Control",
-    description: "Chrome Extension Developer",
-    shortDescription:
-      "A Chrome extension for precise volume control in YouTube Music",
-    content: `I found myself constantly frustrated with the default volume controls in Youtube Music webapp. The built-in volume slider was too rough, which resulted with audio that was too loud even at the lowest levels, leaving very little space on the slider to control volume for my liking. This personal pain point motivated me to create a solution.
-
-I developed this Chrome extension to add a more precise volume control slider to YouTube Music. Since this worked good for me i thought others could use it too and therefore put it on the chrome webstore. Key features include:
-
-- Custom volume control slider 
-- Logarithmic volume scaling for better control at lower volumes
-- Persistent volume settings between sessions
-- Works automatically on music.youtube.com
-`,
-    technologies: "JavaScript, Chrome Extension API, HTML, CSS",
-    logo: "/icon128.png",
-    githubUrl: "https://github.com/blendimaliqi/youtube-music-volume-control",
-    chromeStoreUrl:
-      "https://chromewebstore.google.com/detail/youtube-music-volume-cont/hmbkfihljlgkkhnlcifdgooddhjahmga",
-  },
-  {
     title: "Event Photos",
     description: "Full-stack Developer",
     shortDescription: "Web application for event photo management and sharing",
@@ -43,42 +23,24 @@ This project not only solved a real-world problem (and made a good weeding gift)
     githubUrl: "https://github.com/blendimaliqi/event-photos",
   },
   {
-    title: "Portfolio website",
-    description: "Full-stack Developer",
-    shortDescription: "AI-enhanced personal portfolio website",
-    content: `You're looking at this project right now! 
+    title: "YouTube Music Volume Control",
+    description: "Chrome Extension Developer",
+    shortDescription:
+      "A Chrome extension for precise volume control in YouTube Music",
+    content: `I found myself constantly frustrated with the default volume controls in Youtube Music webapp. The built-in volume slider was too rough, which resulted with audio that was too loud even at the lowest levels, leaving very little space on the slider to control volume for my liking. This personal pain point motivated me to create a solution.
 
-This website serves as both my portfolio and platform for showcasing my latest projects. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance. The site extensively uses shadcn/ui components along with Tailwind CSS for styling, creating a clean and modern design system.
+I developed this Chrome extension to add a more precise volume control slider to YouTube Music. Since this worked good for me i thought others could use it too and therefore put it on the chrome webstore. Key features include:
 
-One of the unique features is the AI assistant that I trained on my personal data, including:
-- My work experience and career history
-- Personal hobbies and interests
-- Technical skills and competencies
-- CV and professional background
-- Project portfolio and achievements
+- Custom volume control slider 
+- Logarithmic volume scaling for better control at lower volumes
+- Persistent volume settings between sessions
+- Works automatically on music.youtube.com
 `,
-    technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
-    logo: "/android-chrome-192x192.png",
-    githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
-    websiteUrl: "https://blendimaliqi.com/",
-  },
-  {
-    title: "Kjøpskontrakt",
-    description: "Full-stack Developer",
-    shortDescription: "SAAS for car sales contracts in Norway",
-    content: `Kjøpskontrakt (kjopskontrakt.no) is a SAAS product I developed as a side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices. Key features and technologies:
-
-- Built with Next.js 14
-- Used shadcn component library with Tailwind CSS for styling
-- Implemented backend functionality using Supabase
-- Integrated Stripe for secure payment processing
-- Developed user authentication, including email verification and password recovery flows
-
-It has already had real world usecases where people have used this service to sell cars. It was really fun to develop through the whole process, from designing the frontend interface to implementing the backend functionality, setting up payment processing, and deploying the final solution.`,
-    technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
-    logo: "/logocar.jpg",
-    githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",
-    websiteUrl: "https://kjopskontrakt.no/",
+    technologies: "JavaScript, Chrome Extension API, HTML, CSS",
+    logo: "/icon128.png",
+    githubUrl: "https://github.com/blendimaliqi/youtube-music-volume-control",
+    chromeStoreUrl:
+      "https://chromewebstore.google.com/detail/youtube-music-volume-cont/hmbkfihljlgkkhnlcifdgooddhjahmga",
   },
   {
     title: "Borgen Bilsalg",
@@ -107,6 +69,44 @@ It was cool to see how the website helped modernize my friend's business presenc
     logo: "/borgenbilsalg-512x.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
+  },
+  {
+    title: "Kjøpskontrakt",
+    description: "Full-stack Developer",
+    shortDescription: "SAAS for car sales contracts in Norway",
+    content: `Kjøpskontrakt (kjopskontrakt.no) is a SAAS product I developed as a side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices. Key features and technologies:
+
+- Built with Next.js 14
+- Used shadcn component library with Tailwind CSS for styling
+- Implemented backend functionality using Supabase
+- Integrated Stripe for secure payment processing
+- Developed user authentication, including email verification and password recovery flows
+
+It has already had real world usecases where people have used this service to sell cars. It was really fun to develop through the whole process, from designing the frontend interface to implementing the backend functionality, setting up payment processing, and deploying the final solution.`,
+    technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
+    logo: "/logocar.jpg",
+    githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",
+    websiteUrl: "https://kjopskontrakt.no/",
+  },
+  {
+    title: "Portfolio website",
+    description: "Full-stack Developer",
+    shortDescription: "AI-enhanced personal portfolio website",
+    content: `You're looking at this project right now! 
+
+This website serves as both my portfolio and platform for showcasing my latest projects. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance. The site extensively uses shadcn/ui components along with Tailwind CSS for styling, creating a clean and modern design system.
+
+One of the unique features is the AI assistant that I trained on my personal data, including:
+- My work experience and career history
+- Personal hobbies and interests
+- Technical skills and competencies
+- CV and professional background
+- Project portfolio and achievements
+`,
+    technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
+    logo: "/android-chrome-192x192.png",
+    githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
+    websiteUrl: "https://blendimaliqi.com/",
   },
   {
     title: "Film Med Gutta",
