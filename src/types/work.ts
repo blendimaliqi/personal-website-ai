@@ -5,4 +5,6 @@ export interface WorkExperience {
   content: string;
   technologies: string;
   logo: string;
+  startDate: string;
+  endDate: string;
 }

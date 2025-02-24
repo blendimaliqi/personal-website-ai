@@ -16,6 +16,8 @@ This approach allows integration with existing systems while allowing for modern
 I am working closely with different teams and PO's to understand their unique requirements and ensure that the frontend aligns with their goals and Mastercard's guidelines. As the project progresses, I am continuously iterating and improving the frontend to deliver the best possible user experience, whether that involves incremental updates to legacy systems or more substantial overhauls using modern frameworks.`,
     technologies: "React, Java, TypeScript, Figma, Jest, Playwright",
     logo: "/mastercard-logo.png",
+    startDate: "Mar 2023",
+    endDate: "Mar 2025",
   },
   {
     title: "SOS Sikkerhetsgruppen",
@@ -27,6 +29,8 @@ I also tested the app on multiple devices and platforms to ensure its compatibil
 After months of hard work and dedication, I was able to successfully publish the SOS Sikkerhetsgruppen app on both the Google Play Store and Apple App Store. Overall, my six-month experience as a React-Native mobile developer on the SOS Sikkerhetsgruppen app was a valuable learning experience. I gained hands-on experience in implementing the latest technologies and honed my skills in app design and development. I am grateful for the opportunity to have worked on this project and am looking forward to my next challenge in the field.`,
     technologies: "React Native, Xcode, Android Studio",
     logo: "/sikkerhetsgruppen.jpg.png",
+    startDate: "Jan 2022",
+    endDate: "Jan 2023",
   },
   {
     title: "DigitalKey app (Voglio)",
@@ -39,6 +43,8 @@ One of the biggest challenges I faced while working on DigitalKey was creating t
 I was able to use my skills in frontend development and design to help create a useful and user-friendly app. Additionally, the experience of working with a team helped me to develop my communication and collaboration skills, which will be invaluable in my future work.`,
     technologies: "Flutter",
     logo: "/digitalkey.jpg",
+    startDate: "Jun 2022",
+    endDate: "Nov 2022",
   },
   {
     title: "Paradisreiser",
@@ -49,6 +55,8 @@ I was able to use my skills in frontend development and design to help create a 
 In addition to the new features for the admin panel, I also made adjustments to the company's mobile apps, which were written in Flutter for both Android and iOS. This involved implementing the same features that I had added to the admin panel, as well as making any necessary adjustments to ensure that the mobile apps were user-friendly and consistent with the overall design of the company's products. Overall, my work experience with Paradisreiser allowed me to hone my skills in React and MUI, as well as my ability to coordinate with other teams and ensure that the final product met the customer's expectations. I am proud of the work I did, and I believe that it made a significant contribution to the success of the company.`,
     technologies: "React, C#, Flutter",
     logo: "/paradisreiser.jpg",
+    startDate: "Sep 2022",
+    endDate: "Nov 2022",
   },
   {
     title: "Encryption and Cloud Security",
@@ -60,5 +68,7 @@ The solution was built as a Spring Boot application, leveraging the Java Crypto 
     technologies:
       "Java, Spring Boot, Java Cryptography API, Test Driven Development, Docker",
     logo: "/entur.jpg",
+    startDate: "Jan 2021",
+    endDate: "May 2021",
   },
 ];

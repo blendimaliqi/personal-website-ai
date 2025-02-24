@@ -60,8 +60,12 @@ export default function WorksContent() {
               )}
               <div>
                 <DialogTitle>{selectedExperience?.title}</DialogTitle>
-                <DialogDescription>
-                  {selectedExperience?.description}
+                <DialogDescription className="flex flex-col gap-1">
+                  <span>{selectedExperience?.description}</span>
+                  <span>
+                    {selectedExperience?.startDate} -{" "}
+                    {selectedExperience?.endDate}
+                  </span>
                 </DialogDescription>
               </div>
             </div>
