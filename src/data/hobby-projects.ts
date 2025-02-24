@@ -7,7 +7,7 @@ export const hobbyProjects: HobbyProject[] = [
     shortDescription: "Web application for event photo management and sharing",
     content: `This project was born from a real need when my cousin approached me about creating a photo-sharing solution for her wedding. She wanted guests to be able to easily share their perspectives of the special day through a simple upload and viewing gallery interface.
 
-I saw this as an excellent opportunity to strengthen my backend development skills. I was excited to dive deeper into backend development using .NET 9 and PostgreSQL, allowing me to create a robust full-stack application.
+I saw this as an excellent opportunity to strengthen my backend development skills. I made the frontend with regular React from vite build. I was excited to dive deeper into backend development using .NET 9 and PostgreSQL, allowing me to create a robust full-stack application.
 
 The application includes features such as:
 - Drag-and-drop photo upload interface optimized for mobile devices
