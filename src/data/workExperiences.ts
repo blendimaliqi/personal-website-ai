@@ -53,7 +53,7 @@ I was able to use my skills in frontend development and design to help create a 
     content: `As a part of my work experience with Paradisreiser, I was tasked with adding new features to the company's admin panel. To accomplish this, I utilized React and MUI as libraries to implement the necessary interface, logic, and functions that the customer requested. One of the key challenges I faced was ensuring that the new features were properly integrated with the backend, which was written in .NET. I spent a significant amount of time working with the backend to coordinate the integration and ensure that everything worked seamlessly. 
 
 In addition to the new features for the admin panel, I also made adjustments to the company's mobile apps, which were written in Flutter for both Android and iOS. This involved implementing the same features that I had added to the admin panel, as well as making any necessary adjustments to ensure that the mobile apps were user-friendly and consistent with the overall design of the company's products. Overall, my work experience with Paradisreiser allowed me to hone my skills in React and MUI, as well as my ability to coordinate with other teams and ensure that the final product met the customer's expectations. I am proud of the work I did, and I believe that it made a significant contribution to the success of the company.`,
-    technologies: "React, C#, Flutter",
+    technologies: "React, C#, .NET, Flutter, Azure",
     logo: "/paradisreiser.jpg",
     startDate: "Sep 2022",
     endDate: "Nov 2022",
