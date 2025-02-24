@@ -94,7 +94,7 @@ It has already had real world usecases where people have used this service to se
     shortDescription: "AI-enhanced personal portfolio website",
     content: `You're looking at this project right now! 
 
-This website serves as both my portfolio and platform for showcasing my latest projects. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance. The site extensively uses shadcn/ui components along with Tailwind CSS for styling, creating a clean and modern design system.
+This website serves as both my portfolio and platform for showcasing my latest projects. I built it using Next.js 14, leveraging the latest features like the App Router and Server Components for optimal performance. The site extensively uses shadcn/ui components along with Tailwind CSS for styling, creating a clean and modern design system. The website is built with universal accessibility in mind, featuring ARIA labels, semantic HTML structure, keyboard navigation support, and maintaining WCAG 2.1 compliance to ensure a great experience for all users regardless of their browsing methods or assistive technologies.
 
 One of the unique features is the AI assistant that I trained on my personal data, including:
 - My work experience and career history

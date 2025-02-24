@@ -32,15 +32,21 @@ export default function HeaderClient() {
 
   return (
     <header className="sticky top-0 z-50 mb-8 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto max-w-7xl px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo or Brand Name (optional) */}
-          <div className="flex items-center">
+      <div className="container mx-auto px-4 py-4">
+        <nav
+          className="flex items-center justify-between"
+          aria-label="Main navigation"
+        >
+          <div className="flex items-center" aria-label="Brand">
             {/* Add your logo or brand name here */}
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden flex-1 justify-center md:flex">
+          <div
+            className="hidden flex-1 justify-center md:flex"
+            role="navigation"
+            aria-label="Desktop menu"
+          >
             <NavMenu />
           </div>
 
@@ -50,23 +56,31 @@ export default function HeaderClient() {
               ref={hamburgerButtonRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Toggle menu"
+              aria-label="Toggle mobile menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <HamburgerIcon />
             </button>
           </div>
 
           {/* Mode Toggle (visible on all screen sizes) */}
-          <div className="ml-4 flex items-center border-l pl-4">
+          <div
+            className="ml-4 flex items-center border-l pl-4"
+            aria-label="Theme toggle"
+          >
             <ModeToggle />
           </div>
-        </div>
+        </nav>
 
         {/* Mobile Menu (conditionally rendered) */}
         {mobileMenuOpen && (
           <div
+            id="mobile-menu"
             ref={mobileMenuRef}
-            className="absolute left-0 right-0 top-full mt-2 w-2/4  bg-white px-4 py-4 text-slate-950 opacity-95 shadow-lg  dark:bg-slate-950 dark:text-white md:hidden"
+            className="absolute left-0 right-0 top-full mt-2 w-2/4 bg-white px-4 py-4 text-slate-950 opacity-95 shadow-lg dark:bg-slate-950 dark:text-white md:hidden"
+            role="navigation"
+            aria-label="Mobile menu"
           >
             <div className="flex w-full flex-col">
               <NavMenu />

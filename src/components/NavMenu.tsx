@@ -24,10 +24,17 @@ export function NavMenu() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex flex-col space-y-2 md:flex-row md:space-x-6 md:space-y-0">
+    <NavigationMenu aria-label="Site navigation">
+      <NavigationMenuList
+        className="flex flex-col space-y-2 md:flex-row md:space-x-6 md:space-y-0"
+        role="menubar"
+      >
         {navItems.map((item) => (
-          <NavigationMenuItem key={item.title} className="w-full md:w-auto">
+          <NavigationMenuItem
+            key={item.title}
+            className="w-full md:w-auto"
+            role="none"
+          >
             <Link href={item.href} passHref prefetch legacyBehavior>
               <NavigationMenuLink
                 className={cn(
@@ -36,6 +43,8 @@ export function NavMenu() {
                     ? "font-medium text-foreground"
                     : "text-foreground/60 hover:text-foreground",
                 )}
+                role="menuitem"
+                aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.title}
               </NavigationMenuLink>

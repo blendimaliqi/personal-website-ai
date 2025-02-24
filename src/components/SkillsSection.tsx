@@ -78,14 +78,24 @@ export const SkillsSection: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<SkillLevel | "All">("All");
 
   return (
-    <section className="py-8 sm:py-12">
+    <section className="py-8 sm:py-12" aria-labelledby="skills-heading">
       <div className="container mx-auto px-4">
-        <h2 className="mb-6 text-center text-2xl font-bold sm:mb-8 sm:text-3xl">
+        <h2
+          id="skills-heading"
+          className="mb-6 text-center text-2xl font-bold sm:mb-8 sm:text-3xl"
+        >
           Skills
         </h2>
         <SkillLevelLegend />
-        <Tabs defaultValue={skillCategories[0]!.name} className="mt-24 w-full">
-          <TabsList className="mb-6 grid w-full grid-cols-2 gap-2 sm:mb-8 sm:grid-cols-4">
+        <Tabs
+          defaultValue={skillCategories[0]!.name}
+          className="mt-24 w-full"
+          aria-label="Skills categories"
+        >
+          <TabsList
+            className="mb-6 grid w-full grid-cols-2 gap-2 sm:mb-8 sm:grid-cols-4"
+            aria-label="Select skill category"
+          >
             {skillCategories.map((category, index) => (
               <TabsTrigger
                 key={index}
@@ -95,13 +105,18 @@ export const SkillsSection: React.FC = () => {
                      data-[state=active]:bg-blue-500 data-[state=active]:text-white
                      dark:hover:bg-gray-700 dark:hover:text-white
                      dark:data-[state=active]:bg-blue-600 dark:data-[state=active]:text-white"
+                aria-label={`Show ${category.name} skills`}
               >
                 {category.name}
               </TabsTrigger>
             ))}
           </TabsList>
           {skillCategories.map((category, index) => (
-            <TabsContent key={index} value={category.name}>
+            <TabsContent
+              key={index}
+              value={category.name}
+              aria-label={`${category.name} skills list`}
+            >
               <SkillCategory
                 title={category.name}
                 skills={category.skills}

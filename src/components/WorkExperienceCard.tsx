@@ -19,10 +19,21 @@ export function WorkExperienceCard({
   experience,
   onClick,
 }: WorkExperienceCardProps) {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <Card
-      className="flex cursor-pointer flex-col justify-between transition-all hover:scale-105 hover:shadow-lg"
+      className="cursor-pointer transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 dark:focus:ring-slate-300"
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="article"
+      aria-label={`Work experience: ${experience.title}`}
+      tabIndex={0}
     >
       <div>
         <CardHeader className="pb-4">

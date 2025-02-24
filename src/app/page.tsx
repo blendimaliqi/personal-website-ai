@@ -82,11 +82,20 @@ export default function HomePage() {
           className="flex flex-col space-y-3"
           aria-label="Chat Interface"
         >
-          <article className="chat-messages" role="log" aria-live="polite">
+          <article
+            className="chat-messages"
+            role="log"
+            aria-live="polite"
+            aria-label="Chat conversation history"
+          >
             <Chat messages={messages} />
           </article>
 
-          <div className="flex w-full flex-row justify-center space-x-4">
+          <div
+            className="flex w-full flex-row justify-center space-x-4"
+            role="form"
+            aria-label="Chat message form"
+          >
             <div className="relative w-full flex-grow">
               <Input
                 disabled={loading}
@@ -96,6 +105,9 @@ export default function HomePage() {
                 placeholder="Ask me anything about my background..."
                 className="h-14 w-full rounded-3xl pr-16"
                 aria-label="Chat message input"
+                aria-required="true"
+                role="textbox"
+                aria-disabled={loading}
               />
               <Button
                 onClick={handleSendMessage}
