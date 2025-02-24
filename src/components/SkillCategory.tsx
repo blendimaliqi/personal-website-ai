@@ -1,6 +1,6 @@
 import React from "react";
-import { Skill, SkillLevel } from "../types";
 import { SkillCard } from "./SkillCard";
+import { Skill, SkillLevel } from "~/types/skills";
 
 interface SkillCategoryProps {
   title: string;
