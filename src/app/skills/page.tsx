@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { SkillsSection } from "./components/SkillsSection";
+import { SkillsSection } from "~/components/SkillsSection";
 
 const SkillsPage: React.FC = () => {
   return (

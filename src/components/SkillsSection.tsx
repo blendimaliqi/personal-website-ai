@@ -1,8 +1,8 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import React, { useState } from "react";
-import { SkillLevel, SkillCategory as SkillCategoryType } from "../types";
 import { SkillCategory } from "./SkillCategory";
 import { SkillLevelLegend } from "./SkillLevelLegend";
+import type { SkillLevel, SkillCategoryType } from "~/types/skills";
 
 const skillCategories: SkillCategoryType[] = [
   {

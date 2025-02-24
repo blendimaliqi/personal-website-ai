@@ -1,5 +1,5 @@
 import React from "react";
-import { colorMap } from "../types";
+import { colorMap } from "~/types/skills";
 
 export const SkillLevelLegend: React.FC = () => (
   <div className="mb-8 flex flex-wrap justify-center gap-4">

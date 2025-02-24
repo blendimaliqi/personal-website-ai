@@ -2,7 +2,7 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
-import { SkillLevel, skillLevels, colorMap } from "../types";
+import { SkillLevel, skillLevels, colorMap } from "../types/skills";
 
 interface SkillCardProps {
   name: string;
