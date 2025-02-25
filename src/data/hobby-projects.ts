@@ -2,6 +2,34 @@ import { HobbyProject } from "@/types/hobby-project";
 
 export const hobbyProjects: HobbyProject[] = [
   {
+    title: "Borgen Bilsalg",
+    description: "Frontend Developer",
+    shortDescription: "Car dealership landing page with Next.js",
+    content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business!
+
+He wanted to create a simple and professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation. It has great built in SEO capabilites which could result in more potential customers finding his business. I also combined it with Tailwind CSS for styling.
+
+Key features of the website include:
+- Responsive design that looks great on all devices
+- Smooth animations using Framer Motion for enhanced user experience
+- Services section highlighting the dealership's offerings                 
+
+I also put effort into SEO optimization so that the dealership would have strong online visibility:
+- Implemented Next.js metadata API for dynamic SEO tags
+- Set up comprehensive meta descriptions and titles 
+- Added structured data for better search engine understanding
+- Assisted with Google Search Console setup and monitoring
+- Created and optimized Google Business Profile, linking it to the website
+- Implemented proper semantic HTML structure for better crawlability
+
+It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
+    technologies:
+      "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
+    logo: "/borgenbilsalg-512x.png",
+    githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
+    websiteUrl: "https://www.borgenbilsalg.no/",
+  },
+  {
     title: "Event Photos",
     description: "Full-stack Developer",
     shortDescription: "Web application for event photo management and sharing",
@@ -42,34 +70,7 @@ I developed this Chrome extension to add a more precise volume control slider to
     chromeStoreUrl:
       "https://chromewebstore.google.com/detail/youtube-music-volume-cont/hmbkfihljlgkkhnlcifdgooddhjahmga",
   },
-  {
-    title: "Borgen Bilsalg",
-    description: "Frontend Developer",
-    shortDescription: "Car dealership landing page with Next.js",
-    content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business!
 
-He wanted to create a simple and professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation. It has great built in SEO capabilites which could result in more potential customers finding his business. I also combined it with Tailwind CSS for styling.
-
-Key features of the website include:
-- Responsive design that looks great on all devices
-- Smooth animations using Framer Motion for enhanced user experience
-- Services section highlighting the dealership's offerings                 
-
-I also put effort into SEO optimization so that the dealership would have strong online visibility:
-- Implemented Next.js metadata API for dynamic SEO tags
-- Set up comprehensive meta descriptions and titles 
-- Added structured data for better search engine understanding
-- Assisted with Google Search Console setup and monitoring
-- Created and optimized Google Business Profile, linking it to the website
-- Implemented proper semantic HTML structure for better crawlability
-
-It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
-    technologies:
-      "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
-    logo: "/borgenbilsalg-512x.png",
-    githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
-    websiteUrl: "https://www.borgenbilsalg.no/",
-  },
   {
     title: "Kjøpskontrakt",
     description: "Full-stack Developer",
