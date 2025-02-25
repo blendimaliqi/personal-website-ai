@@ -7,12 +7,15 @@ export const hobbyProjects: HobbyProject[] = [
     shortDescription: "Car dealership landing page with Next.js",
     content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business!
 
-He wanted to create a simple and professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation. It has great built in SEO capabilites which could result in more potential customers finding his business. I also combined it with Tailwind CSS for styling.
+He wanted to create a simple and professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation. It has great built in SEO capabilites which could result in more potential customers finding his business and is superfast with SSR. I also combined it with Tailwind CSS + shadcn for styling.
 
 Key features of the website include:
 - Responsive design that looks great on all devices
-- Smooth animations using Framer Motion for enhanced user experience
+- Automated inventory management through Finn.no integration
+- Animations using Framer Motion for enhanced user experience
 - Services section highlighting the dealership's offerings                 
+
+The application uses a compliant web scraping approach with JSDOM to fetch and parse car listings from Finn.no. Also has good caching to save fetches while still ensuring the inventory stays automatically synchronized with their Finn.no listings.
 
 I also put effort into SEO optimization so that the dealership would have strong online visibility:
 - Implemented Next.js metadata API for dynamic SEO tags
@@ -24,7 +27,7 @@ I also put effort into SEO optimization so that the dealership would have strong
 
 It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
     technologies:
-      "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, shadcn/ui",
+      "Next.js 15.1, React 19, TypeScript, Tailwind CSS, Framer Motion, Shadcn",
     logo: "/borgenbilsalg-512x.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
