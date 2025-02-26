@@ -34,11 +34,11 @@ It was cool to see how the website helped modernize my friend's business presenc
   },
   {
     title: "Event Photos",
-    description: "Full-stack Developer",
+    description: "Fullstack Developer",
     shortDescription: "Web application for event photo management and sharing",
     content: `This project was born from a real need when my cousin approached me about creating a photo-sharing solution for her wedding. She wanted guests to be able to easily share their perspectives of the special day through a simple upload and viewing gallery interface.
 
-I saw this as an excellent opportunity to strengthen my backend development skills. I made the frontend with regular React from vite build. I was excited to dive deeper into backend development using .NET 9 and PostgreSQL, allowing me to create a robust full-stack application.
+I saw this as an excellent opportunity to strengthen my backend development skills. I made the frontend with regular React from vite build. I was excited to dive deeper into backend development using .NET 9 and PostgreSQL, allowing me to create a robust fullstack application.
 
 The application includes features such as:
 - Drag-and-drop photo upload interface optimized for mobile devices
@@ -47,7 +47,7 @@ The application includes features such as:
 - Responsive image gallery with description support
 - Admin panel for event and photo management
 
-This project not only solved a real-world problem (and made a good weeding gift) but also helped me grow as a full-stack developer. Particularly backend development in .NET, database design and deployment strategies.`,
+This project not only solved a real-world problem (and made a good weeding gift) but also helped me grow as a fullstack developer. Particularly backend development in .NET, database design and deployment strategies.`,
     technologies:
       "React, TypeScript, .NET 9, PostgreSQL, Entity Framework Core, TailwindCSS, Coolify, Hetzner Cloud",
     logo: "/eventphotosmol.jpeg",
@@ -76,7 +76,7 @@ I developed this Chrome extension to add a more precise volume control slider to
 
   {
     title: "Kjøpskontrakt",
-    description: "Full-stack Developer",
+    description: "Fullstack Developer",
     shortDescription: "SAAS for car sales contracts in Norway",
     content: `Kjøpskontrakt (kjopskontrakt.no) is a SAAS product I developed as a side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices. Key features and technologies:
 
@@ -94,7 +94,7 @@ It has already had real world usecases where people have used this service to se
   },
   {
     title: "Portfolio website",
-    description: "Full-stack Developer",
+    description: "Fullstack Developer",
     shortDescription: "AI-enhanced personal portfolio website",
     content: `You're looking at this project right now! 
 
@@ -114,7 +114,7 @@ One of the unique features is the AI assistant that I trained on my personal dat
   },
   {
     title: "Film Med Gutta",
-    description: "Full-stack Developer",
+    description: "Fullstack Developer",
     shortDescription: "A private movie-tracking platform for my friend group",
     content: `Film Med Gutta (Movies with the Boys) is a private movie-tracking platform I built for my friend group to keep track of and discuss movies we watched together. The application allows us to add movies we've watched together, rate them, and engage in discussions through a comment system.
 

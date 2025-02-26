@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description:
     "Experienced Software Developer specializing in modern web development with Next.js, React, .NET and cloud technologies. View featured projects and technical expertise.",
   keywords:
-    "software developer, full-stack developer, Next.js, React, .NET, cloud architecture, web development",
+    "software developer, fullstack developer, Next.js, React, .NET, cloud architecture, web development",
   authors: [{ name: "Blendi Maliqi" }],
   metadataBase: new URL("https://blendimaliqi.com"),
   alternates: {

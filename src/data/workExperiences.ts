@@ -48,7 +48,7 @@ I was able to use my skills in frontend development and design to help create a 
   },
   {
     title: "Paradisreiser",
-    description: "Full-stack Developer",
+    description: "Fullstack Developer",
     shortDescription: "Enhanced admin panel and mobile apps",
     content: `As a part of my work experience with Paradisreiser, I was tasked with adding new features to the company's admin panel. To accomplish this, I utilized React and MUI as libraries to implement the necessary interface, logic, and functions that the customer requested. One of the key challenges I faced was ensuring that the new features were properly integrated with the backend, which was written in .NET. I spent a significant amount of time working with the backend to coordinate the integration and ensure that everything worked seamlessly. 
 
