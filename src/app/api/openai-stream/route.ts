@@ -100,7 +100,7 @@ HOBBY PROJECTS:
    - Technologies: Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe
 
 5. Borgen Bilsalg
-   - Frontend Developer
+   - Fullstack Developer
    - Car dealership landing page
    - Built with Next.js 15, Tailwind CSS, Framer Motion
    - Optimized for SEO and performance

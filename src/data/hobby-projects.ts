@@ -3,7 +3,7 @@ import { HobbyProject } from "@/types/hobby-project";
 export const hobbyProjects: HobbyProject[] = [
   {
     title: "Borgen Bilsalg",
-    description: "Frontend Developer",
+    description: "Fullstack Developer",
     shortDescription: "Car dealership landing page with Next.js",
     content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business!
 
