@@ -71,7 +71,7 @@ export default function FeaturedProjectsSection({
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="mt-2 flex items-center rounded-full border border-blue-500/30 bg-slate-800/80 px-4 py-2 text-sm font-medium text-blue-400 shadow-sm transition-all group-hover:border-blue-500/50 group-hover:bg-slate-700 group-hover:shadow-md"
+                  className="mt-2 flex items-center rounded-full border border-blue-500/30 bg-background px-4 py-2 text-sm font-medium text-blue-500 shadow-sm transition-all group-hover:border-blue-500/50 group-hover:bg-accent group-hover:shadow-md dark:bg-slate-800/80 dark:text-blue-400 dark:group-hover:bg-slate-700"
                 >
                   <span>View Project</span>
                   <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
