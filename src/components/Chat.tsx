@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Mail, ArrowDown } from "lucide-react";
+import { Mail, ArrowDown, Bot, User } from "lucide-react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import { motion } from "framer-motion";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -10,12 +11,66 @@ interface Message {
 
 interface ChatProps {
   messages: Message[];
+  embedded?: boolean;
 }
 
-const Chat: React.FC<ChatProps> = ({ messages }) => {
+// Typing indicator component
+const TypingIndicator = () => (
+  <div className="flex space-x-1">
+    <motion.div
+      className="h-2 w-2 rounded-full bg-blue-500"
+      animate={{ y: [0, -5, 0] }}
+      transition={{
+        duration: 0.5,
+        repeat: Infinity,
+        repeatType: "loop",
+        delay: 0,
+      }}
+    />
+    <motion.div
+      className="h-2 w-2 rounded-full bg-blue-500"
+      animate={{ y: [0, -5, 0] }}
+      transition={{
+        duration: 0.5,
+        repeat: Infinity,
+        repeatType: "loop",
+        delay: 0.2,
+      }}
+    />
+    <motion.div
+      className="h-2 w-2 rounded-full bg-blue-500"
+      animate={{ y: [0, -5, 0] }}
+      transition={{
+        duration: 0.5,
+        repeat: Infinity,
+        repeatType: "loop",
+        delay: 0.4,
+      }}
+    />
+  </div>
+);
+
+const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+
+  // Detect when assistant is typing (when the last message is being updated)
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (
+        lastMessage &&
+        lastMessage.role === "assistant" &&
+        lastMessage.content === ""
+      ) {
+        setIsTyping(true);
+      } else {
+        setIsTyping(false);
+      }
+    }
+  }, [messages]);
 
   // Scroll to bottom when messages array changes (new message added)
   useEffect(() => {
@@ -43,7 +98,7 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
       const { scrollTop, scrollHeight, clientHeight } =
         chatContainerRef.current;
       const isScrolledUp = scrollHeight - scrollTop - clientHeight > 100;
-      setShowScrollButton(isScrolledUp);
+      setShowScrollButton(isScrolledUp && messages.length > 0);
     }
   };
 
@@ -57,71 +112,208 @@ const Chat: React.FC<ChatProps> = ({ messages }) => {
     }
   };
 
+  // Ensure scroll to bottom when container size changes
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (chatContainerRef.current && messages.length > 0) {
+        scrollToBottom();
+      }
+    });
+
+    if (chatContainerRef.current) {
+      resizeObserver.observe(chatContainerRef.current);
+    }
+
+    return () => {
+      if (chatContainerRef.current) {
+        resizeObserver.unobserve(chatContainerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="relative h-[calc(100vh-400px)]">
+    <div
+      className={`relative ${embedded ? "h-full" : "h-[calc(100vh-400px)] md:h-[500px]"}`}
+    >
       <div
         ref={chatContainerRef}
-        className="flex h-full flex-col space-y-3 overflow-y-auto pr-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-700 dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
+        className={`flex h-full flex-col ${embedded ? "space-y-3" : "space-y-4"} overflow-y-auto pr-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-700 dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2`}
         onScroll={handleScroll}
       >
         {messages.length > 0 ? (
-          messages.map((msg, index) => (
-            <div
-              key={index}
-              ref={index === messages.length - 1 ? lastMessageRef : undefined}
-              className={`space-y-1 rounded-lg p-3 ${
-                msg.role === "user" ? "bg-muted/50" : ""
-              }`}
-            >
-              <strong className="text-gray-600 dark:text-gray-400">
-                {msg.role === "user" ? "You" : "Assistant"}:
-              </strong>
-              <ReactMarkdown className="prose max-w-none dark:prose-invert">
-                {msg.content}
-              </ReactMarkdown>
-            </div>
-          ))
+          <>
+            {messages.map((msg, index) => (
+              <motion.div
+                key={index}
+                ref={index === messages.length - 1 ? lastMessageRef : undefined}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className={`flex ${
+                  msg.role === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div
+                  className={`relative max-w-[85%] space-y-1 rounded-2xl p-4 ${
+                    msg.role === "user"
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+                      : embedded
+                        ? "bg-slate-700"
+                        : "bg-muted/50 dark:bg-slate-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 pb-1">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                      {msg.role === "user" ? (
+                        <User className="h-3.5 w-3.5 text-white" />
+                      ) : (
+                        <Bot className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
+                      )}
+                    </div>
+                    <strong
+                      className={`text-sm ${
+                        msg.role === "user"
+                          ? "text-white/90"
+                          : embedded
+                            ? "text-gray-300"
+                            : "text-gray-600 dark:text-gray-400"
+                      }`}
+                    >
+                      {msg.role === "user" ? "You" : "Blendi's Assistant"}
+                    </strong>
+                  </div>
+                  {msg.content ? (
+                    <ReactMarkdown
+                      className={`prose max-w-none text-sm ${
+                        msg.role === "user"
+                          ? "prose-invert"
+                          : embedded
+                            ? "prose-invert"
+                            : "dark:prose-invert"
+                      }`}
+                    >
+                      {msg.content}
+                    </ReactMarkdown>
+                  ) : (
+                    msg.role === "assistant" && <TypingIndicator />
+                  )}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Typing indicator when a new message is being generated */}
+            {isTyping && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex justify-start"
+              >
+                <div
+                  className={`relative max-w-[85%] space-y-1 rounded-2xl p-4 ${
+                    embedded ? "bg-slate-700" : "bg-muted/50 dark:bg-slate-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 pb-1">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                      <Bot className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
+                    </div>
+                    <strong
+                      className={`text-sm ${
+                        embedded
+                          ? "text-gray-300"
+                          : "text-gray-600 dark:text-gray-400"
+                      }`}
+                    >
+                      Blendi's Assistant
+                    </strong>
+                  </div>
+                  <TypingIndicator />
+                </div>
+              </motion.div>
+            )}
+          </>
         ) : (
           <div className="flex h-full flex-col justify-between">
             <div className="flex flex-1 flex-col items-center justify-center">
-              <div className="relative mb-3 h-32 w-32 overflow-hidden rounded-full">
-                <Image
-                  src="/blendi.jpg"
-                  alt="Blendi"
-                  fill
-                  className="absolute inset-0 h-full w-full object-cover"
-                  style={{ objectPosition: "1% center" }}
-                  priority
-                />
+              {!embedded && (
+                <div className="relative mb-3 h-32 w-32 overflow-hidden rounded-full border-4 border-blue-600 shadow-lg">
+                  <Image
+                    src="/blendi.jpg"
+                    alt="Blendi"
+                    fill
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{ objectPosition: "1% center" }}
+                    priority
+                  />
+                </div>
+              )}
+              <div
+                className={`flex flex-col items-center justify-center rounded-lg ${embedded ? "" : "pt-2"}`}
+              >
+                {!embedded && (
+                  <>
+                    <p className="text-center text-2xl font-medium">
+                      Blendi Maliqi
+                    </p>
+                    <p className="text-center text-muted-foreground">
+                      Software developer
+                    </p>
+                  </>
+                )}
               </div>
-              <div className="flex flex-col items-center justify-center rounded-lg pt-2">
-                <p className="text-center text-2xl font-medium">
-                  Blendi Maliqi
-                </p>
-                <p className="text-center text-muted-foreground">
-                  Software developer
-                </p>
-              </div>
-              <div className="flex items-center justify-center">
-                <Mail className="mr-2 text-muted-foreground" size={24} />
-                <a
-                  href="mailto:blendi.maliqi93@gmail.com"
-                  className="text-muted-foreground transition-colors hover:text-blue-600"
+              {!embedded && (
+                <div className="mt-2 flex items-center justify-center">
+                  <Mail className="mr-2 text-muted-foreground" size={20} />
+                  <a
+                    href="mailto:blendi.maliqi93@gmail.com"
+                    className="text-muted-foreground transition-colors hover:text-blue-600"
+                  >
+                    blendi.maliqi93@gmail.com
+                  </a>
+                </div>
+              )}
+              <div className={`${embedded ? "" : "mt-6"} max-w-md text-center`}>
+                <p
+                  className={`${embedded ? "text-sm text-gray-300" : "text-muted-foreground"}`}
                 >
-                  blendi.maliqi93@gmail.com
-                </a>
+                  👋 Hi there! I'm Blendi's AI assistant. Ask me anything about
+                  his skills, experience, projects, or background.
+                </p>
+                {!embedded && (
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    {[
+                      "Tell me about Blendi's skills",
+                      "What projects has Blendi worked on?",
+                      "What's Blendi's background?",
+                    ].map((suggestion) => (
+                      <button
+                        key={suggestion}
+                        className="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground transition-colors hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-slate-700 dark:hover:text-blue-400"
+                        onClick={() => {
+                          // This will be handled by the parent component
+                          const event = new CustomEvent("suggestionClick", {
+                            detail: { suggestion },
+                          });
+                          document.dispatchEvent(event);
+                        }}
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         )}
       </div>
-      {showScrollButton && messages.length > 0 && (
+      {showScrollButton && (
         <button
           onClick={scrollToBottom}
-          className="fixed bottom-8 right-8 rounded-full bg-primary p-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90"
+          className="absolute bottom-2 right-2 rounded-full bg-primary p-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90"
           aria-label="Scroll to bottom"
         >
-          <ArrowDown size={24} />
+          <ArrowDown size={20} />
         </button>
       )}
     </div>

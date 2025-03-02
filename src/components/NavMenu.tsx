@@ -6,9 +6,9 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { cn } from "~/lib/utils";
+import { motion } from "framer-motion";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -20,13 +20,29 @@ const navItems = [
 
 export function NavMenu() {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkIfMobile();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIfMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   const isActive = (href: string) => pathname === href;
 
   return (
-    <NavigationMenu aria-label="Site navigation">
+    <NavigationMenu aria-label="Site navigation" className="w-full">
       <NavigationMenuList
-        className="flex flex-col space-y-2 md:flex-row md:space-x-6 md:space-y-0"
+        className="flex w-full flex-col space-y-4 md:flex-row md:space-x-6 md:space-y-0"
         role="menubar"
       >
         {navItems.map((item) => (
@@ -38,15 +54,23 @@ export function NavMenu() {
             <Link href={item.href} passHref prefetch legacyBehavior>
               <NavigationMenuLink
                 className={cn(
-                  "block w-full px-3 py-2 text-center text-lg transition-colors duration-200 md:inline-block md:w-auto",
+                  "relative block w-full px-4 py-3 text-center text-lg font-medium transition-colors duration-200 md:inline-block md:w-auto md:px-3 md:py-2 md:text-base",
                   isActive(item.href)
-                    ? "font-medium text-foreground"
-                    : "text-foreground/60 hover:text-foreground",
+                    ? "text-primary md:font-semibold md:text-foreground"
+                    : "text-muted-foreground hover:text-foreground md:text-foreground/60 md:hover:text-foreground",
+                  isMobile && "text-xl",
                 )}
                 role="menuitem"
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.title}
+                {isActive(item.href) && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 mx-auto h-0.5 w-16 rounded-full bg-primary md:hidden"
+                    layoutId="activeIndicator"
+                    initial={false}
+                  />
+                )}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
