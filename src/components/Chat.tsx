@@ -3,6 +3,7 @@ import { Mail, ArrowDown, Bot, User } from "lucide-react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -55,6 +56,16 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Only consider theme after component has mounted to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use a safe default (dark) for server-side rendering, then use the actual theme after mounting
+  const isDarkTheme = !mounted ? true : resolvedTheme === "dark";
 
   // Detect when assistant is typing (when the last message is being updated)
   useEffect(() => {
@@ -158,8 +169,12 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                     msg.role === "user"
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
                       : embedded
-                        ? "bg-slate-700"
-                        : "bg-muted/50 dark:bg-slate-800"
+                        ? isDarkTheme
+                          ? "bg-slate-700"
+                          : "bg-slate-300"
+                        : isDarkTheme
+                          ? "bg-slate-800"
+                          : "bg-slate-200"
                   }`}
                 >
                   <div className="flex items-center gap-2 pb-1">
@@ -175,8 +190,12 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                         msg.role === "user"
                           ? "text-white/90"
                           : embedded
-                            ? "text-gray-300"
-                            : "text-gray-600 dark:text-gray-400"
+                            ? isDarkTheme
+                              ? "text-gray-300"
+                              : "text-gray-700"
+                            : isDarkTheme
+                              ? "text-gray-300"
+                              : "text-gray-700"
                       }`}
                     >
                       {msg.role === "user" ? "You" : "Blendi's Assistant"}
@@ -188,8 +207,12 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                         msg.role === "user"
                           ? "prose-invert"
                           : embedded
-                            ? "prose-invert"
-                            : "dark:prose-invert"
+                            ? isDarkTheme
+                              ? "prose-invert"
+                              : "prose-slate"
+                            : isDarkTheme
+                              ? "prose-invert"
+                              : "prose-slate"
                       }`}
                     >
                       {msg.content}
@@ -210,7 +233,13 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
               >
                 <div
                   className={`relative max-w-[85%] space-y-1 rounded-2xl p-4 ${
-                    embedded ? "bg-slate-700" : "bg-muted/50 dark:bg-slate-800"
+                    embedded
+                      ? isDarkTheme
+                        ? "bg-slate-700"
+                        : "bg-slate-300"
+                      : isDarkTheme
+                        ? "bg-slate-800"
+                        : "bg-slate-200"
                   }`}
                 >
                   <div className="flex items-center gap-2 pb-1">
@@ -220,8 +249,12 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                     <strong
                       className={`text-sm ${
                         embedded
-                          ? "text-gray-300"
-                          : "text-gray-600 dark:text-gray-400"
+                          ? isDarkTheme
+                            ? "text-gray-300"
+                            : "text-gray-700"
+                          : isDarkTheme
+                            ? "text-gray-300"
+                            : "text-gray-700"
                       }`}
                     >
                       Blendi's Assistant
@@ -252,10 +285,14 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
               >
                 {!embedded && (
                   <>
-                    <p className="text-center text-2xl font-medium">
+                    <p
+                      className={`text-center text-2xl font-medium ${isDarkTheme ? "text-white" : "text-slate-900"}`}
+                    >
                       Blendi Maliqi
                     </p>
-                    <p className="text-center text-muted-foreground">
+                    <p
+                      className={`text-center ${isDarkTheme ? "text-slate-300" : "text-slate-600"}`}
+                    >
                       Software developer
                     </p>
                   </>
@@ -263,10 +300,13 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
               </div>
               {!embedded && (
                 <div className="mt-2 flex items-center justify-center">
-                  <Mail className="mr-2 text-muted-foreground" size={20} />
+                  <Mail
+                    className={`mr-2 ${isDarkTheme ? "text-slate-400" : "text-slate-500"}`}
+                    size={20}
+                  />
                   <a
                     href="mailto:blendi.maliqi93@gmail.com"
-                    className="text-muted-foreground transition-colors hover:text-blue-600"
+                    className={`${isDarkTheme ? "text-slate-400 hover:text-blue-400" : "text-slate-500 hover:text-blue-600"} transition-colors`}
                   >
                     blendi.maliqi93@gmail.com
                   </a>
@@ -282,7 +322,11 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                     ].map((suggestion) => (
                       <button
                         key={suggestion}
-                        className="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground transition-colors hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-slate-700 dark:hover:text-blue-400"
+                        className={`rounded-full ${
+                          isDarkTheme
+                            ? "bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-blue-400"
+                            : "bg-slate-200 text-slate-600 hover:bg-blue-100 hover:text-blue-700"
+                        } px-3 py-1 text-sm transition-colors`}
                         onClick={() => {
                           // This will be handled by the parent component
                           const event = new CustomEvent("suggestionClick", {
@@ -304,10 +348,10 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
       {showScrollButton && (
         <button
           onClick={scrollToBottom}
-          className="absolute bottom-2 right-2 rounded-full bg-primary p-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90"
+          className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
           aria-label="Scroll to bottom"
         >
-          <ArrowDown size={20} />
+          <ArrowDown className="h-5 w-5" />
         </button>
       )}
     </div>
