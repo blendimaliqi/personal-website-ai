@@ -66,7 +66,7 @@ export default function SkillsSection({
                 href="/skills"
                 className="flex items-center text-sm text-blue-500 hover:text-blue-400"
               >
-                <span>View all {category.name.toLowerCase()} skills</span>
+                <span>View all skills</span>
                 <ChevronRight className="ml-1 h-3 w-3" />
               </Link>
             </div>
