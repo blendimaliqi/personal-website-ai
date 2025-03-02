@@ -99,7 +99,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col gap-16 pb-16">
+    <div className="flex flex-col gap-24">
       {/* Hero Section with Integrated AI */}
       <HeroSection
         messages={messages}
