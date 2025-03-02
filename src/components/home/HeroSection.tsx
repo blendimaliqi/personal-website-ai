@@ -133,7 +133,29 @@ export default function HeroSection({
 
   const handleSampleQuestion = (question: string) => {
     setMessage(question);
+    if (!isMobile) {
+      setExpandedChat(true);
+      setHasAnimated(true);
+    }
     handleSendMessage(question);
+  };
+
+  // Auto-expand chat when a message is sent
+  useEffect(() => {
+    if (messages.length > 0 && !expandedChat && !isMobile) {
+      setExpandedChat(true);
+      setHasAnimated(true);
+    }
+  }, [messages.length, expandedChat, isMobile]);
+
+  // Function to handle mobile input changes (no auto-expand)
+  const handleMobileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  };
+
+  // Function to handle desktop input changes (no auto-expand)
+  const handleDesktopInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
   };
 
   return (
@@ -250,7 +272,7 @@ export default function HeroSection({
                   <div className="relative">
                     <Input
                       disabled={loading}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={handleMobileInputChange}
                       onKeyDown={handleKeyPress}
                       value={message}
                       placeholder="Ask me anything..."
@@ -486,7 +508,7 @@ export default function HeroSection({
                   <div className="relative">
                     <Input
                       disabled={loading}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={handleDesktopInputChange}
                       onKeyDown={handleKeyPress}
                       value={message}
                       placeholder="Ask me anything..."
