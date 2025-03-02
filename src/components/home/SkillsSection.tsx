@@ -26,7 +26,7 @@ export default function SkillsSection({
 
   return (
     <section
-      className={`mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 ${expandedChat && isMobile ? "hidden" : ""}`}
+      className={`mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 ${isMobile ? "hidden" : ""}`}
     >
       <div className="mb-8 text-center">
         <h2 className="text-3xl font-bold">My Skills</h2>

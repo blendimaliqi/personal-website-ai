@@ -10,6 +10,8 @@ import {
   Minimize2,
   RefreshCw,
   ChevronRight,
+  MessageSquare,
+  X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -31,6 +33,8 @@ interface HeroSectionProps {
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   handleSendMessage: (customMessage?: string) => Promise<void>;
+  showMobileChat?: boolean;
+  setShowMobileChat?: (isVisible: boolean) => void;
 }
 
 export default function HeroSection({
@@ -41,11 +45,15 @@ export default function HeroSection({
   message,
   setMessage,
   handleSendMessage,
+  showMobileChat = false,
+  setShowMobileChat,
 }: HeroSectionProps) {
   const [expandedChat, setExpandedChat] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [copied, setCopied] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [localShowMobileChat, setLocalShowMobileChat] =
+    useState(showMobileChat);
 
   // Check if device is mobile
   useEffect(() => {
@@ -60,8 +68,21 @@ export default function HeroSection({
     window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+      // Reset mobile chat when switching from mobile to desktop
+      if (!isMobile) {
+        toggleMobileChat(false);
+      }
+    };
+  }, [isMobile]);
+
+  // Sync local state with props
+  useEffect(() => {
+    if (showMobileChat !== undefined) {
+      setLocalShowMobileChat(showMobileChat);
+    }
+  }, [showMobileChat]);
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
@@ -72,6 +93,14 @@ export default function HeroSection({
   const toggleChatSize = () => {
     setExpandedChat((prev) => !prev);
     setHasAnimated(true);
+  };
+
+  const toggleMobileChat = (value?: boolean) => {
+    const newValue = value !== undefined ? value : !localShowMobileChat;
+    setLocalShowMobileChat(newValue);
+    if (setShowMobileChat) {
+      setShowMobileChat(newValue);
+    }
   };
 
   const resetChat = () => {
@@ -98,22 +127,129 @@ export default function HeroSection({
 
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4 py-12 shadow-xl sm:px-6 md:py-16 lg:px-8">
-      <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl"></div>
-      <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl"></div>
+      {/* Mobile Chat Button - Fixed at bottom right on mobile */}
+      {isMobile && !localShowMobileChat && (
+        <button
+          onClick={() => toggleMobileChat()}
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+          aria-label="Open chat"
+        >
+          <MessageSquare className="h-6 w-6" />
+        </button>
+      )}
+
+      {/* Mobile Chat Overlay */}
+      <AnimatePresence>
+        {isMobile && localShowMobileChat && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="relative h-[85vh] w-full max-w-md rounded-xl bg-slate-800 shadow-2xl"
+            >
+              <div className="flex items-center justify-between rounded-t-xl bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
+                <div className="flex items-center gap-2">
+                  <Bot className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={resetChat}
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                    aria-label="Reset chat"
+                  >
+                    <RefreshCw className="h-4 w-4" />
+                  </button>
+                  <button
+                    onClick={() => toggleMobileChat(false)}
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                    aria-label="Close chat"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="flex h-[calc(85vh-120px)] flex-col overflow-hidden">
+                <div className="flex-1 overflow-y-auto p-4">
+                  {messages.length === 0 && (
+                    <div className="flex flex-col items-center">
+                      <div className="group relative mb-5 h-24 w-24 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl">
+                        <Image
+                          fill
+                          src="/blendi.jpg"
+                          alt="Blendi"
+                          className="object-cover"
+                          style={{ objectPosition: "15% center" }}
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          priority={true}
+                        />
+                      </div>
+                      <p className="text-center text-white">Hello there</p>
+                      <div className="mt-4 w-full border-t border-white/10 pt-4">
+                        <p className="text-center text-sm text-slate-300">
+                          I'm Blendi's AI assistant. Ask me anything about his
+                          skills, experience, projects, or background.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  <Chat messages={messages} embedded={true} />
+                </div>
+                <div className="border-t border-white/10 p-3">
+                  {messages.length === 0 && (
+                    <div className="mb-3 flex flex-wrap gap-2">
+                      {sampleQuestions.map((question) => (
+                        <button
+                          key={question}
+                          onClick={() => handleSampleQuestion(question)}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                        >
+                          {question}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  <div className="relative">
+                    <Input
+                      disabled={loading}
+                      onChange={(e) => setMessage(e.target.value)}
+                      onKeyDown={handleKeyPress}
+                      value={message}
+                      placeholder="Ask me anything..."
+                      className="h-10 w-full rounded-full border-white/10 bg-white/5 pr-10 text-white placeholder:text-white/50"
+                    />
+                    <Button
+                      onClick={() => handleSendMessage()}
+                      size="icon"
+                      className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                      disabled={loading || message.trim() === ""}
+                    >
+                      <ArrowUp className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div
         className={`relative z-10 grid gap-8 ${
-          expandedChat && !isMobile
-            ? "md:grid-cols-[40%_60%]"
-            : expandedChat && isMobile
-              ? "grid-cols-1"
+          isMobile
+            ? "grid-cols-1"
+            : expandedChat
+              ? "md:grid-cols-[40%_60%]"
               : "md:grid-cols-2"
         }`}
       >
         {/* Left column - Intro */}
-        <div
-          className={`flex flex-col justify-center ${expandedChat && isMobile ? "hidden" : ""}`}
-        >
+        <div className="flex flex-col justify-center">
           <div>
             <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               <span className="block">Blendi Maliqi</span>
@@ -130,32 +266,40 @@ export default function HeroSection({
               <p className="mb-2 text-sm font-medium uppercase tracking-wider text-blue-400">
                 Contact Me
               </p>
-              <div className="flex items-stretch gap-2">
+              <div className="flex flex-col space-y-3 sm:flex-row sm:items-stretch sm:gap-2 sm:space-y-0">
                 <a
                   href="mailto:blendi.maliqi93@gmail.com"
-                  className="flex flex-1 items-center rounded-md border border-blue-500/30 bg-slate-800/70 px-4 py-3 text-lg text-slate-200 shadow-sm transition-all hover:border-blue-500/50 hover:bg-slate-700/70 hover:text-blue-400 hover:shadow-md"
+                  className="flex flex-1 items-center rounded-md border border-blue-500/30 bg-slate-800/70 px-4 py-3 text-base text-slate-200 shadow-sm transition-all hover:border-blue-500/50 hover:bg-slate-700/70 hover:text-blue-400 hover:shadow-md sm:text-lg"
                   aria-label="Email Blendi"
                 >
                   <Mail className="mr-3 h-5 w-5 text-blue-400" />
-                  blendi.maliqi93@gmail.com
+                  <span className="truncate">blendi.maliqi93@gmail.com</span>
                 </a>
                 <button
                   onClick={copyEmailToClipboard}
-                  className="group relative flex w-14 items-center justify-center rounded-md border border-blue-500/30 bg-slate-800/70 px-4 shadow-sm transition-all hover:border-blue-500/50 hover:bg-slate-700/70 hover:shadow-md"
+                  className="group relative flex w-full items-center justify-center rounded-md border border-blue-500/30 bg-slate-800/70 px-4 py-2 shadow-sm transition-all hover:border-blue-500/50 hover:bg-slate-700/70 hover:shadow-md sm:w-14"
                   aria-label="Copy email address"
                 >
                   {copied ? (
-                    <Check className="h-5 w-5 text-green-400" />
+                    <div className="flex items-center">
+                      <Check className="mr-2 h-5 w-5 text-green-400 sm:mr-0" />
+                      <span className="text-green-400 sm:hidden">Copied!</span>
+                    </div>
                   ) : (
-                    <Copy className="h-5 w-5 text-blue-400" />
+                    <div className="flex items-center">
+                      <Copy className="mr-2 h-5 w-5 text-blue-400 sm:mr-0" />
+                      <span className="text-blue-400 sm:hidden">
+                        Copy email
+                      </span>
+                    </div>
                   )}
-                  <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                  <span className="absolute -bottom-10 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 sm:block">
                     {copied ? "Copied!" : "Copy email"}
                   </span>
                 </button>
               </div>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-between">
               <Link href="/works">
                 <Button className="bg-white text-slate-900 hover:bg-white/90">
                   View My Work
@@ -166,118 +310,119 @@ export default function HeroSection({
           </div>
         </div>
 
-        {/* Right column - Embedded Chat */}
-        <div
-          className={`flex items-center justify-center ${expandedChat && isMobile ? "col-span-1" : ""}`}
-        >
-          <div
-            className="w-full max-w-full rounded-xl border border-white/10 bg-white/5 p-1 backdrop-blur-sm transition-all duration-500"
-            style={{
-              zIndex: expandedChat ? 10 : 1,
-            }}
-          >
-            <div className="rounded-lg bg-slate-800/80 shadow-lg">
-              <div className="flex items-center justify-between rounded-t-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
-                <div className="flex items-center gap-2">
-                  <Bot className="h-5 w-5 text-white" />
-                </div>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={resetChat}
-                    className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
-                    aria-label="Reset chat"
-                  >
-                    <RefreshCw className="h-3.5 w-3.5" />
-                  </button>
-                  <button
-                    onClick={toggleChatSize}
-                    className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
-                    aria-label={expandedChat ? "Minimize chat" : "Expand chat"}
-                  >
-                    {expandedChat ? (
-                      <Minimize2 className="h-3.5 w-3.5" />
-                    ) : (
-                      <Maximize2 className="h-3.5 w-3.5" />
-                    )}
-                  </button>
-                  <div className="flex space-x-1">
-                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
-                    <span className="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+        {/* Right column - Embedded Chat (only visible on desktop) */}
+        {!isMobile && (
+          <div className="flex items-center justify-center">
+            <div
+              className="w-full max-w-full rounded-xl border border-white/10 bg-white/5 p-1 backdrop-blur-sm transition-all duration-500"
+              style={{
+                zIndex: expandedChat ? 10 : 1,
+              }}
+            >
+              <div className="rounded-lg bg-slate-800/80 shadow-lg">
+                <div className="flex items-center justify-between rounded-t-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
+                  <div className="flex items-center gap-2">
+                    <Bot className="h-5 w-5 text-white" />
+                    <span className="text-sm font-medium text-white"></span>
                   </div>
-                </div>
-              </div>
-              <div
-                className="overflow-hidden p-4"
-                style={{
-                  height: expandedChat
-                    ? isMobile
-                      ? "60vh"
-                      : "500px"
-                    : "380px",
-                  transition: hasAnimated ? "height 0.5s ease-in-out" : "none",
-                }}
-              >
-                {/* Profile info at the top of chat */}
-                {messages.length === 0 && (
-                  <div className="mb-6 flex flex-col items-center">
-                    <div className="group relative mb-5 h-40 w-40 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl transition-all duration-300 hover:scale-105">
-                      <Image
-                        fill
-                        src="/blendi.jpg"
-                        alt="Blendi"
-                        className="object-cover transition-all duration-300 group-hover:brightness-110"
-                        style={{ objectPosition: "15% center" }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={true}
-                      />
-                    </div>
-                    <p>Hello there</p>
-                    <div className="mt-6 w-full border-t border-white/10 pt-6">
-                      <p className="text-center text-sm text-slate-300">
-                        I'm Blendi's AI assistant. Ask me anything about his
-                        skills, experience, projects, or background.
-                      </p>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={resetChat}
+                      className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                      aria-label="Reset chat"
+                    >
+                      <RefreshCw className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      onClick={toggleChatSize}
+                      className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                      aria-label={
+                        expandedChat ? "Minimize chat" : "Expand chat"
+                      }
+                    >
+                      {expandedChat ? (
+                        <Minimize2 className="h-3.5 w-3.5" />
+                      ) : (
+                        <Maximize2 className="h-3.5 w-3.5" />
+                      )}
+                    </button>
+                    <div className="flex space-x-1">
+                      <span className="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-400"></span>
                     </div>
                   </div>
-                )}
-                <Chat messages={messages} embedded={true} />
-              </div>
-              <div className="border-t border-white/10 p-3">
-                {messages.length === 0 && (
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    {sampleQuestions.map((question) => (
-                      <button
-                        key={question}
-                        onClick={() => handleSampleQuestion(question)}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                      >
-                        {question}
-                      </button>
-                    ))}
+                </div>
+                <div
+                  className="overflow-hidden p-4"
+                  style={{
+                    height: expandedChat ? "500px" : "380px",
+                    transition: hasAnimated
+                      ? "height 0.5s ease-in-out"
+                      : "none",
+                  }}
+                >
+                  {/* Profile info at the top of chat */}
+                  {messages.length === 0 && (
+                    <div className="flex flex-col items-center">
+                      <div className="group relative mb-5 h-40 w-40 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl transition-all duration-300 hover:scale-105">
+                        <Image
+                          fill
+                          src="/blendi.jpg"
+                          alt="Blendi"
+                          className="object-cover transition-all duration-300 group-hover:brightness-110"
+                          style={{ objectPosition: "15% center" }}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={true}
+                        />
+                      </div>
+                      <p className="text-white">Hello there</p>
+                      <div className="mt-6 w-full border-t border-white/10 pt-6">
+                        <p className="text-center text-sm text-slate-300">
+                          I'm Blendi's AI assistant. Ask me anything about his
+                          skills, experience, projects, or background.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  <Chat messages={messages} embedded={true} />
+                </div>
+                <div className="border-t border-white/10 p-3">
+                  {messages.length === 0 && (
+                    <div className="mb-5 flex flex-wrap gap-2">
+                      {sampleQuestions.map((question) => (
+                        <button
+                          key={question}
+                          onClick={() => handleSampleQuestion(question)}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                        >
+                          {question}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  <div className="relative">
+                    <Input
+                      disabled={loading}
+                      onChange={(e) => setMessage(e.target.value)}
+                      onKeyDown={handleKeyPress}
+                      value={message}
+                      placeholder="Ask me anything..."
+                      className="h-10 w-full rounded-full border-white/10 bg-white/5 pr-10 text-white placeholder:text-white/50"
+                    />
+                    <Button
+                      onClick={() => handleSendMessage()}
+                      size="icon"
+                      className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                      disabled={loading || message.trim() === ""}
+                    >
+                      <ArrowUp className="h-4 w-4" />
+                    </Button>
                   </div>
-                )}
-                <div className="relative">
-                  <Input
-                    disabled={loading}
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyDown={handleKeyPress}
-                    value={message}
-                    placeholder="Ask me anything..."
-                    className="h-10 w-full rounded-full border-white/10 bg-white/5 pr-10 text-white placeholder:text-white/50"
-                  />
-                  <Button
-                    onClick={() => handleSendMessage()}
-                    size="icon"
-                    className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
-                    disabled={loading || message.trim() === ""}
-                  >
-                    <ArrowUp className="h-4 w-4" />
-                  </Button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

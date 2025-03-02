@@ -12,6 +12,7 @@ export default function HomePage() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [expandedChat, setExpandedChat] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showMobileChat, setShowMobileChat] = useState(false);
 
   // Check if device is mobile
   useEffect(() => {
@@ -26,8 +27,14 @@ export default function HomePage() {
     window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+      // Reset mobile chat when switching from mobile to desktop
+      if (!isMobile) {
+        setShowMobileChat(false);
+      }
+    };
+  }, [isMobile]);
 
   const handleSendMessage = useCallback(
     async (customMessage?: string) => {
@@ -41,7 +48,9 @@ export default function HomePage() {
       setLoading(true);
 
       // Expand the chat when a message is sent
-      setExpandedChat(true);
+      if (!isMobile) {
+        setExpandedChat(true);
+      }
 
       try {
         const response = await sendChatMessage(messageToSend);
@@ -53,7 +62,7 @@ export default function HomePage() {
         setMessage("");
       }
     },
-    [loading, message],
+    [loading, message, isMobile],
   );
 
   // Listen for suggestion clicks from the Chat component
@@ -84,6 +93,11 @@ export default function HomePage() {
     setActiveSection(section);
   };
 
+  // Function to toggle mobile chat visibility
+  const toggleMobileChat = (isVisible: boolean) => {
+    setShowMobileChat(isVisible);
+  };
+
   return (
     <div className="flex flex-col gap-16 pb-16">
       {/* Hero Section with Integrated AI */}
@@ -95,6 +109,8 @@ export default function HomePage() {
         message={message}
         setMessage={setMessage}
         handleSendMessage={handleSendMessage}
+        showMobileChat={showMobileChat}
+        setShowMobileChat={toggleMobileChat}
       />
 
       {/* Skills Section */}
@@ -102,7 +118,7 @@ export default function HomePage() {
         activeSection={activeSection}
         handleSectionHover={handleSectionHover}
         expandedChat={expandedChat}
-        isMobile={isMobile}
+        isMobile={isMobile && showMobileChat}
       />
 
       {/* Featured Projects */}
@@ -110,7 +126,7 @@ export default function HomePage() {
         activeSection={activeSection}
         handleSectionHover={handleSectionHover}
         expandedChat={expandedChat}
-        isMobile={isMobile}
+        isMobile={isMobile && showMobileChat}
       />
     </div>
   );

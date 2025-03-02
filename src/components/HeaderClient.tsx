@@ -166,11 +166,6 @@ export default function HeaderClient() {
                     );
                   })}
                 </div>
-
-                <div className="mt-8 h-px w-1/3 bg-border"></div>
-                <p className="text-center text-sm text-muted-foreground">
-                  © {new Date().getFullYear()} Blendi Maliqi
-                </p>
               </div>
             </motion.div>
           )}
