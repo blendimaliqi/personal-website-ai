@@ -11,7 +11,7 @@ import {
   RefreshCw,
   ChevronRight,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Chat from "~/components/Chat";
@@ -45,6 +45,7 @@ export default function HeroSection({
   const [expandedChat, setExpandedChat] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   // Check if device is mobile
   useEffect(() => {
@@ -70,6 +71,7 @@ export default function HeroSection({
 
   const toggleChatSize = () => {
     setExpandedChat((prev) => !prev);
+    setHasAnimated(true);
   };
 
   const resetChat = () => {
@@ -168,10 +170,7 @@ export default function HeroSection({
         <div
           className={`flex items-center justify-center ${expandedChat && isMobile ? "col-span-1" : ""}`}
         >
-          <motion.div
-            initial={{ opacity: 1, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0 }}
+          <div
             className="w-full max-w-full rounded-xl border border-white/10 bg-white/5 p-1 backdrop-blur-sm transition-all duration-500"
             style={{
               zIndex: expandedChat ? 10 : 1,
@@ -207,18 +206,15 @@ export default function HeroSection({
                   </div>
                 </div>
               </div>
-              <motion.div
+              <div
                 className="overflow-hidden p-4"
-                animate={{
+                style={{
                   height: expandedChat
                     ? isMobile
                       ? "60vh"
                       : "500px"
                     : "380px",
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeInOut",
+                  transition: hasAnimated ? "height 0.5s ease-in-out" : "none",
                 }}
               >
                 {/* Profile info at the top of chat */}
@@ -245,7 +241,7 @@ export default function HeroSection({
                   </div>
                 )}
                 <Chat messages={messages} embedded={true} />
-              </motion.div>
+              </div>
               <div className="border-t border-white/10 p-3">
                 {messages.length === 0 && (
                   <div className="mb-5 flex flex-wrap gap-2">
@@ -280,7 +276,7 @@ export default function HeroSection({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

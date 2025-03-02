@@ -273,12 +273,6 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                 </div>
               )}
               <div className={`${embedded ? "" : "mt-6"} max-w-md text-center`}>
-                <p
-                  className={`${embedded ? "text-sm text-gray-300" : "text-muted-foreground"}`}
-                >
-                  👋 Hi there! I'm Blendi's AI assistant. Ask me anything about
-                  his skills, experience, projects, or background.
-                </p>
                 {!embedded && (
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
                     {[
