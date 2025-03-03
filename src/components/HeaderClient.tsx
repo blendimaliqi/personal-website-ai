@@ -18,9 +18,27 @@ const navIcons = {
 
 export default function HeaderClient() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+
+  // Handle scroll effect for header
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 60) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Close menu when route changes
   useEffect(() => {
@@ -49,128 +67,89 @@ export default function HeaderClient() {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEscKey);
 
-    // Prevent scrolling when mobile menu is open
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscKey);
-      document.body.style.overflow = "";
     };
-  }, [mobileMenuOpen]);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 mb-8 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 py-4">
-        <nav
-          className="flex items-center justify-between"
-          aria-label="Main navigation"
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-background/80 shadow-md backdrop-blur-md"
+          : "bg-background"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="flex items-center space-x-1 text-xl font-bold tracking-tighter transition-colors duration-200 hover:text-blue-500"
         >
-          {/* Mobile Hamburger Menu - Moved to the left */}
-          <div className="md:hidden">
-            <button
-              ref={hamburgerButtonRef}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
-              aria-label="Toggle mobile menu"
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </button>
-          </div>
+          <span className="text-slate-900 dark:text-white">Blendi Maliqi</span>
+        </Link>
 
-          {/* Brand/Logo - Center on mobile */}
-          <div
-            className="flex items-center justify-center md:justify-start"
-            aria-label="Brand"
-          >
-            {/* You can add a logo here if needed */}
-            <Link href="/" className="text-lg font-bold md:hidden">
-              BM
-            </Link>
+        {/* Desktop navigation */}
+        <nav className="hidden md:flex md:items-center md:gap-6">
+          <div className="hidden md:block">
+            <NavMenu pathname={pathname} navIcons={navIcons} />
           </div>
-
-          {/* Desktop Navigation */}
-          <div
-            className="hidden flex-1 justify-center md:flex"
-            role="navigation"
-            aria-label="Desktop menu"
-          >
-            <NavMenu />
-          </div>
-
-          {/* Mode Toggle (visible on all screen sizes) */}
-          <div className="flex items-center" aria-label="Theme toggle">
-            <ModeToggle />
-          </div>
+          <ModeToggle />
         </nav>
 
-        {/* Mobile Menu (conditionally rendered with animation) */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              id="mobile-menu"
-              ref={mobileMenuRef}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="fixed left-0 top-[72px] z-50 h-[calc(100vh-72px)] w-full overflow-y-auto bg-background/95 px-6 py-8 backdrop-blur-lg md:hidden"
-              role="navigation"
-              aria-label="Mobile menu"
-            >
-              <div className="flex w-full flex-col items-center space-y-6">
-                <div className="grid w-full grid-cols-1 gap-4">
-                  {Object.entries(navIcons).map(([path, icon]) => {
-                    const isActive = pathname === path;
-                    const title =
-                      path === "/"
-                        ? "Home"
-                        : path
-                            .slice(1)
-                            .split("-")
-                            .map(
-                              (word) =>
-                                word.charAt(0).toUpperCase() + word.slice(1),
-                            )
-                            .join(" ");
-
-                    return (
-                      <Link
-                        key={path}
-                        href={path}
-                        className={`flex items-center rounded-lg px-4 py-3 transition-colors ${
-                          isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }`}
-                      >
-                        <span className="mr-3">{icon}</span>
-                        <span className="text-lg font-medium">{title}</span>
-                        {isActive && (
-                          <motion.div
-                            className="ml-auto h-2 w-2 rounded-full bg-primary"
-                            layoutId="navDot"
-                          />
-                        )}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Mobile navigation button */}
+        <div className="flex items-center md:hidden">
+          <ModeToggle />
+          <button
+            ref={hamburgerButtonRef}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 transition-colors hover:bg-blue-500/20 dark:text-blue-400"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            ref={mobileMenuRef}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden md:hidden"
+          >
+            <nav className="flex flex-col space-y-1 border-t border-border px-4 py-5 sm:px-6">
+              {Object.entries(navIcons).map(([path, icon]) => (
+                <Link
+                  key={path}
+                  href={path}
+                  className={`flex items-center space-x-3 rounded-lg px-3 py-2 text-base ${
+                    pathname === path
+                      ? "bg-blue-500/10 font-medium text-blue-600 dark:text-blue-400"
+                      : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                  }`}
+                >
+                  <span className="flex-shrink-0">{icon}</span>
+                  <span>
+                    {path === "/"
+                      ? "Home"
+                      : path.slice(1).charAt(0).toUpperCase() +
+                        path.slice(2).replace("-", " ")}
+                  </span>
+                </Link>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
