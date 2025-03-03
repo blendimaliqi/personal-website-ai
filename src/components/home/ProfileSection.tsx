@@ -1,19 +1,35 @@
 import React, { useState } from "react";
-import { Mail, Copy, Check, ChevronRight } from "lucide-react";
+import { Mail, Copy, Check, ChevronRight, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 
 interface ProfileSectionProps {
   isDarkTheme: boolean;
+  toggleMobileChat?: (value?: boolean) => void;
+  isMobile?: boolean;
+  handleSendMessage?: (customMessage?: string) => Promise<void>;
 }
 
-export function ProfileSection({ isDarkTheme }: ProfileSectionProps) {
+export function ProfileSection({
+  isDarkTheme,
+  toggleMobileChat,
+  isMobile,
+  handleSendMessage,
+}: ProfileSectionProps) {
   const [copied, setCopied] = useState(false);
 
   const copyEmailToClipboard = () => {
     navigator.clipboard.writeText("blendi.maliqi93@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  // Handle chat interactions
+  const handleChatClick = () => {
+    if (toggleMobileChat) {
+      toggleMobileChat(true);
+      // No automatic message - removed as requested
+    }
   };
 
   return (
@@ -83,7 +99,7 @@ export function ProfileSection({ isDarkTheme }: ProfileSectionProps) {
             </button>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <Link href="/works">
             <Button
               className={
@@ -96,6 +112,17 @@ export function ProfileSection({ isDarkTheme }: ProfileSectionProps) {
               <ChevronRight className="ml-1 h-4 w-4" />
             </Button>
           </Link>
+
+          {/* Chat with AI button - only visible on mobile */}
+          {isMobile && toggleMobileChat && (
+            <Button
+              onClick={handleChatClick}
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700"
+            >
+              Ask me anything
+              <MessageSquare className="ml-1.5 h-4 w-4" />
+            </Button>
+          )}
         </div>
       </div>
     </div>
