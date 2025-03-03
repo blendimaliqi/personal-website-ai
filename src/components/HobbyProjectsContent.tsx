@@ -14,6 +14,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import { HobbyProject } from "@/types/hobby-project";
 import { hobbyProjects } from "@/data/hobby-projects";
 import { HobbyProjectCard } from "./HobbyProjectCard";
+import { Code, ExternalLink, Github, Globe } from "lucide-react";
 
 function HobbyProjectsContent() {
   const [selectedProject, setSelectedProject] = useState<HobbyProject | null>(
@@ -22,20 +23,29 @@ function HobbyProjectsContent() {
 
   return (
     <div className="container mx-auto py-12">
-      <h1 className="mb-8 text-4xl font-extrabold tracking-tight lg:text-5xl">
-        Hobby Projects
-      </h1>
-      <p className="mb-12 text-lg">
-        These are my personal projects that I've developed to explore new
-        technologies, solve real-world problems, and continue learning.
-      </p>
+      <div className="mb-12 text-center">
+        <div className="mb-4 flex justify-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
+            <Code className="h-8 w-8" />
+          </div>
+        </div>
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
+          Hobby Projects
+        </h1>
+        <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          These are my personal projects that I've developed to explore new
+          technologies, solve real problems, and continue learning.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {hobbyProjects.map((project: HobbyProject, index: number) => (
-          <HobbyProjectCard
-            key={index}
-            project={project}
-            onClick={() => setSelectedProject(project)}
-          />
+          <div key={index}>
+            <HobbyProjectCard
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
+          </div>
         ))}
       </div>
 
@@ -47,40 +57,59 @@ function HobbyProjectsContent() {
           <DialogHeader>
             <div className="flex items-center space-x-4">
               {selectedProject && (
-                <Image
-                  src={selectedProject.logo}
-                  alt={`${selectedProject.title} logo`}
-                  width={80}
-                  height={80}
-                  priority={true}
-                  className="h-20 w-20 flex-shrink-0 rounded-full object-cover"
-                />
+                <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-blue-100 dark:border-blue-900/30">
+                  <Image
+                    src={selectedProject.logo}
+                    alt={`${selectedProject.title} logo`}
+                    fill
+                    priority={true}
+                    className="object-cover"
+                  />
+                </div>
               )}
               <div>
-                <DialogTitle>{selectedProject?.title}</DialogTitle>
-                <DialogDescription>
+                <DialogTitle className="text-xl">
+                  {selectedProject?.title}
+                </DialogTitle>
+                <DialogDescription className="text-sm">
                   {selectedProject?.description}
                 </DialogDescription>
               </div>
             </div>
           </DialogHeader>
           <ScrollArea className="mt-4 max-h-[60vh]">
-            <div className="whitespace-pre-wrap">
+            <div className="whitespace-pre-wrap leading-relaxed">
               {selectedProject?.content}
             </div>
-            <p className="mt-4 text-sm">
-              <span className="font-semibold">Technologies:</span>{" "}
-              {selectedProject?.technologies}
-            </p>
-            <div className="mt-2 flex flex-col gap-1">
+
+            <div className="mb-6 mt-8">
+              <h3 className="mb-3 text-lg font-medium text-foreground">
+                Technologies Used:
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {selectedProject?.technologies
+                  .split(", ")
+                  .map((tech, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center rounded-md border border-blue-200/50 bg-blue-50/50 px-3 py-1.5 text-sm font-medium text-blue-700 shadow-sm dark:border-blue-800/50 dark:bg-blue-900/20 dark:text-blue-300"
+                    >
+                      {tech.trim()}
+                    </span>
+                  ))}
+              </div>
+            </div>
+
+            <div className="mb-4 mt-6 flex flex-wrap gap-3">
               {selectedProject?.githubUrl && (
                 <a
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="flex items-center rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-slate-700 hover:shadow-md"
                 >
-                  View project on GitHub
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub Repository
                 </a>
               )}
               {selectedProject?.chromeStoreUrl && (
@@ -88,9 +117,10 @@ function HobbyProjectsContent() {
                   href={selectedProject.chromeStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-blue-700 hover:shadow-md"
                 >
-                  Get it on Chrome Web Store
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Chrome Web Store
                 </a>
               )}
               {selectedProject?.websiteUrl && (
@@ -98,15 +128,18 @@ function HobbyProjectsContent() {
                   href={selectedProject.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-indigo-700 hover:shadow-md"
                 >
-                  Visit Live Website
+                  <Globe className="mr-2 h-4 w-4" />
+                  Live Website
                 </a>
               )}
             </div>
           </ScrollArea>
           <DialogClose asChild>
-            <Button className="mt-4">Close</Button>
+            <Button className="mt-4 bg-slate-200 text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600">
+              Close
+            </Button>
           </DialogClose>
         </DialogContent>
       </Dialog>

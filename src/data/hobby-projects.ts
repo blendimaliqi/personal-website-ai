@@ -47,7 +47,7 @@ The application includes features such as:
 - Responsive image gallery with description support
 - Admin panel for event and photo management
 
-This project not only solved a real-world problem (and made a good weeding gift) but also helped me grow as a fullstack developer. Particularly backend development in .NET, database design and deployment strategies.`,
+This project not only solved a real problem (and made a good weeding gift) but also helped me grow as a fullstack developer. Particularly backend development in .NET, database design and deployment strategies.`,
     technologies:
       "React, TypeScript, .NET 9, PostgreSQL, Entity Framework Core, TailwindCSS, Coolify, Hetzner Cloud",
     logo: "/eventphotosmol.jpeg",
