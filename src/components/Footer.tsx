@@ -5,7 +5,7 @@ import { cn } from "~/lib/utils";
 const Footer = () => {
   return (
     <footer className="border-t border-slate-200 bg-gradient-to-r from-slate-50 to-slate-100 text-slate-800 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800 dark:text-slate-200">
-      <div className="container mx-auto px-6 py-8">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
           <div className="text-center md:text-left">
             <h2 className="text-lg font-semibold tracking-tight">
