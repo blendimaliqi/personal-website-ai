@@ -7,4 +7,6 @@ export interface WorkExperience {
   logo: string;
   startDate: string;
   endDate: string;
+  githubUrl?: string;
+  websiteUrl?: string;
 }
