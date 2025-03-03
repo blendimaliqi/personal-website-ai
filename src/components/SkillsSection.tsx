@@ -1,19 +1,27 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import React, { useState } from "react";
 import { SkillCategory } from "./SkillCategory";
-import { SkillLevelLegend } from "./SkillLevelLegend";
 import type { SkillLevel, SkillCategoryType } from "~/types/skills";
+import {
+  Code,
+  Layers,
+  MonitorSmartphone,
+  Server,
+  Wrench,
+  Star,
+} from "lucide-react";
 
 const skillCategories: SkillCategoryType[] = [
   {
     name: "Frontend Development",
+    icon: <Layers className="mb-2 h-5 w-5" />,
     skills: [
       { name: "HTML", level: "Expert" },
       { name: "CSS", level: "Expert" },
       { name: "JavaScript", level: "Expert" },
       { name: "React", level: "Expert" },
       { name: "Next.js", level: "Expert" },
-      { name: "TypeScript", level: "Advanced" },
+      { name: "TypeScript", level: "Expert" },
       { name: "Tailwind CSS", level: "Advanced" },
       { name: "Styled Components", level: "Advanced" },
       { name: "Shadcn", level: "Advanced" },
@@ -28,6 +36,7 @@ const skillCategories: SkillCategoryType[] = [
   },
   {
     name: "Backend Development",
+    icon: <Server className="mb-2 h-5 w-5" />,
     skills: [
       { name: "C#", level: "Advanced" },
       { name: ".NET", level: "Advanced" },
@@ -41,6 +50,7 @@ const skillCategories: SkillCategoryType[] = [
   },
   {
     name: "Mobile Development",
+    icon: <MonitorSmartphone className="mb-2 h-5 w-5" />,
     skills: [
       { name: "React Native", level: "Advanced" },
       { name: "Flutter", level: "Advanced" },
@@ -56,6 +66,7 @@ const skillCategories: SkillCategoryType[] = [
   },
   {
     name: "Development Tools",
+    icon: <Wrench className="mb-2 h-5 w-5" />,
     skills: [
       { name: "Git", level: "Expert" },
       { name: "Jira", level: "Expert" },
@@ -80,50 +91,62 @@ export const SkillsSection: React.FC = () => {
   return (
     <section className="py-8 sm:py-12" aria-labelledby="skills-heading">
       <div className="container mx-auto px-4">
-        <h2
-          id="skills-heading"
-          className="mb-6 text-center text-2xl font-bold sm:mb-8 sm:text-3xl"
-        >
-          Skills
-        </h2>
-        <SkillLevelLegend />
+        <div className="mb-12 text-center">
+          <div className="mb-4 flex justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
+              <Star className="h-8 w-8" />
+            </div>
+          </div>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            Skills
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            My tech comfort zones. Higher percentages mean more experience and
+            confidence with a technology. Im always learning and growing.
+          </p>
+        </div>
         <Tabs
           defaultValue={skillCategories[0]!.name}
-          className="mt-24 w-full"
+          className="mt-8 w-full"
           aria-label="Skills categories"
         >
           <TabsList
-            className="mb-6 grid w-full grid-cols-2 gap-2 sm:mb-8 sm:grid-cols-4"
+            className="mb-6 grid w-full grid-cols-2 gap-4 sm:mb-8 sm:grid-cols-4"
             aria-label="Select skill category"
           >
             {skillCategories.map((category, index) => (
               <TabsTrigger
                 key={index}
                 value={category.name}
-                className="rounded-3xl px-3 py-4 text-sm font-medium transition-colors
-                     hover:bg-gray-100 hover:text-gray-900
-                     data-[state=active]:bg-blue-500 data-[state=active]:text-white
-                     dark:hover:bg-gray-700 dark:hover:text-white
-                     dark:data-[state=active]:bg-blue-600 dark:data-[state=active]:text-white"
+                className="flex flex-col items-center rounded-xl border border-border bg-card px-3 py-4
+                     text-sm font-medium shadow-sm transition-all
+                     hover:border-blue-200 hover:bg-accent hover:text-accent-foreground
+                     data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white
+                     dark:hover:border-blue-800 dark:hover:bg-gray-800 dark:hover:text-white
+                     dark:data-[state=active]:from-blue-600 dark:data-[state=active]:to-indigo-700"
                 aria-label={`Show ${category.name} skills`}
               >
+                {category.icon}
                 {category.name}
               </TabsTrigger>
             ))}
           </TabsList>
-          {skillCategories.map((category, index) => (
-            <TabsContent
-              key={index}
-              value={category.name}
-              aria-label={`${category.name} skills list`}
-            >
-              <SkillCategory
-                title={category.name}
-                skills={category.skills}
-                selectedLevel={selectedLevel}
-              />
-            </TabsContent>
-          ))}
+          <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+            {skillCategories.map((category, index) => (
+              <TabsContent
+                key={index}
+                value={category.name}
+                aria-label={`${category.name} skills list`}
+              >
+                <SkillCategory
+                  title={category.name}
+                  skills={category.skills}
+                  selectedLevel={selectedLevel}
+                  icon={category.icon}
+                />
+              </TabsContent>
+            ))}
+          </div>
         </Tabs>
       </div>
     </section>

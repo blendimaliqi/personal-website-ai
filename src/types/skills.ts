@@ -8,6 +8,7 @@ export interface Skill {
 export interface SkillCategory {
   name: string;
   skills: Skill[];
+  icon?: React.ReactNode;
 }
 
 export const skillLevels: Record<SkillLevel, number> = {
