@@ -1,21 +1,27 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { cn } from "~/lib/utils";
 
 const Footer = () => {
   return (
-    <footer className="mt-12 border-t bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 dark:from-gray-800 dark:to-gray-900 dark:text-gray-200">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex flex-col items-center justify-between space-y-2 sm:flex-row sm:space-y-0">
-          <div className="text-center sm:text-left">
-            <h2 className="text-base font-semibold">Blendi Maliqi</h2>
-            <p className="text-xs opacity-75">Software developer</p>
+    <footer className="border-t border-slate-200 bg-gradient-to-r from-slate-50 to-slate-100 text-slate-800 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800 dark:text-slate-200">
+      <div className="container mx-auto px-6 py-8">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
+          <div className="text-center md:text-left">
+            <h2 className="text-lg font-semibold tracking-tight">
+              Blendi Maliqi
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              Software developer
+            </p>
           </div>
-          <div className="flex space-x-4">
+
+          <div className="flex space-x-6">
             <a
               href="https://linkedin.com/in/blendimaliqi"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              className="rounded-full p-2 transition-colors duration-300 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100"
               aria-label="LinkedIn"
             >
               <FaLinkedin className="h-5 w-5" />
@@ -24,14 +30,14 @@ const Footer = () => {
               href="https://github.com/blendimaliqi"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              className="rounded-full p-2 transition-colors duration-300 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100"
               aria-label="GitHub"
             >
               <FaGithub className="h-5 w-5" />
             </a>
             <a
               href="mailto:blendi.maliqi93@gmail.com"
-              className="transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-400"
+              className="rounded-full p-2 transition-colors duration-300 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100"
               aria-label="Email"
             >
               <FaEnvelope className="h-5 w-5" />
