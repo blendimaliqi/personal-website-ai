@@ -156,16 +156,16 @@ export function DesktopChat({
                 onKeyDown={handleKeyPress}
                 value={message}
                 placeholder="Ask me anything..."
-                className={`h-10 w-full rounded-full ${
+                className={`h-12 w-full rounded-full py-3 ${
                   isDarkTheme
                     ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
                     : "border-slate-300/30 bg-slate-200/50 text-slate-900 placeholder:text-slate-500"
-                } pr-10`}
+                } pr-12 text-base`}
               />
               <Button
                 onClick={() => handleSendMessage()}
                 size="icon"
-                className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                className="absolute right-1.5 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
                 disabled={loading || message.trim() === ""}
               >
                 <ArrowUp className="h-4 w-4" />
