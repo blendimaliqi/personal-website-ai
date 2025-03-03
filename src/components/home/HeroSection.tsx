@@ -70,7 +70,7 @@ export default function HeroSection({
         isDarkTheme
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
           : "bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200"
-      } px-4 py-12 shadow-xl sm:px-6 md:py-16 lg:px-8`}
+      } px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
     >
       {/* Mobile Chat Button */}
       {isMobile && !localShowMobileChat && (
