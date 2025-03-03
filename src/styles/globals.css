@@ -10,6 +10,53 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
   }
+
+  /* Custom scrollbar styles for chat */
+  .scrollbar-light {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(203, 213, 225, 0.5) rgba(226, 232, 240, 0.3);
+  }
+
+  .scrollbar-light::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-track {
+    background: rgba(226, 232, 240, 0.3);
+    border-radius: 10px;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    background-color: rgba(203, 213, 225, 0.5);
+    border-radius: 10px;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 163, 184, 0.7);
+  }
+
+  .scrollbar-dark {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(51, 65, 85, 0.5) rgba(30, 41, 59, 0.3);
+  }
+
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 10px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background-color: rgba(51, 65, 85, 0.5);
+    border-radius: 10px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(71, 85, 105, 0.7);
+  }
 }
 
 @layer base {
