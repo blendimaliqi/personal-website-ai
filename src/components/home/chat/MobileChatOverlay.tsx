@@ -55,7 +55,7 @@ export function MobileChatOverlay({
             exit={{ scale: 0.9 }}
             className={`relative h-[85vh] w-full max-w-md rounded-xl ${
               isDarkTheme ? "bg-slate-800" : "bg-slate-200"
-            } shadow-2xl`}
+            } overflow-hidden shadow-2xl`}
           >
             {/* Chat Header */}
             <div className="flex items-center justify-between rounded-t-xl bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
@@ -81,8 +81,8 @@ export function MobileChatOverlay({
             </div>
 
             {/* Chat Content */}
-            <div className="flex h-[calc(85vh-120px)] flex-col overflow-hidden">
-              <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex h-[calc(85vh-105px)] flex-col overflow-hidden">
+              <div className="scrollbar-dark flex-1 overflow-y-auto p-4">
                 {messages.length === 0 && (
                   <div className="flex flex-col items-center">
                     <div className="group relative mb-5 h-24 w-24 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl">
@@ -121,7 +121,7 @@ export function MobileChatOverlay({
                 className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/30"} p-3`}
               >
                 {messages.length === 0 && (
-                  <div className="mb-3 flex flex-wrap gap-2">
+                  <div className="mb-4 flex flex-wrap gap-2">
                     {sampleQuestions.map((question) => (
                       <button
                         key={question}
@@ -144,19 +144,19 @@ export function MobileChatOverlay({
                     onKeyDown={handleKeyPress}
                     value={message}
                     placeholder="Ask me anything..."
-                    className={`h-10 w-full rounded-full ${
+                    className={`h-14 w-full rounded-full py-3 ${
                       isDarkTheme
                         ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
                         : "border-slate-300/30 bg-slate-200/50 text-slate-900 placeholder:text-slate-500"
-                    } pr-10`}
+                    } pr-14 text-base`}
                   />
                   <Button
                     onClick={() => handleSendMessage()}
                     size="icon"
-                    className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                    className="absolute right-1.5 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
                     disabled={loading || message.trim() === ""}
                   >
-                    <ArrowUp className="h-4 w-4" />
+                    <ArrowUp className="h-5 w-5" />
                   </Button>
                 </div>
               </div>
