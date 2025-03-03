@@ -72,8 +72,9 @@ export default function HeroSection({
           : "bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200"
       } px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
     >
-      {/* Mobile Chat Button */}
-      {isMobile && !localShowMobileChat && (
+      {/* Mobile Chat Button removed as requested */}
+      {/* But we still need the floating button to appear if we open chat from the "Chat with AI" button */}
+      {isMobile && localShowMobileChat && (
         <MobileChatButton toggleMobileChat={toggleMobileChat} />
       )}
 
@@ -105,7 +106,12 @@ export default function HeroSection({
         }`}
       >
         {/* Left column - Profile Section */}
-        <ProfileSection isDarkTheme={isDarkTheme} />
+        <ProfileSection
+          isDarkTheme={isDarkTheme}
+          toggleMobileChat={toggleMobileChat}
+          isMobile={isMobile}
+          handleSendMessage={handleSendMessage}
+        />
 
         {/* Right column - Desktop Chat (only visible on desktop) */}
         {!isMobile && (
