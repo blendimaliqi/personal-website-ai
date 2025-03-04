@@ -120,8 +120,8 @@ export const SkillsSection: React.FC = () => {
                 value={category.name}
                 className="flex flex-col items-center rounded-xl border border-border bg-card px-3 py-4
                      text-sm font-medium shadow-sm transition-all
-                     hover:border-blue-200 hover:bg-accent hover:text-accent-foreground
-                     data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white
+                     hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700
+                     data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-700 data-[state=active]:text-white
                      dark:hover:border-blue-800 dark:hover:bg-gray-800 dark:hover:text-white
                      dark:data-[state=active]:from-blue-600 dark:data-[state=active]:to-indigo-700"
                 aria-label={`Show ${category.name} skills`}

@@ -12,7 +12,7 @@ const levelDescriptions: Record<SkillLevel, string> = {
 
 export const SkillLevelLegend: React.FC = () => (
   <div className="mx-auto max-w-3xl">
-    <div className="mb-2 flex items-center justify-center gap-2 text-center text-sm text-muted-foreground">
+    <div className="mb-2 flex items-center justify-center gap-2 text-center text-sm font-medium text-foreground">
       <InfoIcon className="h-4 w-4" />
       <p>
         Skill levels indicate my relative confidence and experience with each
@@ -28,15 +28,15 @@ export const SkillLevelLegend: React.FC = () => (
             <div key={level} className="flex flex-col items-center">
               <div className="mb-2 flex items-center">
                 <div
-                  className="mr-2 h-4 w-4 rounded-full"
+                  className="mr-2 h-5 w-5 rounded-full"
                   style={{ backgroundColor: color }}
                 ></div>
-                <span className="font-medium">{skillLevel}</span>
-                <span className="ml-1 text-sm text-muted-foreground">
+                <span className="font-semibold">{skillLevel}</span>
+                <span className="ml-1 text-sm font-medium text-foreground">
                   ({skillLevels[skillLevel]}%)
                 </span>
               </div>
-              <p className="max-w-[200px] text-center text-xs text-muted-foreground">
+              <p className="max-w-[200px] text-center text-xs font-medium text-foreground">
                 {levelDescriptions[skillLevel]}
               </p>
             </div>

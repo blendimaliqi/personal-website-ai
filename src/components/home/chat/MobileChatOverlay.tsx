@@ -54,7 +54,7 @@ export function MobileChatOverlay({
             animate={{ scale: 1 }}
             exit={{ scale: 0.9 }}
             className={`relative h-[85vh] w-full max-w-md rounded-xl ${
-              isDarkTheme ? "bg-slate-800" : "bg-slate-200"
+              isDarkTheme ? "bg-slate-800" : "bg-white"
             } overflow-hidden shadow-2xl`}
           >
             {/* Chat Header */}
@@ -97,15 +97,15 @@ export function MobileChatOverlay({
                       />
                     </div>
                     <p
-                      className={`text-center ${isDarkTheme ? "text-white" : "text-slate-900"}`}
+                      className={`text-center ${isDarkTheme ? "text-white" : "font-medium text-slate-900"}`}
                     >
                       Hello there
                     </p>
                     <div
-                      className={`mt-4 w-full border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/30"} pt-4`}
+                      className={`mt-4 w-full border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} pt-4`}
                     >
                       <p
-                        className={`text-center text-sm ${isDarkTheme ? "text-slate-300" : "text-slate-600"}`}
+                        className={`text-center text-sm ${isDarkTheme ? "text-slate-300" : "font-medium text-slate-700"}`}
                       >
                         I'm Blendi's AI assistant. Ask me anything about his
                         skills, experience, projects, or background.
@@ -118,7 +118,7 @@ export function MobileChatOverlay({
 
               {/* Input Area */}
               <div
-                className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/30"} p-3`}
+                className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} p-3`}
               >
                 {messages.length === 0 && (
                   <div className="mb-4 flex flex-wrap gap-2">
@@ -129,7 +129,7 @@ export function MobileChatOverlay({
                         className={`rounded-full border ${
                           isDarkTheme
                             ? "border-white/10 bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"
-                            : "border-slate-300/30 bg-slate-200/50 text-slate-700 hover:bg-slate-200 hover:text-slate-900"
+                            : "border-slate-400/50 bg-slate-200/80 text-slate-700 hover:bg-slate-300 hover:text-slate-900"
                         } px-3 py-1 text-xs transition-colors`}
                       >
                         {question}
@@ -147,7 +147,7 @@ export function MobileChatOverlay({
                     className={`h-14 w-full rounded-full py-3 ${
                       isDarkTheme
                         ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
-                        : "border-slate-300/30 bg-slate-200/50 text-slate-900 placeholder:text-slate-500"
+                        : "border-slate-400/50 bg-white text-slate-900 placeholder:text-slate-500"
                     } pr-14 text-base`}
                   />
                   <Button

@@ -171,10 +171,10 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                       : embedded
                         ? isDarkTheme
                           ? "bg-slate-700"
-                          : "bg-slate-300"
+                          : "border border-slate-300 bg-white"
                         : isDarkTheme
                           ? "bg-slate-800"
-                          : "bg-slate-200"
+                          : "border border-slate-300 bg-white"
                   }`}
                 >
                   <div className="flex items-center gap-2 pb-1">
@@ -192,10 +192,10 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                           : embedded
                             ? isDarkTheme
                               ? "text-gray-300"
-                              : "text-gray-700"
+                              : "text-gray-800"
                             : isDarkTheme
                               ? "text-gray-300"
-                              : "text-gray-700"
+                              : "text-gray-800"
                       }`}
                     >
                       {msg.role === "user" ? "You" : "Blendi's Assistant"}
@@ -236,10 +236,10 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                     embedded
                       ? isDarkTheme
                         ? "bg-slate-700"
-                        : "bg-slate-300"
+                        : "border border-slate-300 bg-white"
                       : isDarkTheme
                         ? "bg-slate-800"
-                        : "bg-slate-200"
+                        : "border border-slate-300 bg-white"
                   }`}
                 >
                   <div className="flex items-center gap-2 pb-1">
@@ -251,10 +251,10 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
                         embedded
                           ? isDarkTheme
                             ? "text-gray-300"
-                            : "text-gray-700"
+                            : "text-gray-800"
                           : isDarkTheme
                             ? "text-gray-300"
-                            : "text-gray-700"
+                            : "text-gray-800"
                       }`}
                     >
                       Blendi's Assistant

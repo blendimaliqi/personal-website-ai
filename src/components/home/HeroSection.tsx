@@ -69,7 +69,7 @@ export default function HeroSection({
       className={`relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl ${
         isDarkTheme
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200"
+          : "bg-gradient-to-br from-slate-50 via-white to-slate-100"
       } px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
     >
       {/* Mobile Chat Button removed as requested */}

@@ -47,14 +47,14 @@ export function DesktopChat({
         className={`w-full max-w-full rounded-xl border ${
           isDarkTheme
             ? "border-white/10 bg-white/5"
-            : "border-slate-300/30 bg-slate-200/5"
+            : "border-slate-300/70 bg-white/80"
         } p-1 backdrop-blur-sm transition-all duration-500`}
         style={{
           zIndex: expandedChat ? 10 : 1,
         }}
       >
         <div
-          className={`rounded-lg ${isDarkTheme ? "bg-slate-800/80" : "bg-slate-200/80"} shadow-lg`}
+          className={`rounded-lg ${isDarkTheme ? "bg-slate-800/80" : "bg-slate-100"} shadow-lg`}
         >
           {/* Chat Header */}
           <div className="flex items-center justify-between rounded-t-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
@@ -110,14 +110,18 @@ export function DesktopChat({
                     priority={true}
                   />
                 </div>
-                <p className={isDarkTheme ? "text-white" : "text-slate-900"}>
+                <p
+                  className={
+                    isDarkTheme ? "text-white" : "font-medium text-slate-900"
+                  }
+                >
                   Hello there
                 </p>
                 <div
-                  className={`mt-6 w-full border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/30"} pt-6`}
+                  className={`mt-6 w-full border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} pt-6`}
                 >
                   <p
-                    className={`text-center text-sm ${isDarkTheme ? "text-slate-300" : "text-slate-600"}`}
+                    className={`text-center text-sm ${isDarkTheme ? "text-slate-300" : "font-medium text-slate-700"}`}
                   >
                     I'm Blendi's AI assistant. Ask me anything about his skills,
                     experience, projects, or background.
@@ -130,7 +134,7 @@ export function DesktopChat({
 
           {/* Input Area */}
           <div
-            className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/30"} p-3`}
+            className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} p-3`}
           >
             {messages.length === 0 && (
               <div className="mb-5 flex flex-wrap gap-2">
@@ -141,7 +145,7 @@ export function DesktopChat({
                     className={`rounded-full border ${
                       isDarkTheme
                         ? "border-white/10 bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"
-                        : "border-slate-300/30 bg-slate-200/50 text-slate-700 hover:bg-slate-200 hover:text-slate-900"
+                        : "border-slate-400/50 bg-slate-200/80 text-slate-700 hover:bg-slate-300 hover:text-slate-900"
                     } px-3 py-1 text-xs transition-colors`}
                   >
                     {question}
@@ -159,7 +163,7 @@ export function DesktopChat({
                 className={`h-12 w-full rounded-full py-3 ${
                   isDarkTheme
                     ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
-                    : "border-slate-300/30 bg-slate-200/50 text-slate-900 placeholder:text-slate-500"
+                    : "border-slate-400/50 bg-white text-slate-900 placeholder:text-slate-500"
                 } pr-12 text-base`}
               />
               <Button
