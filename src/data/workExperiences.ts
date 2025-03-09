@@ -2,6 +2,28 @@ import { WorkExperience } from "~/types/work";
 
 export const workExperiences: WorkExperience[] = [
   {
+    title: "Omegapoint Norge",
+    description: "IT Consultant & Frontend Advocate",
+    shortDescription: "Consultant with additional role as Frontend Advocate",
+    content: `I've been with Omegapoint Norge since September 2021, where I work as an IT consultant. My job has taken me across different client projects, which is really exciting because I get to tackle new challenges all the time.
+
+I've had my hands in all sorts of projects. From building slick frontends to developing cross-platform mobile apps and even diving into backend work when needed. It's been great getting to jump between different tech stacks and business domains. Each project has its own unique challenges, but that's what keeps the job interesting!
+
+Since May 2024, I've also taken on an additional role as the Frontend Advocate within Omegapoint. This doesn't replace my consulting work. I'm still fully engaged with clients, but it's something I do alongside my regular projects. As the Frontend Advocate, I help keep our developers up to date with what's happening in the frontend world. I do this through:
+
+- Giving talks about new technologies and approaches I've discovered
+- Running workshops where we can get hands-on with new tools and techniques
+- Organizing events where we can all share what we're learning
+- Encouraging other developers to share their knowledge too
+
+I really enjoy this dual role. The consulting work keeps me in the trenches, solving real-world problems for clients. Meanwhile, the advocate position lets me step back, reflect on what I'm learning, and share that knowledge with my colleagues. It's the best of both worlds!`,
+    technologies:
+      "React, TypeScript, Next.js, React Native, Flutter, .NET, C#, Azure, Frontend Architecture",
+    logo: "/omegapoint.png",
+    startDate: "Sep 2021",
+    endDate: "Mar 2025",
+  },
+  {
     title: "Mastercard",
     description: "Frontend Developer",
     shortDescription:
@@ -14,8 +36,7 @@ For existing applications, we are working with and improving legacy technologies
 
 This approach allows integration with existing systems while allowing for modernization where possible and appropriate. It also requires a deep understanding of both current best practices and legacy systems, as well as adherence to Mastercard's UI/UX standards.
 I am working closely with different teams and PO's to understand their unique requirements and ensure that the frontend aligns with their goals and Mastercard's guidelines. As the project progresses, I am continuously iterating and improving the frontend to deliver the best possible user experience, whether that involves incremental updates to legacy systems or more substantial overhauls using modern frameworks.`,
-    technologies:
-      "React, TypeScript, Spring Boot, Java, Figma, Jest, Playwright",
+    technologies: "React, Java, TypeScript, Figma, Jest, Playwright",
     logo: "/mastercard-logo.png",
     startDate: "Mar 2023",
     endDate: "Mar 2025",
