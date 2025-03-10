@@ -19,7 +19,7 @@ Since May 2024, I've also taken on an additional role as the Frontend Advocate w
 I really enjoy this dual role. The consulting work keeps me in the trenches, solving real-world problems for clients. Meanwhile, the advocate position lets me step back, reflect on what I'm learning, and share that knowledge with my colleagues. It's the best of both worlds!`,
     technologies:
       "React, TypeScript, Next.js, React Native, Flutter, .NET, C#, Azure, Frontend Architecture",
-    logo: "/omegapoint.png",
+    logo: "/omegapoint_norge_logo.jpg",
     startDate: "Sep 2021",
     endDate: "Mar 2025",
   },
