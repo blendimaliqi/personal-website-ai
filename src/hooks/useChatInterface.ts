@@ -89,6 +89,8 @@ export function useChatInterface({
   function resetChat() {
     setMessages([]);
     setExpandedChat(false);
+    // Reset the message input as well
+    setMessage("");
   }
 
   function handleSampleQuestion(question: string) {

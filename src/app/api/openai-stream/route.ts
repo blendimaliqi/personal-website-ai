@@ -151,7 +151,7 @@ IMPORTANT: Your primary focus is answering questions about Blendi Maliqi, his wo
 
 export async function POST(req: NextRequest) {
   try {
-    const { message } = await req.json();
+    const { message, messages = [] } = await req.json();
 
     if (!message || typeof message !== "string" || message.trim() === "") {
       return NextResponse.json(
@@ -160,17 +160,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Prepare conversation history for the API
+    const apiMessages = [
+      { role: "system", content: systemPrompt },
+      {
+        role: "system",
+        content:
+          "Remember: Only respond to questions about Blendi Maliqi. For unrelated questions, provide the standard response directing users to ask about Blendi.",
+      },
+      // Include previous conversation history
+      ...messages.filter((msg: any) => msg.role !== "system"),
+      // Add the new user message
+      { role: "user", content: message },
+    ];
+
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: systemPrompt },
-        {
-          role: "system",
-          content:
-            "Remember: Only respond to questions about Blendi Maliqi. For unrelated questions, provide the standard response directing users to ask about Blendi.",
-        },
-        { role: "user", content: message },
-      ],
+      messages: apiMessages,
       stream: true,
     });
 

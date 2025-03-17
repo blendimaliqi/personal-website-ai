@@ -4,6 +4,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import TypingIndicator from "./TypingIndicator";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -15,44 +16,6 @@ interface ChatProps {
   embedded?: boolean;
 }
 
-// Typing indicator component
-function TypingIndicator() {
-  return (
-    <div className="flex space-x-1">
-      <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
-        animate={{ y: [0, -5, 0] }}
-        transition={{
-          duration: 0.5,
-          repeat: Infinity,
-          repeatType: "loop",
-          delay: 0,
-        }}
-      />
-      <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
-        animate={{ y: [0, -5, 0] }}
-        transition={{
-          duration: 0.5,
-          repeat: Infinity,
-          repeatType: "loop",
-          delay: 0.2,
-        }}
-      />
-      <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
-        animate={{ y: [0, -5, 0] }}
-        transition={{
-          duration: 0.5,
-          repeat: Infinity,
-          repeatType: "loop",
-          delay: 0.4,
-        }}
-      />
-    </div>
-  );
-}
-
 function Chat({ messages, embedded = false }: ChatProps) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -61,7 +24,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Only consider theme after component has mounted to avoid hydration mismatch
+  // consider theme after component has mounted to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);

@@ -3,11 +3,17 @@ export interface Message {
   content: string;
 }
 
-export async function sendChatMessage(messageText: string): Promise<Response> {
+export async function sendChatMessage(
+  messageText: string,
+  messages: Message[] = [],
+): Promise<Response> {
   return fetch("/api/openai-stream", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: messageText }),
+    body: JSON.stringify({
+      message: messageText,
+      messages: messages,
+    }),
   });
 }
 

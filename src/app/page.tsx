@@ -42,7 +42,11 @@ export default function HomePage() {
       setLoading(true);
 
       try {
-        const response = await sendChatMessage(messageToSend);
+        const currentMessages = [
+          ...messages,
+          { role: "user" as const, content: messageToSend },
+        ];
+        const response = await sendChatMessage(messageToSend, currentMessages);
         await processStreamResponse(response, setMessages);
       } catch (error) {
         console.error("Error:", error);
@@ -51,7 +55,7 @@ export default function HomePage() {
         setMessage("");
       }
     },
-    [loading, message, isMobile],
+    [loading, message, messages],
   );
 
   useEffect(() => {
