@@ -30,36 +30,30 @@ export function useChatInterface({
   const [localShowMobileChat, setLocalShowMobileChat] =
     useState(showMobileChat);
 
-  // Check if device is mobile
   useEffect(() => {
     function checkIfMobile() {
       setIsMobile(window.innerWidth < 768);
     }
 
-    // Initial check
     checkIfMobile();
 
-    // Add event listener for window resize
     window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
     return function () {
       window.removeEventListener("resize", checkIfMobile);
-      // Reset mobile chat when switching from mobile to desktop
       if (!isMobile) {
         toggleMobileChat(false);
       }
     };
   }, [isMobile]);
 
-  // Sync local state with props
   useEffect(() => {
     if (showMobileChat !== undefined) {
       setLocalShowMobileChat(showMobileChat);
     }
   }, [showMobileChat]);
 
-  // Auto-expand chat when a message is sent
   useEffect(() => {
     if (messages.length > 0 && !expandedChat && !isMobile) {
       setExpandedChat(true);
@@ -89,7 +83,6 @@ export function useChatInterface({
   function resetChat() {
     setMessages([]);
     setExpandedChat(false);
-    // Reset the message input as well
     setMessage("");
   }
 
