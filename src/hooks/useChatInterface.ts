@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Message {
   role: "system" | "user" | "assistant";
@@ -29,6 +29,7 @@ export function useChatInterface({
   const [hasAnimated, setHasAnimated] = useState(false);
   const [localShowMobileChat, setLocalShowMobileChat] =
     useState(showMobileChat);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     function checkIfMobile() {
@@ -62,7 +63,11 @@ export function useChatInterface({
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
-      handleSendMessage();
+      handleSendMessage().then(() => {
+        setTimeout(() => {
+          inputRef.current?.focus();
+        }, 0);
+      });
     }
   }
 
@@ -91,7 +96,11 @@ export function useChatInterface({
       setExpandedChat(true);
       setHasAnimated(true);
     }
-    handleSendMessage(question);
+    handleSendMessage(question).then(() => {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    });
   }
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -109,5 +118,6 @@ export function useChatInterface({
     resetChat,
     handleSampleQuestion,
     handleInputChange,
+    inputRef,
   };
 }

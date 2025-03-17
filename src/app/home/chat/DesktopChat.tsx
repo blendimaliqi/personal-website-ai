@@ -24,6 +24,7 @@ interface DesktopChatProps {
   handleSendMessage: (customMessage?: string) => Promise<void>;
   sampleQuestions: string[];
   handleSampleQuestion: (question: string) => void;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export function DesktopChat({
@@ -40,6 +41,7 @@ export function DesktopChat({
   handleSendMessage,
   sampleQuestions,
   handleSampleQuestion,
+  inputRef,
 }: DesktopChatProps) {
   return (
     <div className="flex items-center justify-center">
@@ -162,9 +164,16 @@ export function DesktopChat({
                     ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
                     : "border-slate-400/50 bg-white text-slate-900 placeholder:text-slate-500"
                 } pr-12 text-base`}
+                ref={inputRef}
               />
               <Button
-                onClick={() => handleSendMessage()}
+                onClick={() => {
+                  handleSendMessage().then(() => {
+                    setTimeout(() => {
+                      inputRef.current?.focus();
+                    }, 0);
+                  });
+                }}
                 size="icon"
                 className="absolute right-1.5 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
                 disabled={loading || message.trim() === ""}

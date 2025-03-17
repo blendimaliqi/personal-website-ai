@@ -47,6 +47,7 @@ export default function HeroSection({
     resetChat,
     handleSampleQuestion,
     handleInputChange,
+    inputRef,
   } = useChatInterface({
     messages,
     setMessages,
@@ -88,6 +89,7 @@ export default function HeroSection({
           handleSendMessage={handleSendMessage}
           sampleQuestions={sampleQuestions}
           handleSampleQuestion={handleSampleQuestion}
+          inputRef={inputRef}
         />
       )}
 
@@ -121,6 +123,7 @@ export default function HeroSection({
             handleSendMessage={handleSendMessage}
             sampleQuestions={sampleQuestions}
             handleSampleQuestion={handleSampleQuestion}
+            inputRef={inputRef}
           />
         )}
       </div>

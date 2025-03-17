@@ -24,6 +24,7 @@ interface MobileChatOverlayProps {
   handleSendMessage: (customMessage?: string) => Promise<void>;
   sampleQuestions: string[];
   handleSampleQuestion: (question: string) => void;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export function MobileChatOverlay({
@@ -39,6 +40,7 @@ export function MobileChatOverlay({
   handleSendMessage,
   sampleQuestions,
   handleSampleQuestion,
+  inputRef,
 }: MobileChatOverlayProps) {
   return (
     <AnimatePresence>
@@ -144,9 +146,16 @@ export function MobileChatOverlay({
                         ? "border-white/10 bg-white/5 text-white placeholder:text-white/50"
                         : "border-slate-400/50 bg-white text-slate-900 placeholder:text-slate-500"
                     } pr-14 text-base`}
+                    ref={inputRef}
                   />
                   <Button
-                    onClick={() => handleSendMessage()}
+                    onClick={() => {
+                      handleSendMessage().then(() => {
+                        setTimeout(() => {
+                          inputRef.current?.focus();
+                        }, 0);
+                      });
+                    }}
                     size="icon"
                     className="absolute right-1.5 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
                     disabled={loading || message.trim() === ""}
