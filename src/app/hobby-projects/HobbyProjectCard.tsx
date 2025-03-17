@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "./ui/card";
+} from "~/components/ui/card";
 import { HobbyProject } from "@/types/hobby-project";
 import { ExternalLink, Github, Globe, ChevronDown } from "lucide-react";
 
@@ -24,7 +24,6 @@ export function HobbyProjectCard({ project, onClick }: HobbyProjectCardProps) {
     }
   };
 
-  // Separate handler to prevent card click when clicking on a link
   const handleButtonClick = (
     e: React.MouseEvent<HTMLButtonElement>,
     url: string,
@@ -43,10 +42,8 @@ export function HobbyProjectCard({ project, onClick }: HobbyProjectCardProps) {
       aria-label={`Project: ${project.title}`}
       tabIndex={0}
     >
-      {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
-      {/* Card Header and Content */}
       <div className="relative z-10 flex-grow">
         <CardHeader className="pb-3">
           <div className="flex items-start space-x-3">
@@ -76,7 +73,6 @@ export function HobbyProjectCard({ project, onClick }: HobbyProjectCardProps) {
         </CardContent>
       </div>
 
-      {/* Card Footer with Technologies */}
       <CardFooter className="mt-auto flex flex-col items-start border-t border-border/50 bg-muted/30 py-5">
         <div className="min-h-[100px] w-full">
           <p className="mb-3 text-sm font-medium text-muted-foreground">

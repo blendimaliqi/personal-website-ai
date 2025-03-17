@@ -57,7 +57,6 @@ export function MobileChatOverlay({
               isDarkTheme ? "bg-slate-800" : "bg-white"
             } overflow-hidden shadow-2xl`}
           >
-            {/* Chat Header */}
             <div className="flex items-center justify-between rounded-t-xl bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
               <div className="flex items-center gap-2">
                 <Bot className="h-5 w-5 text-white" />
@@ -79,8 +78,6 @@ export function MobileChatOverlay({
                 </button>
               </div>
             </div>
-
-            {/* Chat Content */}
             <div className="flex h-[calc(85vh-105px)] flex-col overflow-hidden">
               <div className="scrollbar-dark flex-1 overflow-y-auto p-4">
                 {messages.length === 0 && (
@@ -115,8 +112,6 @@ export function MobileChatOverlay({
                 )}
                 <Chat messages={messages} embedded={true} />
               </div>
-
-              {/* Input Area */}
               <div
                 className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} p-3`}
               >

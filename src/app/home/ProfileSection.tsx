@@ -24,7 +24,6 @@ export function ProfileSection({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Handle chat interactions
   const handleChatClick = () => {
     if (toggleMobileChat) {
       toggleMobileChat(true);
@@ -113,7 +112,6 @@ export function ProfileSection({
             </Button>
           </Link>
 
-          {/* Chat with AI button - only visible on mobile */}
           {isMobile && toggleMobileChat && (
             <Button
               onClick={handleChatClick}

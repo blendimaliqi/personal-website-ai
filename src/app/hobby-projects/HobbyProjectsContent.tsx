@@ -8,9 +8,9 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
-import { ScrollArea } from "./ui/scroll-area";
+} from "~/components/ui/dialog";
+import { Button } from "~/components/ui/button";
+import { ScrollArea } from "~/components/ui/scroll-area";
 import { HobbyProject } from "@/types/hobby-project";
 import { hobbyProjects } from "@/data/hobby-projects";
 import { HobbyProjectCard } from "./HobbyProjectCard";

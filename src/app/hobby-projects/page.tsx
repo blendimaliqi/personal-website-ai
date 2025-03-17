@@ -1,5 +1,5 @@
 import React from "react";
-import HobbyProjectsContent from "~/components/HobbyProjectsContent";
+import HobbyProjectsContent from "./HobbyProjectsContent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

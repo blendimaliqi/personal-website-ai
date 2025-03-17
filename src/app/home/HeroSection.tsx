@@ -35,7 +35,6 @@ export default function HeroSection({
   showMobileChat = false,
   setShowMobileChat,
 }: HeroSectionProps) {
-  // Custom hooks
   const { isDarkTheme } = useThemeDetection();
   const {
     isMobile,
@@ -58,7 +57,6 @@ export default function HeroSection({
     setShowMobileChat,
   });
 
-  // Sample questions
   const sampleQuestions = [
     "Tell me about Blendi's experience",
     "What technologies does Blendi use?",
@@ -72,13 +70,10 @@ export default function HeroSection({
           : "bg-gradient-to-br from-slate-50 via-white to-slate-100"
       } px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
     >
-      {/* Mobile Chat Button removed as requested */}
-      {/* But we still need the floating button to appear if we open chat from the "Chat with AI" button */}
       {isMobile && localShowMobileChat && (
         <MobileChatButton toggleMobileChat={toggleMobileChat} />
       )}
 
-      {/* Mobile Chat Overlay */}
       {isMobile && (
         <MobileChatOverlay
           isVisible={localShowMobileChat}
@@ -105,7 +100,6 @@ export default function HeroSection({
               : "md:grid-cols-2"
         }`}
       >
-        {/* Left column - Profile Section */}
         <ProfileSection
           isDarkTheme={isDarkTheme}
           toggleMobileChat={toggleMobileChat}
@@ -113,7 +107,6 @@ export default function HeroSection({
           handleSendMessage={handleSendMessage}
         />
 
-        {/* Right column - Desktop Chat (only visible on desktop) */}
         {!isMobile && (
           <DesktopChat
             isDarkTheme={isDarkTheme}

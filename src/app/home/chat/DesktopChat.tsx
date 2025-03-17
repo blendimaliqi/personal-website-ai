@@ -56,7 +56,6 @@ export function DesktopChat({
         <div
           className={`rounded-lg ${isDarkTheme ? "bg-slate-800/80" : "bg-slate-100"} shadow-lg`}
         >
-          {/* Chat Header */}
           <div className="flex items-center justify-between rounded-t-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5 text-white" />
@@ -90,7 +89,6 @@ export function DesktopChat({
             </div>
           </div>
 
-          {/* Chat Content */}
           <div
             className="overflow-hidden p-4"
             style={{
@@ -98,7 +96,6 @@ export function DesktopChat({
               transition: hasAnimated ? "height 0.5s ease-in-out" : "none",
             }}
           >
-            {/* Profile info at the top of chat */}
             {messages.length === 0 && (
               <div className="flex flex-col items-center">
                 <div className="group relative mb-5 h-40 w-40 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl transition-all duration-300 hover:scale-105">
@@ -133,8 +130,6 @@ export function DesktopChat({
             )}
             <Chat messages={messages} embedded={true} />
           </div>
-
-          {/* Input Area */}
           <div
             className={`border-t ${isDarkTheme ? "border-white/10" : "border-slate-300/50"} p-3`}
           >

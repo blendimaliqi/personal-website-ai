@@ -64,10 +64,9 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
     setMounted(true);
   }, []);
 
-  // Use a safe default (dark) for server-side rendering, then use the actual theme after mounting
   const isDarkTheme = !mounted ? true : resolvedTheme === "dark";
 
-  // Detect when assistant is typing (when the last message is being updated)
+  // detect when assistant is typing
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
@@ -83,7 +82,7 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
     }
   }, [messages]);
 
-  // Scroll to bottom when messages array changes (new message added)
+  // scroll to bottom when messages array changes (new message added)
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTo({

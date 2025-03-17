@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { WorkExperience } from "~/types/work";
 import { workExperiences } from "~/data/workExperiences";
-import { WorkExperienceCard } from "~/components/WorkExperienceCard";
+import { WorkExperienceCard } from "./WorkExperienceCard";
 import {
   Dialog,
   DialogContent,

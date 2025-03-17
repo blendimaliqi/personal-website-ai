@@ -17,7 +17,6 @@ export default function SkillsSection({
   expandedChat,
   isMobile,
 }: SkillsSectionProps) {
-  // Map of icon names to icon components
   const iconMap = {
     Code: <Code className="h-5 w-5" />,
     Cpu: <Cpu className="h-5 w-5" />,

@@ -26,26 +26,21 @@ interface FeaturedProjectsSectionProps {
 export default function FeaturedProjectsSection({
   activeSection,
   handleSectionHover,
-  expandedChat,
   isMobile,
 }: FeaturedProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
-  // Function to find the full project details from either work or hobby projects
   const findFullProjectDetails = (projectTitle: string) => {
-    // Check if it's a work experience
     const workMatch = workExperiences.find(
       (work) => work.title === projectTitle,
     );
     if (workMatch) return { ...workMatch, type: "work" };
 
-    // Check if it's a hobby project
     const hobbyMatch = hobbyProjects.find(
       (hobby) => hobby.title === projectTitle,
     );
     if (hobbyMatch) return { ...hobbyMatch, type: "hobby" };
 
-    // Return featured project data as fallback
     const featuredMatch = featuredProjects.find(
       (fp) => fp.title === projectTitle,
     );
@@ -84,7 +79,6 @@ export default function FeaturedProjectsSection({
                   : "border-border"
               }`}
             >
-              {/* Background gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
               <div className="relative z-10 flex h-full flex-col p-6">
