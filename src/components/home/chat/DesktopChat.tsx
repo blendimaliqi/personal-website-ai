@@ -81,10 +81,12 @@ export function DesktopChat({
                   <Maximize2 className="h-3.5 w-3.5" />
                 )}
               </button>
+              {/* Commented out for now
               <div className="flex space-x-1">
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
                 <span className="h-2.5 w-2.5 rounded-full bg-green-400"></span>
               </div>
+              */}
             </div>
           </div>
 
