@@ -55,11 +55,11 @@ export function useChatInterface({
   }, [showMobileChat]);
 
   useEffect(() => {
-    if (messages.length > 0 && !expandedChat && !isMobile) {
+    if (messages.length > 0 && !expandedChat && !isMobile && !hasAnimated) {
       setExpandedChat(true);
       setHasAnimated(true);
     }
-  }, [messages.length, expandedChat, isMobile]);
+  }, [messages.length, expandedChat, isMobile, hasAnimated]);
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
