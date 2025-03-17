@@ -10,14 +10,13 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState("");
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [expandedChat, setExpandedChat] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showMobileChat, setShowMobileChat] = useState(false);
 
   useEffect(() => {
-    const checkIfMobile = () => {
+    function checkIfMobile() {
       setIsMobile(window.innerWidth < 768);
-    };
+    }
 
     checkIfMobile();
 
@@ -42,10 +41,6 @@ export default function HomePage() {
       ]);
       setLoading(true);
 
-      if (!isMobile) {
-        setExpandedChat(true);
-      }
-
       try {
         const response = await sendChatMessage(messageToSend);
         await processStreamResponse(response, setMessages);
@@ -60,12 +55,10 @@ export default function HomePage() {
   );
 
   useEffect(() => {
-    const handleSuggestionClick = (
-      event: CustomEvent<{ suggestion: string }>,
-    ) => {
+    function handleSuggestionClick(event: CustomEvent<{ suggestion: string }>) {
       setMessage(event.detail.suggestion);
       handleSendMessage(event.detail.suggestion);
-    };
+    }
 
     document.addEventListener(
       "suggestionClick",
@@ -80,13 +73,13 @@ export default function HomePage() {
     };
   }, [handleSendMessage]);
 
-  const handleSectionHover = (section: string | null) => {
+  function handleSectionHover(section: string | null) {
     setActiveSection(section);
-  };
+  }
 
-  const toggleMobileChat = (isVisible: boolean) => {
+  function toggleMobileChat(isVisible: boolean) {
     setShowMobileChat(isVisible);
-  };
+  }
 
   return (
     <div className="flex flex-col gap-24 pt-8 md:pt-12">
@@ -105,14 +98,12 @@ export default function HomePage() {
       <SkillsSection
         activeSection={activeSection}
         handleSectionHover={handleSectionHover}
-        expandedChat={expandedChat}
         isMobile={isMobile && showMobileChat}
       />
 
       <FeaturedProjectsSection
         activeSection={activeSection}
         handleSectionHover={handleSectionHover}
-        expandedChat={expandedChat}
         isMobile={isMobile && showMobileChat}
       />
     </div>

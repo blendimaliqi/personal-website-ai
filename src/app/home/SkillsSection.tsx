@@ -7,14 +7,12 @@ import { skillCategories } from "~/data/skills";
 interface SkillsSectionProps {
   activeSection: string | null;
   handleSectionHover: (section: string | null) => void;
-  expandedChat: boolean;
   isMobile: boolean;
 }
 
 export default function SkillsSection({
   activeSection,
   handleSectionHover,
-  expandedChat,
   isMobile,
 }: SkillsSectionProps) {
   const iconMap = {

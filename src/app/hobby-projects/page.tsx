@@ -11,9 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-type Props = {};
-
-function HobbyProjectsPage({}: Props) {
+function HobbyProjectsPage() {
   return (
     <div className="mx-auto flex max-w-6xl px-4">
       <HobbyProjectsContent />

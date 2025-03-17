@@ -9,7 +9,7 @@ import {
 } from "./ui/navigation-menu";
 import { cn } from "~/lib/utils";
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import { useEffect } from "react";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -29,18 +29,15 @@ export function NavMenu({ pathname: propPathname, navIcons }: NavMenuProps) {
   const pathname = propPathname || routerPathname;
   const [isMobile, setIsMobile] = React.useState(false);
 
-  React.useEffect(() => {
-    const checkIfMobile = () => {
+  useEffect(() => {
+    function checkIfMobile() {
       setIsMobile(window.innerWidth < 768);
-    };
+    }
 
-    // Initial check
     checkIfMobile();
 
-    // Add event listener for window resize
     window.addEventListener("resize", checkIfMobile);
 
-    // Cleanup
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 

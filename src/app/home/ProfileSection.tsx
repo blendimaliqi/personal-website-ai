@@ -7,29 +7,26 @@ interface ProfileSectionProps {
   isDarkTheme: boolean;
   toggleMobileChat?: (value?: boolean) => void;
   isMobile?: boolean;
-  handleSendMessage?: (customMessage?: string) => Promise<void>;
 }
 
 export function ProfileSection({
   isDarkTheme,
   toggleMobileChat,
   isMobile,
-  handleSendMessage,
 }: ProfileSectionProps) {
   const [copied, setCopied] = useState(false);
 
-  const copyEmailToClipboard = () => {
+  function copyEmailToClipboard() {
     navigator.clipboard.writeText("blendi.maliqi93@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
+  }
 
-  const handleChatClick = () => {
+  function handleChatClick() {
     if (toggleMobileChat) {
       toggleMobileChat(true);
-      // No automatic message - removed as requested
     }
-  };
+  }
 
   return (
     <div className="flex flex-col justify-center">

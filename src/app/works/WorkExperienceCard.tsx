@@ -26,22 +26,22 @@ export function WorkExperienceCard({
   experience,
   onClick,
 }: WorkExperienceCardProps) {
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  function handleKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       onClick();
     }
-  };
+  }
 
   // Separate handler to prevent card click when clicking on a link
-  const handleButtonClick = (
+  function handleButtonClick(
     e: React.MouseEvent<HTMLButtonElement>,
     url: string,
-  ) => {
+  ) {
     e.preventDefault();
     e.stopPropagation();
     window.open(url, "_blank", "noopener,noreferrer");
-  };
+  }
 
   return (
     <Card

@@ -16,42 +16,44 @@ interface ChatProps {
 }
 
 // Typing indicator component
-const TypingIndicator = () => (
-  <div className="flex space-x-1">
-    <motion.div
-      className="h-2 w-2 rounded-full bg-blue-500"
-      animate={{ y: [0, -5, 0] }}
-      transition={{
-        duration: 0.5,
-        repeat: Infinity,
-        repeatType: "loop",
-        delay: 0,
-      }}
-    />
-    <motion.div
-      className="h-2 w-2 rounded-full bg-blue-500"
-      animate={{ y: [0, -5, 0] }}
-      transition={{
-        duration: 0.5,
-        repeat: Infinity,
-        repeatType: "loop",
-        delay: 0.2,
-      }}
-    />
-    <motion.div
-      className="h-2 w-2 rounded-full bg-blue-500"
-      animate={{ y: [0, -5, 0] }}
-      transition={{
-        duration: 0.5,
-        repeat: Infinity,
-        repeatType: "loop",
-        delay: 0.4,
-      }}
-    />
-  </div>
-);
+function TypingIndicator() {
+  return (
+    <div className="flex space-x-1">
+      <motion.div
+        className="h-2 w-2 rounded-full bg-blue-500"
+        animate={{ y: [0, -5, 0] }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "loop",
+          delay: 0,
+        }}
+      />
+      <motion.div
+        className="h-2 w-2 rounded-full bg-blue-500"
+        animate={{ y: [0, -5, 0] }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "loop",
+          delay: 0.2,
+        }}
+      />
+      <motion.div
+        className="h-2 w-2 rounded-full bg-blue-500"
+        animate={{ y: [0, -5, 0] }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "loop",
+          delay: 0.4,
+        }}
+      />
+    </div>
+  );
+}
 
-const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
+function Chat({ messages, embedded = false }: ChatProps) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -103,24 +105,24 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
   }, [messages[messages.length - 1]?.content]);
 
   // Handle scroll events to show/hide scroll button
-  const handleScroll = () => {
+  function handleScroll() {
     if (chatContainerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } =
         chatContainerRef.current;
       const isScrolledUp = scrollHeight - scrollTop - clientHeight > 100;
       setShowScrollButton(isScrolledUp && messages.length > 0);
     }
-  };
+  }
 
   // Scroll to bottom function
-  const scrollToBottom = () => {
+  function scrollToBottom() {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
         behavior: "smooth",
       });
     }
-  };
+  }
 
   // Ensure scroll to bottom when container size changes
   useEffect(() => {
@@ -355,6 +357,6 @@ const Chat: React.FC<ChatProps> = ({ messages, embedded = false }) => {
       )}
     </div>
   );
-};
+}
 
 export default Chat;

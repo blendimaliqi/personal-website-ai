@@ -15,9 +15,9 @@ export async function POST() {
     // Create a new thread
     const thread = await openai.beta.threads.create();
 
-    // Store the new thread ID in a way that persists between requests
-    // This could be in a database, or you might need to modify your frontend to send this ID with each request
-    // For now, we'll just return it to the client
+    // store the new thread id somewhere so i can use it later
+    // maybe put it in a database or just have the frontend send it back each time
+    // for now let's just return it and deal with it later
     return NextResponse.json({ threadId: thread.id });
   } catch (error) {
     console.error("Error in reset handler:", error);

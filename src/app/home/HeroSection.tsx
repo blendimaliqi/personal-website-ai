@@ -104,7 +104,6 @@ export default function HeroSection({
           isDarkTheme={isDarkTheme}
           toggleMobileChat={toggleMobileChat}
           isMobile={isMobile}
-          handleSendMessage={handleSendMessage}
         />
 
         {!isMobile && (

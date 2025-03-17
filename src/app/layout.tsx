@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const StructuredData = () => {
+function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -103,7 +103,7 @@ const StructuredData = () => {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
     />
   );
-};
+}
 
 export default function RootLayout({
   children,

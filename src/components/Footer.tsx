@@ -2,7 +2,7 @@ import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { cn } from "~/lib/utils";
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-gradient-to-r from-slate-50 to-slate-100 text-slate-800 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800 dark:text-slate-200">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
@@ -47,6 +47,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

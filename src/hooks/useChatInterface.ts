@@ -32,9 +32,9 @@ export function useChatInterface({
 
   // Check if device is mobile
   useEffect(() => {
-    const checkIfMobile = () => {
+    function checkIfMobile() {
       setIsMobile(window.innerWidth < 768);
-    };
+    }
 
     // Initial check
     checkIfMobile();
@@ -43,7 +43,7 @@ export function useChatInterface({
     window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
-    return () => {
+    return function () {
       window.removeEventListener("resize", checkIfMobile);
       // Reset mobile chat when switching from mobile to desktop
       if (!isMobile) {
@@ -73,36 +73,36 @@ export function useChatInterface({
     }
   }
 
-  const toggleChatSize = () => {
+  function toggleChatSize() {
     setExpandedChat((prev) => !prev);
     setHasAnimated(true);
-  };
+  }
 
-  const toggleMobileChat = (value?: boolean) => {
+  function toggleMobileChat(value?: boolean) {
     const newValue = value !== undefined ? value : !localShowMobileChat;
     setLocalShowMobileChat(newValue);
     if (setShowMobileChat) {
       setShowMobileChat(newValue);
     }
-  };
+  }
 
-  const resetChat = () => {
+  function resetChat() {
     setMessages([]);
     setExpandedChat(false);
-  };
+  }
 
-  const handleSampleQuestion = (question: string) => {
+  function handleSampleQuestion(question: string) {
     setMessage(question);
     if (!isMobile) {
       setExpandedChat(true);
       setHasAnimated(true);
     }
     handleSendMessage(question);
-  };
+  }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setMessage(e.target.value);
-  };
+  }
 
   return {
     isMobile,

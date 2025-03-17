@@ -25,14 +25,14 @@ export default function HeaderClient() {
 
   // Handle scroll effect for header
   useEffect(() => {
-    const handleScroll = () => {
+    function handleScroll() {
       const offset = window.scrollY;
       if (offset > 60) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-    };
+    }
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -89,7 +89,6 @@ export default function HeaderClient() {
           <span className="text-slate-900 dark:text-white">Blendi Maliqi</span>
         </Link>
 
-        {/* Desktop navigation */}
         <nav className="hidden md:flex md:items-center md:gap-6">
           <div className="hidden md:block">
             <NavMenu pathname={pathname} navIcons={navIcons} />
@@ -97,7 +96,6 @@ export default function HeaderClient() {
           <ModeToggle />
         </nav>
 
-        {/* Mobile navigation button */}
         <div className="flex items-center md:hidden">
           <ModeToggle />
           <button
@@ -115,7 +113,6 @@ export default function HeaderClient() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

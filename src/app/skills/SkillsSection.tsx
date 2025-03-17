@@ -2,14 +2,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import React, { useState } from "react";
 import { SkillCategory } from "./SkillCategory";
 import type { SkillLevel, SkillCategoryType } from "~/types/skills";
-import {
-  Code,
-  Layers,
-  MonitorSmartphone,
-  Server,
-  Wrench,
-  Star,
-} from "lucide-react";
+import { Layers, MonitorSmartphone, Server, Wrench, Star } from "lucide-react";
 
 const skillCategories: SkillCategoryType[] = [
   {

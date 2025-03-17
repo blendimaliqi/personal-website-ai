@@ -19,7 +19,6 @@ import { hobbyProjects } from "~/data/hobby-projects";
 interface FeaturedProjectsSectionProps {
   activeSection: string | null;
   handleSectionHover: (section: string | null) => void;
-  expandedChat: boolean;
   isMobile: boolean;
 }
 
@@ -30,7 +29,7 @@ export default function FeaturedProjectsSection({
 }: FeaturedProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
-  const findFullProjectDetails = (projectTitle: string) => {
+  function findFullProjectDetails(projectTitle: string) {
     const workMatch = workExperiences.find(
       (work) => work.title === projectTitle,
     );
@@ -45,12 +44,12 @@ export default function FeaturedProjectsSection({
       (fp) => fp.title === projectTitle,
     );
     return featuredMatch ? { ...featuredMatch, type: "featured" } : null;
-  };
+  }
 
-  const handleProjectClick = (projectTitle: string) => {
+  function handleProjectClick(projectTitle: string) {
     const projectDetails = findFullProjectDetails(projectTitle);
     setSelectedProject(projectDetails);
-  };
+  }
 
   return (
     <section
