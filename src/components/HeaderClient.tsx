@@ -84,9 +84,14 @@ export default function HeaderClient() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center space-x-1 text-xl font-bold tracking-tighter transition-colors duration-200 hover:text-blue-500"
+          className="flex items-center space-x-1 text-xl font-bold tracking-tighter transition-colors duration-200"
         >
-          <span className="text-slate-900 dark:text-white">Blendi Maliqi</span>
+          <div className="flex items-baseline">
+            <span className="text-slate-900 dark:text-white">Blendi</span>
+            <span className="ml-1 text-blue-500 dark:text-blue-400">
+              Maliqi
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden md:flex md:items-center md:gap-6">

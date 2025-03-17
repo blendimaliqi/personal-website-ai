@@ -1,12 +1,8 @@
-import { LucideIcon } from "lucide-react";
-
 export interface SkillCategory {
   name: string;
   iconName: string;
   skills: string[];
 }
-
-// Skills categories
 export const skillCategories: SkillCategory[] = [
   {
     name: "Frontend",

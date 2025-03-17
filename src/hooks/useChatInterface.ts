@@ -39,7 +39,6 @@ export function useChatInterface({
 
     window.addEventListener("resize", checkIfMobile);
 
-    // Cleanup
     return function () {
       window.removeEventListener("resize", checkIfMobile);
       if (!isMobile) {

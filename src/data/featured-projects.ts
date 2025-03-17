@@ -6,7 +6,6 @@ export interface FeaturedProject {
   link: string;
 }
 
-// Featured projects data
 export const featuredProjects: FeaturedProject[] = [
   {
     title: "Mastercard",

@@ -25,5 +25,4 @@ export const colorMap: Record<SkillLevel, string> = {
   Expert: "#86EFAC",
 };
 
-// Alias for backward compatibility
 export type SkillCategoryType = SkillCategory;

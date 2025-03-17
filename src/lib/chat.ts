@@ -28,7 +28,7 @@ export async function processStreamResponse(
   const reader = response.body.getReader();
   const decoder = new TextDecoder();
 
-  // Add empty assistant message that will be updated
+  // empty assistant message that will be updated
   updateMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
   while (true) {
