@@ -75,6 +75,23 @@ I developed this Chrome extension to add a more precise volume control slider to
   },
 
   {
+    title: "Crypto Tracker",
+    description: "Fullstack Developer",
+    shortDescription: "Cryptocurrency listing monitoring and notification tool",
+    content: `This tool monitors major cryptocurrency exchanges for new coin listings and upcoming announcements, then alerts me via email before everyone else jumps in. It checks both exchange APIs for actual listings and scrapes announcement pages to catch upcoming listings early - often when prices start moving.
+
+I created it using Node.js and TypeScript. The tool connects to several crypto exchanges including big ones like Binance, Coinbase, and Kraken (plus five others) to gather real-time data.
+
+For data persistence, the application stores all findings in JSON files which provides a simple yet effective storage solution for this use case. When new listings or announcements are detected, the system automatically sends email notifications to users and updates the JSON data store with the new information. This approach makes it easy to track historical data while maintaining a lightweight implementation.
+
+The application architecture follows adapter patterns to easily add new exchange support, making it highly extensible.`,
+    technologies:
+      "Node.js, TypeScript, API Integration, Web Scraping, Email Notification Systems, Data Persistence",
+    logo: "/bitcoin-btc-logo.png",
+    githubUrl: "https://github.com/blendimaliqi/crypto-tracker",
+  },
+
+  {
     title: "Kjøpskontrakt",
     description: "Fullstack Developer",
     shortDescription: "SAAS for car sales contracts in Norway",
