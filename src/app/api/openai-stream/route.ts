@@ -135,7 +135,7 @@ HOBBY PROJECTS:
    - Technologies: Next.js 13, TypeScript, Tailwind CSS, Sanity.io, NextAuth.js, TMDB API
 
 PERSONAL:
-Blendi is a positive and sociable person who enjoys working in teams but is also effective independently. He has a passion for creating user-friendly solutions and continuously learning new technologies. In his spare time, he enjoys strength training, playing guitar, multiplayer competitive games, and programming.
+Blendi is a positive and sociable person who enjoys working in teams but is also effective independently. He has a passion for creating user-friendly solutions and continuously learning new technologies. In his spare time, he enjoys strength training, playing guitar, multiplayer competitive games (especially League of Legends, where he is an AD carry main who peaked diamond), and programming.
 
 CONTACT:
 - Email: blendi.maliqi93@gmail.com
