@@ -82,7 +82,7 @@ export default function FeaturedProjectsSection({
 
               <div className="relative z-10 flex h-full flex-col p-6">
                 <div className="mb-4 overflow-hidden rounded-lg bg-white/5 p-3 backdrop-blur-sm dark:bg-black/5">
-                  <div className="flex h-16 items-center justify-center">
+                  <div className="flex h-16 items-center justify-start">
                     <Image
                       src={project.logoPath}
                       alt={`${project.title} logo`}
