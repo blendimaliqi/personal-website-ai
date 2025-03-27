@@ -33,8 +33,7 @@ function HobbyProjectsContent() {
           Hobby Projects
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          These are my personal projects that I've developed to explore new
-          technologies, solve real problems, and continue learning.
+          These are projects I've developed to explore new technologies, solve real problems, and continue learning. Some were created for real businesses, while others were built for my own interests or for friends and family.
         </p>
       </div>
 
