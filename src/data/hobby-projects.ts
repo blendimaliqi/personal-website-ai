@@ -2,6 +2,30 @@ import { HobbyProject } from "@/types/hobby-project";
 
 export const hobbyProjects: HobbyProject[] = [
   {
+    title: "I Revisjon AS",
+    description: "Fullstack Developer",
+    shortDescription: "Corporate website for a Norwegian audit firm",
+    content: `Sometimes the most impactful projects aren't the most technically complex ones. When "I Revisjon AS", a local Norwegian audit firm, approached me about creating their first real web presence, I saw a perfect opportunity to help a small business make a significant digital leap forward.
+
+The firm had been relying solely on word of mouth and traditional networking to find clients. This is a common situation for many professional service providers. I worked closely with them to understand their business goals and brand identity before creating a clean, professional website that would serve as their digital business card.
+
+Using Next.js with TypeScript, I built a straightforward but effective site that communicates exactly who they are and what services they offer. While the site isn't packed with fancy features or complex functionality, it solves the exact problem they had: establishing a professional online presence that builds credibility when potential clients search for them.
+
+I particularly enjoyed the SEO aspects of this project. I took the time to:
+- Implement proper metadata and semantic HTML structure
+- Sit down with the owner to set up their Google Business Profile
+- Walk them through Google Search Console and explain how it would help them track their online visibility
+- Explain the importance of local SEO for their type of business
+
+What made this project personally rewarding was seeing how something relatively simple from a technical perspective could have such a meaningful impact on a small business. The owner was genuinely excited to finally have a professional website they could direct potential clients to, and I've already heard they've received inquiries through it.
+
+It reminded me that web development isn't always about building the most complex solutions. Sometimes it's about creating the right solution for a specific need, no matter how straightforward it might be.`,
+    technologies: "Next.js, React, TypeScript, Tailwind CSS, SEO Optimization",
+    logo: "/irevisjon.png", 
+    githubUrl: "https://github.com/blendimaliqi/i-revisjon",
+    websiteUrl: "https://irevisjonas.no/", 
+  },
+  {
     title: "Borgen Bilsalg",
     description: "Fullstack Developer",
     shortDescription: "Car dealership landing page with Next.js",
