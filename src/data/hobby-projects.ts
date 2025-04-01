@@ -5,20 +5,13 @@ export const hobbyProjects: HobbyProject[] = [
     title: "I Revisjon AS",
     description: "Fullstack Developer",
     shortDescription: "Corporate website for a Norwegian audit firm",
-    content: `Sometimes the most impactful projects aren't the most technically complex ones. When "I Revisjon AS", a local Norwegian audit firm, approached me about creating their first real web presence, I saw a perfect opportunity to help a small business make a significant digital leap forward.
+    content: `
+Sometimes the most important projects are not the most complicated. When the Norwegian audit firm "I Revisjon AS" asked me to create their first website, I saw a great chance to help a small business take a big step online.
+Before, they found clients only through word of mouth. They needed a professional website to show who they are and what they do. I built a simple but effective site using Next.js with TypeScript, making sure it looked clean and professional without extra features they didn’t need.
 
-The firm had been relying solely on word of mouth and traditional networking to find clients. This is a common situation for many professional service providers. I worked closely with them to understand their business goals and brand identity before creating a clean, professional website that would serve as their digital business card.
-
-Using Next.js with TypeScript, I built a straightforward but effective site that communicates exactly who they are and what services they offer. While the site isn't packed with fancy features or complex functionality, it solves the exact problem they had: establishing a professional online presence that builds credibility when potential clients search for them.
-
-I particularly enjoyed the SEO aspects of this project. I took the time to:
-- Implement proper metadata and semantic HTML structure
-- Sit down with the owner to set up their Google Business Profile
-- Walk them through Google Search Console and explain how it would help them track their online visibility
-- Explain the importance of local SEO for their type of business
+I also helped with SEO by adding proper metadata and structuring the site correctly. I sat with the owner to set up their Google Business Profile and explained how Google Search Console could help them see their online presence. We also talked about why local SEO is important for their kind of business.
 
 What made this project personally rewarding was seeing how something relatively simple from a technical perspective could have such a meaningful impact on a small business. The owner was genuinely excited to finally have a professional website they could direct potential clients to, and I've already heard they've received inquiries through it.
-
 It reminded me that web development isn't always about building the most complex solutions. Sometimes it's about creating the right solution for a specific need, no matter how straightforward it might be.`,
     technologies: "Next.js, React, TypeScript, Tailwind CSS, SEO Optimization",
     logo: "/irevisjon.png",
@@ -29,27 +22,14 @@ It reminded me that web development isn't always about building the most complex
     title: "Borgen Bilsalg",
     description: "Fullstack Developer",
     shortDescription: "Car dealership landing page with Next.js",
-    content: `My friend asked if I could create a website for his car dealership business. I saw this as an opportunity to help a friend and create something that is used in real legitimate business!
+    content: `My friend asked me to make a website for his car dealership. I saw this as a great chance to help him and create something useful for a real business.
+He wanted a simple and professional landing page to show his inventory and services while being easy for customers to use. I chose Next.js 15 because it has strong built-in SEO, making it easier for people to find his business. It is also super fast with SSR. For styling, I used Tailwind CSS and shadcn.
 
-He wanted to create a simple and professional landing page that would showcase his inventory and services while being easy to navigate for potential customers. I chose Next.js 15 as the foundation. It has great built in SEO capabilites which could result in more potential customers finding his business and is superfast with SSR. I also combined it with Tailwind CSS + shadcn for styling.
+The website is fully responsive and works well on all devices. It has automated inventory management by integrating with Finn.no, smooth animations with Framer Motion, and a services section to highlight what the dealership offers. 
+For fetching and updating car listings, I used a compliant web scraping approach with JSDOM. It also has good caching to reduce fetches while keeping the inventory in sync with Finn.no.
 
-Key features of the website include:
-- Responsive design that looks great on all devices
-- Automated inventory management through Finn.no integration
-- Animations using Framer Motion for enhanced user experience
-- Services section highlighting the dealership's offerings                 
-
-The application uses a compliant web scraping approach with JSDOM to fetch and parse car listings from Finn.no. Also has good caching to save fetches while still ensuring the inventory stays automatically synchronized with their Finn.no listings.
-
-I also put effort into SEO optimization so that the dealership would have strong online visibility:
-- Implemented Next.js metadata API for dynamic SEO tags
-- Set up comprehensive meta descriptions and titles 
-- Added structured data for better search engine understanding
-- Assisted with Google Search Console setup and monitoring
-- Created and optimized Google Business Profile, linking it to the website
-- Implemented proper semantic HTML structure for better crawlability
-
-It was cool to see how the website helped modernize my friend's business presence online and attract more customers to his dealership through improved search engine visibility and local SEO optimization.`,
+I focused on SEO to improve the dealership’s online visibility. I used the Next.js metadata API for dynamic SEO tags, set up proper meta descriptions and titles, added structured data, and ensured the HTML structure was optimized for search engines. I also helped set up Google Search Console and created a well-optimized Google Business Profile linked to the website.
+It was great to see how the website helped modernize my friend’s business and attract more customers through better search visibility and local SEO.`,
     technologies:
       "Next.js 15.1, React 19, TypeScript, Tailwind CSS, JSDOM, Framer Motion, Shadcn",
     logo: "/borgenbilsalg-512x.png",
@@ -99,14 +79,10 @@ This project not only solved a real problem (and made a good weeding gift) but a
     description: "Chrome Extension Developer",
     shortDescription:
       "A Chrome extension for precise volume control in YouTube Music",
-    content: `I found myself constantly frustrated with the default volume controls in Youtube Music webapp. The built-in volume slider was too rough, which resulted with audio that was too loud even at the lowest levels, leaving very little space on the slider to control volume for my liking. This personal pain point motivated me to create a solution.
+    content: `I was  frustrated with the volume controls in YouTube Music. The default slider was too rough, making the audio either too loud or hard to adjust at lower levels. There was very little space to fine-tune the volume the way I wanted. This problem made me want to create a solution.
+I built a Chrome extension that adds a more precise volume control slider to YouTube Music. It worked well for me, so I decided to share it on the Chrome Web Store so others could use it too.
 
-I developed this Chrome extension to add a more precise volume control slider to YouTube Music. Since this worked good for me i thought others could use it too and therefore put it on the chrome webstore. Key features include:
-
-- Custom volume control slider 
-- Logarithmic volume scaling for better control at lower volumes
-- Persistent volume settings between sessions
-- Works automatically on music.youtube.com
+The extension includes a custom volume slider with logarithmic scaling for better control at lower volumes. It also remembers your volume settings between sessions and works automatically on music.youtube.com.
 `,
     technologies: "JavaScript, Chrome Extension API, HTML, CSS",
     logo: "/icon128.png",
@@ -136,15 +112,10 @@ The application architecture follows adapter patterns to easily add new exchange
     title: "Kjøpskontrakt",
     description: "Fullstack Developer",
     shortDescription: "SAAS for car sales contracts in Norway",
-    content: `Kjøpskontrakt (kjopskontrakt.no) is a SAAS product I developed as a side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices. Key features and technologies:
+    content: `Kjøpskontrakt (kjopskontrakt.no) is SAAS product I developed as side project. It creates buying contracts for selling cars in Norway. The application is built using modern web technologies and best practices. Key features and technologies:
+Next.js 14 is the foundation of application. I used shadcn component library with Tailwind CSS for making good looking interface. Backend functionality is working with Supabase. For money processing I integrated Stripe which is very secure. User authentication is complete with email verification and also password recovery if someone forgets.
 
-- Built with Next.js 14
-- Used shadcn component library with Tailwind CSS for styling
-- Implemented backend functionality using Supabase
-- Integrated Stripe for secure payment processing
-- Developed user authentication, including email verification and password recovery flows
-
-It has already had real world usecases where people have used this service to sell cars. It was really fun to develop through the whole process, from designing the frontend interface to implementing the backend functionality, setting up payment processing, and deploying the final solution.`,
+Already this service has real world usecases where people sell cars using it. It was very fun experience to develop the whole process. I enjoyed designing frontend interface and also implementing backend functionality. Setting up payment processing was interesting challenge. Final deployment of solution was satisfying moment for me.`,
     technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
     logo: "/logocar.jpg",
     githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",

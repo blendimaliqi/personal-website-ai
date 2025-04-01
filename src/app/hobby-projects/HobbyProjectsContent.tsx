@@ -14,7 +14,7 @@ import { ScrollArea } from "~/components/ui/scroll-area";
 import { HobbyProject } from "@/types/hobby-project";
 import { hobbyProjects } from "@/data/hobby-projects";
 import { HobbyProjectCard } from "./HobbyProjectCard";
-import { Code, ExternalLink, Github, Globe } from "lucide-react";
+import { Code, ExternalLink, Globe } from "lucide-react";
 
 function HobbyProjectsContent() {
   const [selectedProject, setSelectedProject] = useState<HobbyProject | null>(
@@ -33,7 +33,10 @@ function HobbyProjectsContent() {
           Hobby Projects
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          These are projects I've developed to explore new technologies, solve real problems, and continue learning. Some were created for real businesses, while others were built for my own interests or for friends and family.
+          These are projects I've developed to explore new technologies, solve
+          real problems, and continue learning. Some were created for real
+          businesses, while others were built for my own interests or for
+          friends and family.
         </p>
       </div>
 
@@ -100,17 +103,6 @@ function HobbyProjectsContent() {
             </div>
 
             <div className="mb-4 mt-6 flex flex-wrap gap-3">
-              {selectedProject?.githubUrl && (
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-slate-700 hover:shadow-md"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub Repository
-                </a>
-              )}
               {selectedProject?.chromeStoreUrl && (
                 <a
                   href={selectedProject.chromeStoreUrl}
