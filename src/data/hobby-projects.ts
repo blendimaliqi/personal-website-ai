@@ -21,9 +21,9 @@ What made this project personally rewarding was seeing how something relatively 
 
 It reminded me that web development isn't always about building the most complex solutions. Sometimes it's about creating the right solution for a specific need, no matter how straightforward it might be.`,
     technologies: "Next.js, React, TypeScript, Tailwind CSS, SEO Optimization",
-    logo: "/irevisjon.png", 
+    logo: "/irevisjon.png",
     githubUrl: "https://github.com/blendimaliqi/i-revisjon",
-    websiteUrl: "https://irevisjonas.no/", 
+    websiteUrl: "https://irevisjonas.no/",
   },
   {
     title: "Borgen Bilsalg",
@@ -55,6 +55,23 @@ It was cool to see how the website helped modernize my friend's business presenc
     logo: "/borgenbilsalg-512x.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
+  },
+  {
+    title: "Architecture Portfolio Website",
+    description: "Frontend Developer",
+    shortDescription:
+      "Minimalist portfolio website for an architecture student",
+    content: `My sister asked me to help her build a portfolio site for her architecture project, so I helped her. Elda frequently travels to Paris and Oslo and requested something that could show her projects with a clean touch.
+
+I created a designer portfolio with the Next.js framework using TypeScript and the Tailwind CSS framework. The site has an easy filtering grid layout to let users browse effortlessly through various categories of projects. I used Framer Motion to add smooth transitions and page animations so users can feel like it’s a movement.
+
+Each project has its own page containing beautiful images and contextual information (location, year, type, etc). I also put the contact & about section and a CV downloadable option for recruiters to reach out to her.
+
+The website is designed the same way as architecture so the spaces are clear and strong. I was careful with the choice of typeface, amount of empty space and proportion so the website feels a digital space made with care like an architectural space.`,
+    technologies: "Next.js, React, TypeScript, Tailwind CSS, Framer Motion",
+    logo: "/eldalogo.png",
+    githubUrl: "https://github.com/yourusername/architecture-portfolio-elda",
+    websiteUrl: "https://eldamaliqi.com",
   },
   {
     title: "Event Photos",
