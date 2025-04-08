@@ -31,7 +31,7 @@ WORK EXPERIENCE:
 Multiconsult (April 2025 - Present):
 - Inhouse fullstack developer managing multiple applications
 - Oversee 10+ internal applications and other applications across the company
-- Primary expertise in frontend development, establishing patterns and best practices
+- Expertise in frontend development, establishing patterns and best practices
 - Learning and assisting with infrastructure setup including Azure pipelines and Bicep templates
 - Working with a design system based on Mantine for application consistency
 - Developing applications that are used both internally and sold to external clients
