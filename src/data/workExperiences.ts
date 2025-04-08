@@ -2,6 +2,26 @@ import { WorkExperience } from "~/types/work";
 
 export const workExperiences: WorkExperience[] = [
   {
+    title: "Multiconsult",
+    description: "Fullstack Developer",
+    shortDescription: "Inhouse developer managing multiple applications",
+    content: `I currently work as an inhouse fullstack developer at Multiconsult in an offshoot of their construction firm.  We oversee 10+ internal applications, and other applications created across the company that we are working on to bring under our roof. 
+
+We have just started with our standardization of technology process. We want to simplify the developing process and build tech to be used all over the firm on the new applications and likely the rewriting of the older ones. The tech stack we selected consists of React for the Front-end, .NET for Backend services, and Azure for the Cloud.
+
+My primary expertise is in frontend development, where I'm leading the way in establishing patterns and best practices. I'm also learning and assisting with infrastructure setup, including Azure pipelines and Bicep templates, to ensure we are set up correctly for the future. With this foundational capability in place, we will efficiently scale as we onboard more applications.
+
+We have a design system based on Mantine that gives our various applications consistency and functionality while ensuring the special needs of our organization are maintained.
+
+The company has many new application ideas waiting to be created, which come from the engineers throughout the organization. These ideas are evaluated by business leaders and domain experts who determine which ones show the most potential and should be prioritized. As the development team, we then create these selected applications within our available capacity. These applications are used both internally to improve our business processes and are also sold to external clients as part of our service offerings.
+
+The project poses challenges but is rewarding as we build the tech foundation that will support the digital infrastructure of Multiconsult for years to come.`,
+    technologies: "React, .NET, Azure, TypeScript, C#, Mantine, Bicep, CI/CD",
+    logo: "/multiconsult.png",
+    startDate: "Apr 2025",
+    endDate: "Present",
+  },
+  {
     title: "Omegapoint Norge",
     description: "IT Consultant & Frontend Advocate",
     shortDescription: "Consultant with additional role as Frontend Advocate",
