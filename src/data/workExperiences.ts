@@ -102,7 +102,7 @@ In addition to the new features for the admin panel, I also made adjustments to 
   },
   {
     title: "Encryption and Cloud Security",
-    description: "Java Developer",
+    description: "Backend Developer",
     shortDescription: "Developed encryption for public transport ticketing",
     content: `This project involved developing an encryption solution for public transport ticketing for Entur, a Norwegian mobility company, through Capgemini. The primary objective was to encrypt the generation of electronic tickets and manage QR codes for physical tickets, all hosted on the Azure Cloud platform. Our team was responsible for implementing crucial security measures, including: Encryption and decryption processes, digital signature creation and verification, key management for securing information transferred between various system components. 
   
