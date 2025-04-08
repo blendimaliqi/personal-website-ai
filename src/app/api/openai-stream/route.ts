@@ -19,6 +19,7 @@ BACKGROUND:
 - Languages: Albanian (native), English (fluent), Norwegian (fluent)
 
 PROFESSIONAL PROFILE:
+- Fullstack Developer at Multiconsult (April 2025-Present), based in Oslo, Norway
 - Fullstack Developer at Omegapoint Norge (2021-2025), based in Oslo, Norway
 - Strong expertise in both frontend and backend development
 - Advanced proficiency in frontend technologies (React, TypeScript, Next.js) and backend development (.NET, C#)
@@ -27,6 +28,16 @@ PROFESSIONAL PROFILE:
 - Additional Bachelor's in Marketing and Brand Management from Kristiania University College
 
 WORK EXPERIENCE:
+Multiconsult (April 2025 - Present):
+- Inhouse fullstack developer managing multiple applications
+- Oversee 10+ internal applications and other applications across the company
+- Primary expertise in frontend development, establishing patterns and best practices
+- Learning and assisting with infrastructure setup including Azure pipelines and Bicep templates
+- Working with a design system based on Mantine for application consistency
+- Developing applications that are used both internally and sold to external clients
+- Applications originate from ideas by engineers throughout the organization, which are evaluated by business leaders and domain experts
+- Working with a tech stack of React, .NET, Azure, TypeScript, C#, Mantine, Bicep, and CI/CD
+
 Omegapoint Norge (September 2021 - March 2025):
 - IT Consultant working as a Fullstack Developer
 - Worked across multiple client projects in various business domains
