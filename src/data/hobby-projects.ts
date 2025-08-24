@@ -119,7 +119,7 @@ Already this service has real world usecases where people sell cars using it. It
     technologies: "Next.js 14, Tailwind CSS, shadcn, Supabase, Stripe",
     logo: "/logocar.jpg",
     githubUrl: "https://github.com/blendimaliqi/kjopskontrakt-next",
-    websiteUrl: "https://kjopskontrakt.no/",
+    websiteUrl: "https://kjopekontrakter.no/",
   },
   {
     title: "Portfolio website",
