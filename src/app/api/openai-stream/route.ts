@@ -155,6 +155,18 @@ HOBBY PROJECTS:
    - Features movie tracking, ratings, and discussions
    - Built with Next.js 13, Sanity.io, and TMDB API
    - Technologies: Next.js 13, TypeScript, Tailwind CSS, Sanity.io, NextAuth.js, TMDB API
+   
+   7. Stilo.no
+   - Fullstack Developer
+   - AI-powered virtual clothing try-on platform for the Norwegian market
+   - Allows users to upload a photo of themselves and preview how different clothes would look using AI
+   - Features include multiple clothing support (replace/add modes), generation history, user authentication, and subscription plans (free with 5 generations/month, premium with 100 generations/month at 99 NOK)
+   - Fully localized for Norwegian users
+   - Built with Next.js 14, React 18, TypeScript, and Tailwind CSS on the frontend
+   - Supabase handles authentication, database, and storage
+   - Google Generative AI powers the virtual try-on engine
+   - Stripe integration for payments and subscription management
+   - Technologies: Next.js 14, React 18, TypeScript, Tailwind CSS, Shadcn, Supabase, Stripe, Google Generative AI, Radix UI, Lucide React, React Hook Form, Zod, Recharts, Sonner, Next Themes
 
 PERSONAL:
 Blendi is a positive and sociable person who enjoys working in teams but is also effective independently. He has a passion for creating user-friendly solutions and continuously learning new technologies. In his spare time, he enjoys strength training, playing guitar, multiplayer competitive games (especially League of Legends, where he is an AD carry main who peaked diamond), and programming.
