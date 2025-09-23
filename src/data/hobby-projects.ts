@@ -18,6 +18,28 @@ export const hobbyProjects: HobbyProject[] = [
   //     githubUrl: "https://github.com/blendimaliqi/i-revisjon",
   //     websiteUrl: "https://irevisjonas.no/",
   //   },
+
+  {
+    title: "Stilo.no",
+    description: "Fullstack Developer",
+    shortDescription:
+      "AI-powered virtual clothing try-on for the Norwegian market",
+    content: `Stilo.no is one of the most exciting projects I’ve worked on. It’s a virtual try-on platform that lets users upload a photo of themselves and see how different clothes would look on them, powered by AI. The goal was to make something that feels like a digital fitting room while being simple enough for everyday users in Norway.
+
+I built the platform with Next.js 14 and React 18, using TypeScript and Tailwind CSS for a clean, responsive design. To handle authentication, user profiles, and storage, I integrated Supabase. The actual try-on magic comes from Google’s Generative AI models, which create realistic previews of clothing on the user’s photo.
+
+The application supports two modes: replacing clothing or adding new items on top. Users also have a history view to revisit past try-ons. To make the business side work, I integrated Stripe for payments and subscriptions, with a free plan (5 generations/month) and a premium plan (100 generations/month at 99 NOK). Everything is tailored to the Norwegian market, with a fully localized interface.
+
+I enjoyed this project because it combined a lot of different layers: frontend UI with shadcn components, backend data handling with Supabase, payment integration with Stripe, and AI model orchestration. It was also a real challenge to make the experience smooth, fast, and user-friendly given the complexity of AI generation. 
+
+Stilo.no shows how AI can be turned into a real, consumer-facing product that solves a tangible problem—helping people try on clothes without leaving their home.`,
+    technologies:
+      "Next.js 14, React 18, TypeScript, Tailwind CSS, Shadcn, Supabase, Stripe, Google Generative AI",
+    logo: "/stilo.png",
+    githubUrl: "https://github.com/yourusername/stilo-no",
+    websiteUrl: "https://stilo.no/",
+  },
+
   {
     title: "Borgen Bilsalg",
     description: "Fullstack Developer",

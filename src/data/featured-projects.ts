@@ -8,6 +8,23 @@ export interface FeaturedProject {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    title: "Stilo.no",
+    description:
+      "AI-powered virtual clothing try-on platform for the Norwegian market.",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Supabase",
+      "Stripe",
+      "Google Generative AI",
+    ],
+    logoPath: "/stilo.png",
+    link: "/hobby-projects",
+  },
+  {
     title: "Mastercard",
     description:
       "Worked on secure payment solutions and financial technology integrations for Mastercard's global platform.",
@@ -28,14 +45,6 @@ export const featuredProjects: FeaturedProject[] = [
       "Framer Motion",
     ],
     logoPath: "/borgenbilsalg-512x.png",
-    link: "/works",
-  },
-  {
-    title: "Event Photos",
-    description:
-      "Web application for event photo management with drag-and-drop upload and secure storage.",
-    tags: ["React", "TypeScript", ".NET 9", "PostgreSQL"],
-    logoPath: "/eventphotologo.jpeg",
-    link: "/works",
+    link: "/hobby-projects",
   },
 ];
