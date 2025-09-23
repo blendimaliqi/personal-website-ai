@@ -46,7 +46,7 @@ export function ProfileSection({
         >
           Building modern web applications with React, Next.js, and .NET.
           Passionate about creating intuitive user experiences and scalable
-          solutions.
+          solutions
         </p>
         <div className="mb-6">
           <p className="mb-2 text-sm font-medium uppercase tracking-wider text-blue-400">
