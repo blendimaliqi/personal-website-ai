@@ -1,24 +1,6 @@
 import { HobbyProject } from "@/types/hobby-project";
 
 export const hobbyProjects: HobbyProject[] = [
-  //   {
-  //     title: "I Revisjon AS",
-  //     description: "Fullstack Developer",
-  //     shortDescription: "Corporate website for a Norwegian audit firm",
-  //     content: `
-  // Sometimes the most important projects are not the most complicated. When the Norwegian audit firm "I Revisjon AS" asked me to create their first website, I saw a great chance to help a small business take a big step online.
-  // Before, they found clients only through word of mouth. They needed a professional website to show who they are and what they do. I built a simple but effective site using Next.js with TypeScript, making sure it looked clean and professional without extra features they didn’t need.
-
-  // I also helped with SEO by adding proper metadata and structuring the site correctly. I sat with the owner to set up their Google Business Profile and explained how Google Search Console could help them see their online presence. We also talked about why local SEO is important for their kind of business.
-
-  // What made this project personally rewarding was seeing how something relatively simple from a technical perspective could have such a meaningful impact on a small business. The owner was genuinely excited to finally have a professional website they could direct potential clients to, and I've already heard they've received inquiries through it.
-  // It reminded me that web development isn't always about building the most complex solutions. Sometimes it's about creating the right solution for a specific need, no matter how straightforward it might be.`,
-  //     technologies: "Next.js, React, TypeScript, Tailwind CSS, SEO Optimization",
-  //     logo: "/irevisjon.png",
-  //     githubUrl: "https://github.com/blendimaliqi/i-revisjon",
-  //     websiteUrl: "https://irevisjonas.no/",
-  //   },
-
   {
     title: "Stilo.no",
     description: "Fullstack Developer",
@@ -57,6 +39,23 @@ It was great to see how the website helped modernize my friend’s business and 
     logo: "/borgenbilsalg-512x.png",
     githubUrl: "https://github.com/blendimaliqi/borgen-bilsalg",
     websiteUrl: "https://www.borgenbilsalg.no/",
+  },
+  {
+    title: "I Revisjon AS",
+    description: "Fullstack Developer",
+    shortDescription: "Corporate website for a Norwegian audit firm",
+    content: `
+  Sometimes the most important projects are not the most complicated. When the Norwegian audit firm "I Revisjon AS" asked me to create their first website, I saw a great chance to help a small business take a big step online.
+  Before, they found clients only through word of mouth. They needed a professional website to show who they are and what they do. I built a simple but effective site using Next.js with TypeScript, making sure it looked clean and professional without extra features they didn’t need.
+
+  I also helped with SEO by adding proper metadata and structuring the site correctly. I sat with the owner to set up their Google Business Profile and explained how Google Search Console could help them see their online presence. We also talked about why local SEO is important for their kind of business.
+
+  What made this project personally rewarding was seeing how something relatively simple from a technical perspective could have such a meaningful impact on a small business. The owner was genuinely excited to finally have a professional website they could direct potential clients to, and I've already heard they've received inquiries through it.
+  It reminded me that web development isn't always about building the most complex solutions. Sometimes it's about creating the right solution for a specific need, no matter how straightforward it might be.`,
+    technologies: "Next.js, React, TypeScript, Tailwind CSS, SEO Optimization",
+    logo: "/irevisjon.png",
+    githubUrl: "https://github.com/blendimaliqi/i-revisjon",
+    websiteUrl: "https://irevisjonas.no/",
   },
   {
     title: "Architecture Portfolio Website",
