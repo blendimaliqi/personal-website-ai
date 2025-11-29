@@ -158,7 +158,7 @@ One of the unique features is the AI assistant that I trained on my personal dat
 - Project portfolio and achievements
 `,
     technologies: "Next.js 14, TypeScript, Tailwind CSS, AI Integration",
-    logo: "/android-chrome-192x192.png",
+    logo: "/android-chrome-512x512.png",
     githubUrl: "https://github.com/blendimaliqi/personal-website-ai",
     websiteUrl: "https://blendimaliqi.com/",
   },
