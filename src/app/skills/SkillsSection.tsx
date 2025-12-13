@@ -20,9 +20,10 @@ interface SkillCategoryData {
 const skillCategories: SkillCategoryData[] = [
   {
     name: "Frontend Development",
-    description: "Building beautiful, responsive user interfaces",
+    description: "Building responsive, performant web applications",
     icon: <Layers className="h-6 w-6" />,
-    gradient: "from-blue-500 to-cyan-500",
+    gradient:
+      "from-amber-700 to-amber-800 dark:from-amber-700 dark:to-amber-800",
     skills: [
       { name: "React", level: "Expert" },
       { name: "Next.js", level: "Expert" },
@@ -49,7 +50,8 @@ const skillCategories: SkillCategoryData[] = [
     name: "Backend Development",
     description: "Server-side logic and cloud infrastructure",
     icon: <Server className="h-6 w-6" />,
-    gradient: "from-emerald-500 to-teal-500",
+    gradient:
+      "from-emerald-700 to-emerald-800 dark:from-emerald-700 dark:to-emerald-800",
     skills: [
       { name: "C#", level: "Expert" },
       { name: ".NET", level: "Expert" },
@@ -70,7 +72,8 @@ const skillCategories: SkillCategoryData[] = [
     name: "Mobile Development",
     description: "Cross-platform mobile applications",
     icon: <MonitorSmartphone className="h-6 w-6" />,
-    gradient: "from-violet-500 to-purple-500",
+    gradient:
+      "from-violet-700 to-violet-800 dark:from-violet-700 dark:to-violet-800",
     skills: [
       { name: "React Native", level: "Expert" },
       { name: "Cross-Platform", level: "Expert" },
@@ -89,7 +92,8 @@ const skillCategories: SkillCategoryData[] = [
     name: "Tools & Methods",
     description: "Development workflow and best practices",
     icon: <Wrench className="h-6 w-6" />,
-    gradient: "from-orange-500 to-amber-500",
+    gradient:
+      "from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700",
     skills: [
       { name: "Git", level: "Expert" },
       { name: "Agile/Scrum", level: "Expert" },
@@ -184,7 +188,7 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
         {/* Expert skills - highlighted */}
         {expertSkills.length > 0 && (
           <div className="mb-4">
-            <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-500">
               <Sparkles className="h-3.5 w-3.5" />
               Core Expertise
             </div>
@@ -192,7 +196,7 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
               {expertSkills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-700 transition-transform hover:scale-105 dark:bg-emerald-500/20 dark:text-emerald-400"
+                  className="rounded-full bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800 transition-transform hover:scale-105 dark:bg-emerald-900/40 dark:text-emerald-300"
                 >
                   {skill.name}
                 </span>
@@ -204,14 +208,14 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
         {/* Advanced skills */}
         {advancedSkills.length > 0 && (
           <div className="mb-4">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
               Proficient
             </div>
             <div className="flex flex-wrap gap-2">
               {advancedSkills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-blue-500/10 px-3 py-1.5 text-sm font-medium text-blue-700 transition-transform hover:scale-105 dark:bg-blue-500/20 dark:text-blue-400"
+                  className="rounded-full bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-800 transition-transform hover:scale-105 dark:bg-blue-900/40 dark:text-blue-300"
                 >
                   {skill.name}
                 </span>
@@ -250,7 +254,7 @@ export const SkillsSection: React.FC = () => {
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="mb-4 flex justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm">
               <Star className="h-8 w-8" />
             </div>
           </div>
@@ -266,13 +270,13 @@ export const SkillsSection: React.FC = () => {
         {/* Legend */}
         <div className="mb-8 flex flex-wrap items-center justify-center gap-6 text-sm">
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-emerald-500" />
+            <span className="h-3 w-3 rounded-full bg-emerald-600" />
             <span className="font-medium text-muted-foreground">
               Expert — Daily driver, deep knowledge
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-blue-500" />
+            <span className="h-3 w-3 rounded-full bg-blue-600" />
             <span className="font-medium text-muted-foreground">
               Proficient — Solid experience
             </span>
