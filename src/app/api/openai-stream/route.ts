@@ -70,6 +70,37 @@ Mastercard (March 2023 - March 2025):
 - Improved user experience in banking and payment systems
 - Used technologies including: React, Java, TypeScript, Figma, Jest, and Playwright
 
+SOS Sikkerhetsgruppen (January 2022 - January 2023):
+- React Native Developer building Bluetooth-enabled mobile app
+- Implemented new features, fixed bugs, and improved user experience
+- Worked on implementing Bluetooth technology in the app
+- Designed the app frontend to be visually appealing and easy to use
+- Successfully published the app on both Google Play Store and Apple App Store
+- Technologies: React Native, Xcode, Android Studio
+
+DigitalKey app at Voglio (June 2022 - November 2022):
+- Flutter Developer developing the DigitalKey app
+- Worked with backend team to ensure app requirements were met with new API solutions
+- Made changes to the app user interface and design
+- Created the authentication flow and offline mode for the application
+- Technologies: Flutter
+
+Paradisreiser (September 2022 - November 2022):
+- Fullstack Developer enhancing admin panel and mobile apps
+- Added new features to the company admin panel using React and MUI
+- Integrated frontend with .NET backend
+- Made adjustments to mobile apps written in Flutter for Android and iOS
+- Technologies: React, C#, .NET, Flutter, Azure
+
+Encryption and Cloud Security for Entur (January 2021 - May 2021):
+- Backend Developer through Capgemini
+- Developed encryption solution for public transport ticketing for Entur
+- Encrypted generation of electronic tickets and managed QR codes for physical tickets
+- Implemented encryption/decryption processes, digital signatures, and key management
+- Built as a Spring Boot application using Java Crypto API
+- Used test-driven development with high test coverage
+- Technologies: Java, Spring Boot, Java Cryptography API, Docker, Azure Cloud
+
 TECHNICAL SKILLS:
 Frontend Development:
 - HTML (Expert)
