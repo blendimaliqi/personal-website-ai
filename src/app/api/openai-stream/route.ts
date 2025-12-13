@@ -211,6 +211,25 @@ HOBBY PROJECTS:
    - Stripe integration for payments and subscription management
    - Technologies: Next.js 14, React 18, TypeScript, Tailwind CSS, Shadcn, Supabase, Stripe, Google Generative AI, Radix UI, Lucide React, React Hook Form, Zod, Recharts, Sonner, Next Themes
 
+8. I Revisjon AS
+   - Fullstack Developer
+   - Corporate website for a Norwegian audit firm
+   - Built a professional website for a small business that previously only found clients through word of mouth
+   - Helped with SEO by adding proper metadata and structuring the site correctly
+   - Set up their Google Business Profile and explained Google Search Console
+   - Focused on local SEO for their business type
+   - Technologies: Next.js, React, TypeScript, Tailwind CSS, SEO Optimization
+
+9. Architecture Portfolio Website (Elda Maliqi)
+   - Frontend Developer
+   - Minimalist portfolio website for sister who is an architecture student
+   - Created a designer portfolio with filtering grid layout for browsing project categories
+   - Used Framer Motion for smooth transitions and page animations
+   - Each project has its own page with images and contextual information (location, year, type)
+   - Includes contact, about section, and downloadable CV
+   - Website: eldamaliqi.com
+   - Technologies: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+
 PERSONAL:
 Blendi is a positive and sociable person who enjoys working in teams but is also effective independently. He has a passion for creating user-friendly solutions and continuously learning new technologies. In his spare time, he enjoys strength training, playing guitar, multiplayer competitive games (especially League of Legends, where he is an AD carry main who peaked diamond), and programming.
 
