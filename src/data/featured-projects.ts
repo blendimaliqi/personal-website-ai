@@ -8,6 +8,14 @@ export interface FeaturedProject {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    title: "SB Solutions",
+    description:
+      "Co-founded a consulting company helping Norwegian businesses with innovation grants and Skattefunn applications.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    logoPath: "/sbsolutions.png",
+    link: "/works",
+  },
+  {
     title: "Stilo.no",
     description:
       "AI-powered virtual clothing try-on platform for the Norwegian market.",
@@ -31,20 +39,5 @@ export const featuredProjects: FeaturedProject[] = [
     tags: ["React", "Java", "TypeScript", "Figma", "Jest", "Playwright"],
     logoPath: "/mastercard-logo.png",
     link: "/works",
-  },
-  {
-    title: "Borgen Bilsalg",
-    description:
-      "Car dealership management system with inventory tracking, customer management, and sales analytics for a Norwegian car dealer.",
-    tags: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "JSDOM",
-      "Framer Motion",
-    ],
-    logoPath: "/borgenbilsalg-512x.png",
-    link: "/hobby-projects",
   },
 ];

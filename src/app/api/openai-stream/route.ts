@@ -28,6 +28,18 @@ PROFESSIONAL PROFILE:
 - Additional Bachelor's in Marketing and Brand Management from Kristiania University College
 
 WORK EXPERIENCE:
+SB Solutions (November 2025 - Present):
+- Co-founder & Fullstack Developer
+- Co-founded a consulting company helping Norwegian businesses with innovation grants
+- Focus on Skattefunn, a tax deduction scheme for companies doing research and development
+- Responsible for the technical side, building digital tools that make the Skattefunn process easier for clients
+- Built and maintain the company website (sbsolutions.no) and client-facing applications
+- Developing tools to help businesses track research and development work, handle documentation, and ensure grant compliance
+- Working with clients ranging from startups to publicly listed companies
+- Focus on writing proper technical descriptions rather than using standard templates
+- No lock-in contracts approach, building relationships based on results
+- Technologies: Next.js, React, TypeScript, Tailwind CSS
+
 Multiconsult (April 2025 - Present):
 - Inhouse fullstack developer managing multiple applications
 - Oversee 10+ internal applications and other applications across the company
