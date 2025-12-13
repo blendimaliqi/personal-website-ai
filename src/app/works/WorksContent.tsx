@@ -84,9 +84,12 @@ export default function WorksContent() {
             </div>
           </DialogHeader>
           <ScrollArea className="mt-4 max-h-[60vh]">
-            <div className="whitespace-pre-wrap leading-relaxed">
-              {selectedExperience?.content}
-            </div>
+            <div
+              className="whitespace-pre-wrap leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html: selectedExperience?.content || "",
+              }}
+            />
             <div className="mb-6 mt-8">
               <h3 className="mb-3 text-lg font-medium text-foreground">
                 Technologies Used:

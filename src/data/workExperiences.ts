@@ -2,6 +2,25 @@ import { WorkExperience } from "~/types/work";
 
 export const workExperiences: WorkExperience[] = [
   {
+    title: "SB Solutions",
+    description: "Co-founder & Fullstack Developer",
+    shortDescription:
+      "Building digital solutions for Norwegian innovation grant consulting",
+    content: `SB Solutions is a consulting company I started together with Salar Pooriyan. We help Norwegian businesses with innovation grants, mainly Skattefunn, a tax deduction scheme for companies doing research and development.
+
+Salar takes care of the financial and accounting work. He is a certified auditor and has worked at both the Research Council of Norway and the Tax Administration. I handle the technical side of things. My job is to build digital tools that make the Skattefunn process easier for our clients.
+
+I have built our company website (<a href="https://sbsolutions.no" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">sbsolutions.no</a>) and the applications our clients use. The tech stack is Next.js, React, and TypeScript. Right now we are working on tools that help businesses keep track of their research and development work, handle documentation, and make sure they follow the rules for the grants.
+
+We work with all kinds of companies, from startups to those listed on the stock exchange. What they have in common is that they are working on new solutions. We focus on writing proper technical descriptions instead of using standard templates. We also do not lock clients into long contracts. This has worked well for us and we have built good relationships with our clients.
+
+It is nice to use my development skills for something that actually helps businesses get funding for their projects.`,
+    technologies: "Next.js, React, TypeScript, Tailwind CSS",
+    logo: "/sbsolutions.png",
+    startDate: "Nov 2025",
+    endDate: "Present",
+  },
+  {
     title: "Multiconsult",
     description: "Fullstack Developer",
     shortDescription: "Inhouse developer managing multiple applications",
