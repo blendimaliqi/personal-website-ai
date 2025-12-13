@@ -1,94 +1,253 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
-import React, { useState } from "react";
-import { SkillCategory } from "./SkillCategory";
-import type { SkillLevel, SkillCategoryType } from "~/types/skills";
-import { Layers, MonitorSmartphone, Server, Wrench, Star } from "lucide-react";
+import React from "react";
+import type { SkillLevel, Skill } from "~/types/skills";
+import {
+  Layers,
+  MonitorSmartphone,
+  Server,
+  Wrench,
+  Star,
+  Sparkles,
+} from "lucide-react";
 
-const skillCategories: SkillCategoryType[] = [
+interface SkillCategoryData {
+  name: string;
+  description: string;
+  icon: React.ReactNode;
+  gradient: string;
+  skills: Skill[];
+}
+
+const skillCategories: SkillCategoryData[] = [
   {
     name: "Frontend Development",
-    icon: <Layers className="mb-2 h-5 w-5" />,
+    description: "Building beautiful, responsive user interfaces",
+    icon: <Layers className="h-6 w-6" />,
+    gradient: "from-blue-500 to-cyan-500",
     skills: [
-      { name: "HTML", level: "Expert" },
-      { name: "CSS", level: "Expert" },
-      { name: "JavaScript", level: "Expert" },
       { name: "React", level: "Expert" },
       { name: "Next.js", level: "Expert" },
       { name: "TypeScript", level: "Expert" },
-      { name: "Tailwind CSS", level: "Advanced" },
+      { name: "JavaScript", level: "Expert" },
+      { name: "HTML/CSS", level: "Expert" },
+      { name: "Tailwind CSS", level: "Expert" },
+      { name: "Responsive Design", level: "Advanced" },
       { name: "Styled Components", level: "Advanced" },
-      { name: "Shadcn", level: "Advanced" },
+      { name: "Shadcn/ui", level: "Advanced" },
+      { name: "Framer Motion", level: "Advanced" },
+      { name: "Zustand", level: "Advanced" },
+      { name: "React Query", level: "Advanced" },
+      { name: "Vite", level: "Advanced" },
       { name: "MUI", level: "Intermediate" },
-      { name: "Figma", level: "Intermediate" },
-      { name: "Framer Motion", level: "Intermediate" },
       { name: "Storybook", level: "Intermediate" },
-      { name: "Playwright", level: "Intermediate" },
+      { name: "Accessibility", level: "Intermediate" },
+      { name: "Figma", level: "Intermediate" },
       { name: "Jest", level: "Intermediate" },
-      { name: "Mirage JS", level: "Intermediate" },
+      { name: "Playwright", level: "Intermediate" },
     ],
   },
   {
     name: "Backend Development",
-    icon: <Server className="mb-2 h-5 w-5" />,
+    description: "Server-side logic and cloud infrastructure",
+    icon: <Server className="h-6 w-6" />,
+    gradient: "from-emerald-500 to-teal-500",
     skills: [
-      { name: "C#", level: "Advanced" },
-      { name: ".NET", level: "Advanced" },
-      { name: "SQL", level: "Intermediate" },
-      { name: "PostgreSQL", level: "Intermediate" },
-      { name: "MongoDB", level: "Intermediate" },
+      { name: "C#", level: "Expert" },
+      { name: ".NET", level: "Expert" },
       { name: "REST API", level: "Expert" },
-      { name: "Azure", level: "Intermediate" },
+      { name: "Azure", level: "Advanced" },
       { name: "Azure DevOps", level: "Advanced" },
-      { name: "Azure Pipelines", level: "Intermediate" },
-      { name: "Bicep", level: "Intermediate" },
-      { name: "Infrastructure as Code", level: "Intermediate" },
-      { name: "Firebase", level: "Beginner" },
+      { name: "SQL", level: "Advanced" },
+      { name: "PostgreSQL", level: "Advanced" },
+      { name: "Azure Pipelines", level: "Advanced" },
+      { name: "Java", level: "Intermediate" },
+      { name: "Spring Boot", level: "Intermediate" },
+      { name: "Bicep/IaC", level: "Intermediate" },
+      { name: "MongoDB", level: "Intermediate" },
+      { name: "Firebase", level: "Intermediate" },
     ],
   },
   {
     name: "Mobile Development",
-    icon: <MonitorSmartphone className="mb-2 h-5 w-5" />,
+    description: "Cross-platform mobile applications",
+    icon: <MonitorSmartphone className="h-6 w-6" />,
+    gradient: "from-violet-500 to-purple-500",
     skills: [
-      { name: "React Native", level: "Advanced" },
+      { name: "React Native", level: "Expert" },
+      { name: "Cross-Platform", level: "Expert" },
       { name: "Flutter", level: "Advanced" },
-      { name: "Cross-Platform Development", level: "Advanced" },
-      { name: "Dart", level: "Intermediate" },
-      { name: "Android", level: "Intermediate" },
+      { name: "Dart", level: "Advanced" },
+      { name: "Expo", level: "Advanced" },
+      { name: "Mobile UI/UX", level: "Advanced" },
       { name: "Android Studio", level: "Intermediate" },
       { name: "Xcode", level: "Intermediate" },
-      { name: "Play Store", level: "Intermediate" },
-      { name: "App Store", level: "Intermediate" },
-      { name: "Bluetooth Low Energy", level: "Intermediate" },
+      { name: "App Store Publishing", level: "Intermediate" },
+      { name: "Play Store Publishing", level: "Intermediate" },
+      { name: "BLE Integration", level: "Intermediate" },
     ],
   },
   {
-    name: "Development Tools",
-    icon: <Wrench className="mb-2 h-5 w-5" />,
+    name: "Tools & Methods",
+    description: "Development workflow and best practices",
+    icon: <Wrench className="h-6 w-6" />,
+    gradient: "from-orange-500 to-amber-500",
     skills: [
       { name: "Git", level: "Expert" },
-      { name: "Jira", level: "Expert" },
       { name: "Agile/Scrum", level: "Expert" },
-      { name: "Kanban", level: "Expert" },
-      { name: "Waterfall", level: "Advanced" },
-      { name: "Risk Management", level: "Advanced" },
       { name: "Code Reviews", level: "Expert" },
-      { name: "CI/CD", level: "Intermediate" },
+      { name: "Jira", level: "Expert" },
       { name: "GitHub Actions", level: "Advanced" },
+      { name: "CI/CD", level: "Advanced" },
       { name: "DevOps", level: "Advanced" },
-      { name: "Technical Documentation", level: "Advanced" },
-      { name: "Requirements Analysis", level: "Advanced" },
       { name: "System Design", level: "Advanced" },
+      { name: "Technical Docs", level: "Advanced" },
       { name: "API Testing", level: "Advanced" },
+      { name: "Docker", level: "Intermediate" },
+      { name: "Postman", level: "Intermediate" },
     ],
   },
 ];
 
-export const SkillsSection: React.FC = () => {
-  const [selectedLevel, setSelectedLevel] = useState<SkillLevel | "All">("All");
+const levelConfig: Record<
+  SkillLevel,
+  { label: string; bgClass: string; textClass: string; dotClass: string }
+> = {
+  Expert: {
+    label: "Expert",
+    bgClass: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    textClass: "text-emerald-700 dark:text-emerald-400",
+    dotClass: "bg-emerald-500",
+  },
+  Advanced: {
+    label: "Advanced",
+    bgClass: "bg-blue-500/10 dark:bg-blue-500/20",
+    textClass: "text-blue-700 dark:text-blue-400",
+    dotClass: "bg-blue-500",
+  },
+  Intermediate: {
+    label: "Intermediate",
+    bgClass: "bg-amber-500/10 dark:bg-amber-500/20",
+    textClass: "text-amber-700 dark:text-amber-400",
+    dotClass: "bg-amber-500",
+  },
+  Beginner: {
+    label: "Beginner",
+    bgClass: "bg-slate-500/10 dark:bg-slate-500/20",
+    textClass: "text-slate-700 dark:text-slate-400",
+    dotClass: "bg-slate-500",
+  },
+};
 
+const SkillBadge: React.FC<{ skill: Skill }> = ({ skill }) => {
+  const config = levelConfig[skill.level];
+  return (
+    <div
+      className={`group relative flex items-center gap-2 rounded-lg px-3 py-2 transition-all duration-200 hover:scale-105 ${config.bgClass}`}
+    >
+      <span className={`h-2 w-2 rounded-full ${config.dotClass}`} />
+      <span className="font-medium text-foreground">{skill.name}</span>
+      <span
+        className={`ml-auto text-xs font-medium ${config.textClass} opacity-70`}
+      >
+        {config.label}
+      </span>
+    </div>
+  );
+};
+
+const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
+  category,
+}) => {
+  // Group skills by level for better organization
+  const expertSkills = category.skills.filter((s) => s.level === "Expert");
+  const advancedSkills = category.skills.filter((s) => s.level === "Advanced");
+  const otherSkills = category.skills.filter(
+    (s) => s.level === "Intermediate" || s.level === "Beginner",
+  );
+
+  return (
+    <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md">
+      {/* Header */}
+      <div className={`bg-gradient-to-r ${category.gradient} p-5 text-white`}>
+        <div className="flex items-center gap-3">
+          <div className="rounded-xl bg-white/20 p-2.5 backdrop-blur-sm">
+            {category.icon}
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">{category.name}</h3>
+            <p className="text-sm text-white/80">{category.description}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Skills */}
+      <div className="p-5">
+        {/* Expert skills - highlighted */}
+        {expertSkills.length > 0 && (
+          <div className="mb-4">
+            <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <Sparkles className="h-3.5 w-3.5" />
+              Core Expertise
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {expertSkills.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-700 transition-transform hover:scale-105 dark:bg-emerald-500/20 dark:text-emerald-400"
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Advanced skills */}
+        {advancedSkills.length > 0 && (
+          <div className="mb-4">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              Proficient
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {advancedSkills.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="rounded-full bg-blue-500/10 px-3 py-1.5 text-sm font-medium text-blue-700 transition-transform hover:scale-105 dark:bg-blue-500/20 dark:text-blue-400"
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Other skills */}
+        {otherSkills.length > 0 && (
+          <div>
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Familiar
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {otherSkills.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground transition-transform hover:scale-105"
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const SkillsSection: React.FC = () => {
   return (
     <section className="py-8 sm:py-12" aria-labelledby="skills-heading">
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="mb-12 text-center">
           <div className="mb-4 flex justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
@@ -96,56 +255,42 @@ export const SkillsSection: React.FC = () => {
             </div>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
-            Skills
+            Skills & Expertise
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            My tech comfort zones. Higher percentages mean more experience and
-            confidence with a technology. Im always learning and growing.
+            Technologies and tools I work with. Skills are grouped by
+            proficiency level — always learning and expanding my toolkit.
           </p>
         </div>
-        <Tabs
-          defaultValue={skillCategories[0]!.name}
-          className="mt-8 w-full"
-          aria-label="Skills categories"
-        >
-          <TabsList
-            className="mb-6 grid w-full grid-cols-2 gap-4 sm:mb-8 sm:grid-cols-4"
-            aria-label="Select skill category"
-          >
-            {skillCategories.map((category, index) => (
-              <TabsTrigger
-                key={index}
-                value={category.name}
-                className="flex flex-col items-center rounded-xl border border-border bg-card px-3 py-4
-                     text-sm font-medium shadow-sm transition-all
-                     hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700
-                     data-[state=active]:border-transparent data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-700 data-[state=active]:text-white
-                     dark:hover:border-blue-800 dark:hover:bg-gray-800 dark:hover:text-white
-                     dark:data-[state=active]:from-blue-600 dark:data-[state=active]:to-indigo-700"
-                aria-label={`Show ${category.name} skills`}
-              >
-                {category.icon}
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
-            {skillCategories.map((category, index) => (
-              <TabsContent
-                key={index}
-                value={category.name}
-                aria-label={`${category.name} skills list`}
-              >
-                <SkillCategory
-                  title={category.name}
-                  skills={category.skills}
-                  selectedLevel={selectedLevel}
-                  icon={category.icon}
-                />
-              </TabsContent>
-            ))}
+
+        {/* Legend */}
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-emerald-500" />
+            <span className="font-medium text-muted-foreground">
+              Expert — Daily driver, deep knowledge
+            </span>
           </div>
-        </Tabs>
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-blue-500" />
+            <span className="font-medium text-muted-foreground">
+              Proficient — Solid experience
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-slate-400" />
+            <span className="font-medium text-muted-foreground">
+              Familiar — Working knowledge
+            </span>
+          </div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {skillCategories.map((category, index) => (
+            <CategoryCard key={index} category={category} />
+          ))}
+        </div>
       </div>
     </section>
   );
