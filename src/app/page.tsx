@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import HeroSection from "./home/HeroSection";
 import SkillsSection from "./home/SkillsSection";
-import FeaturedProjectsSection from "./home/FeaturedProjectsSection";
+
 import { Message, sendChatMessage, processStreamResponse } from "~/lib/chat";
 
 export default function HomePage() {
@@ -100,12 +100,6 @@ export default function HomePage() {
       />
 
       <SkillsSection
-        activeSection={activeSection}
-        handleSectionHover={handleSectionHover}
-        isMobile={isMobile && showMobileChat}
-      />
-
-      <FeaturedProjectsSection
         activeSection={activeSection}
         handleSectionHover={handleSectionHover}
         isMobile={isMobile && showMobileChat}
