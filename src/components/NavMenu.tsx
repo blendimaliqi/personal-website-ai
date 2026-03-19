@@ -14,7 +14,6 @@ import { useEffect } from "react";
 const navItems = [
   { title: "Home", href: "/" },
   { title: "Works", href: "/works" },
-  { title: "Hobby Projects", href: "/hobby-projects" },
   { title: "Skills", href: "/skills" },
   { title: "About", href: "/about" },
 ];
