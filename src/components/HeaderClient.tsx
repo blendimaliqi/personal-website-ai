@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavMenu } from "./NavMenu";
 import { ModeToggle } from "./DropMenu";
-import { Menu, X, Home, Briefcase, Code, User, Layers } from "lucide-react";
+import { Menu, X, Home, Briefcase, Code, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 const navIcons = {
   "/": <Home className="h-5 w-5" />,
   "/works": <Briefcase className="h-5 w-5" />,
-  "/hobby-projects": <Layers className="h-5 w-5" />,
   "/skills": <Code className="h-5 w-5" />,
   "/about": <User className="h-5 w-5" />,
 };
