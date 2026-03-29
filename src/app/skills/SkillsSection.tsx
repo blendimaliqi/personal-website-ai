@@ -177,7 +177,9 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
           </div>
           <div>
             <h3 className="font-display text-lg font-bold">{category.name}</h3>
-            <p className="text-sm text-muted-foreground">{category.description}</p>
+            <p className="text-sm text-muted-foreground">
+              {category.description}
+            </p>
           </div>
         </div>
       </div>
@@ -258,34 +260,6 @@ export const SkillsSection: React.FC = () => {
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             The technologies and tools I use. Grouped by how well I know them.
           </p>
-        </div>
-
-        {/* Legend */}
-        <div className="mb-8 flex flex-wrap items-center justify-center gap-5 font-mono text-xs">
-          <div className="flex items-center gap-2">
-            <span className="inline-block rounded bg-foreground px-2 py-0.5 text-[10px] font-semibold text-background">
-              A
-            </span>
-            <span className="text-muted-foreground">
-              Primary, tools I use most
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block rounded border border-border px-2 py-0.5 text-[10px] font-medium text-foreground">
-              B
-            </span>
-            <span className="text-muted-foreground">
-              Confident, good hands-on experience
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block rounded border border-dashed border-border px-2 py-0.5 text-[10px] text-muted-foreground">
-              C
-            </span>
-            <span className="text-muted-foreground">
-              Familiar, have used it but not daily
-            </span>
-          </div>
         </div>
 
         {/* Skills Grid */}
