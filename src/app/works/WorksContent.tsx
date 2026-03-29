@@ -14,7 +14,6 @@ import {
 import { Button } from "~/components/ui/button";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import Image from "next/image";
-import { Briefcase } from "lucide-react";
 
 export default function WorksContent() {
   const [selectedExperience, setSelectedExperience] =
@@ -23,18 +22,12 @@ export default function WorksContent() {
   return (
     <div className="container mx-auto py-12">
       <div className="mb-12 text-center">
-        <div className="mb-4 flex justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm">
-            <Briefcase className="h-8 w-8" />
-          </div>
-        </div>
         <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] lg:text-5xl">
           Work Experience
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          This is my professional work experience. From startups to enterprise
-          clients. I love the feeling of knowing my code is out there and used
-          by people.
+          My work history so far. I have worked in consulting, at startups and
+          in larger companies. I like building things that people actually use.
         </p>
       </div>
 

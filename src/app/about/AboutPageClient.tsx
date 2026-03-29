@@ -91,19 +91,16 @@ const AboutPageClient = () => {
           <h2 className="mb-4 font-display text-lg font-semibold">About</h2>
           <div className="space-y-3 text-muted-foreground">
             <p>
-              I am a positive and approachable software developer with a passion
-              for the whole stack and a specialized interest in frontend
-              technology. Currently working as a fullstack developer at
-              Multiconsult in Oslo, Norway. I'm also co-founder of SB Solutions
-              on the side. Educated in Informatics - Design and Development of
-              IT Systems from Østfold University College.
+              I am a software developer based in Oslo. I work fullstack but
+              have a particular interest in frontend. Currently employed at
+              Multiconsult, and co-founder of SB Solutions on the side. I have
+              a degree in Informatics from Østfold University College.
             </p>
             <p>
-              I have experience throughout the whole stack, from frontend
-              development with React and TypeScript to mobile development with
-              Flutter and React Native, and backend with .NET. I thrive in both
-              team environments and working independently, and I'm always eager
-              to learn new technologies and concepts.
+              I have experience across the whole stack. Frontend with React and
+              TypeScript, mobile with Flutter and React Native, and backend with
+              .NET. I work well in teams but can also handle things on my own.
+              Always interested in picking up new technologies.
             </p>
           </div>
         </div>

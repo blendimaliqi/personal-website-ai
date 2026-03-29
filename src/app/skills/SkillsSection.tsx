@@ -5,7 +5,6 @@ import {
   MonitorSmartphone,
   Server,
   Wrench,
-  Star,
   Sparkles,
 } from "lucide-react";
 
@@ -20,7 +19,7 @@ interface SkillCategoryData {
 const skillCategories: SkillCategoryData[] = [
   {
     name: "Frontend Development",
-    description: "Building responsive, performant web applications",
+    description: "Responsive and fast web applications",
     icon: <Layers className="h-6 w-6" />,
     gradient:
       "from-amber-700 to-amber-800 dark:from-amber-700 dark:to-amber-800",
@@ -48,7 +47,7 @@ const skillCategories: SkillCategoryData[] = [
   },
   {
     name: "Backend Development",
-    description: "Server-side logic and cloud infrastructure",
+    description: "Backend services and cloud setup",
     icon: <Server className="h-6 w-6" />,
     gradient:
       "from-emerald-700 to-emerald-800 dark:from-emerald-700 dark:to-emerald-800",
@@ -70,7 +69,7 @@ const skillCategories: SkillCategoryData[] = [
   },
   {
     name: "Mobile Development",
-    description: "Cross-platform mobile applications",
+    description: "Apps for both iOS and Android",
     icon: <MonitorSmartphone className="h-6 w-6" />,
     gradient:
       "from-violet-700 to-violet-800 dark:from-violet-700 dark:to-violet-800",
@@ -90,7 +89,7 @@ const skillCategories: SkillCategoryData[] = [
   },
   {
     name: "Tools & Methods",
-    description: "Development workflow and best practices",
+    description: "Workflows, tooling and daily practices",
     icon: <Wrench className="h-6 w-6" />,
     gradient:
       "from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700",
@@ -253,17 +252,11 @@ export const SkillsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-12 text-center">
-          <div className="mb-4 flex justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm">
-              <Star className="h-8 w-8" />
-            </div>
-          </div>
           <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] lg:text-5xl">
-            Skills & Expertise
+            Skills
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Technologies and tools I work with. Skills are grouped by
-            proficiency level — always learning and expanding my toolkit.
+            The technologies and tools I use. Grouped by how well I know them.
           </p>
         </div>
 
@@ -274,7 +267,7 @@ export const SkillsSection: React.FC = () => {
               A
             </span>
             <span className="text-muted-foreground">
-              Primary — Go-to tools
+              Primary, tools I use most
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -282,7 +275,7 @@ export const SkillsSection: React.FC = () => {
               B
             </span>
             <span className="text-muted-foreground">
-              Confident — Solid experience
+              Confident, good hands-on experience
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -290,7 +283,7 @@ export const SkillsSection: React.FC = () => {
               C
             </span>
             <span className="text-muted-foreground">
-              Familiar — Working knowledge
+              Familiar, have used it but not daily
             </span>
           </div>
         </div>

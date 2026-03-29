@@ -50,10 +50,10 @@ I've had my hands in all sorts of projects. From building slick frontends to dev
 
 Since May 2024, I've also taken on an additional role as the Frontend Advocate within Omegapoint. This doesn't replace my consulting work. I'm still fully engaged with clients, but it's something I do alongside my regular projects. As the Frontend Advocate, I help keep our developers up to date with what's happening in the frontend world. I do this through:
 
-- Giving talks about new technologies and approaches I've discovered
-- Running workshops where we can get hands-on with new tools and techniques
-- Organizing events where we can all share what we're learning
-- Encouraging other developers to share their knowledge too
+• Giving talks about new technologies and approaches I have found useful
+• Running workshops where we get hands-on with new tools
+• Organizing events where developers can share what they are working on
+• Getting other developers to share their knowledge
 
 I really enjoy this dual role. The consulting work keeps me in the trenches, solving real-world problems for clients. Meanwhile, the advocate position lets me step back, reflect on what I'm learning, and share that knowledge with my colleagues. It's the best of both worlds!`,
     technologies:
