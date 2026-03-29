@@ -9,6 +9,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       touchMultiplier: 2,
+      // When Radix locks the body (any dialog open), yield all scroll events
+      // back to the browser so the modal's native scroll works normally.
+      prevent: () => document.body.hasAttribute("data-scroll-locked"),
     });
 
     function raf(time: number) {
