@@ -42,14 +42,14 @@ const AboutPageClient = () => {
 
             {/* Info */}
             <div className="flex-1 text-center md:text-left">
-              <h1 className="mb-1 text-3xl font-bold">Blendi Maliqi</h1>
-              <p className="mb-3 text-lg text-muted-foreground">
+              <h1 className="mb-1 font-display text-3xl font-bold tracking-[-0.03em]">Blendi Maliqi</h1>
+              <p className="mb-3 font-mono text-sm text-muted-foreground">
                 Software Developer
               </p>
 
-              <div className="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-muted-foreground md:justify-start">
+              <div className="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground md:justify-start">
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-3.5 w-3.5" />
                   Oslo, Norway
                 </span>
               </div>
@@ -88,7 +88,7 @@ const AboutPageClient = () => {
       <div className="mx-auto max-w-3xl space-y-6">
         {/* Professional Profile */}
         <div className="rounded-xl border border-border bg-card p-6">
-          <h2 className="mb-4 text-lg font-semibold">About</h2>
+          <h2 className="mb-4 font-display text-lg font-semibold">About</h2>
           <div className="space-y-3 text-muted-foreground">
             <p>
               I am a positive and approachable software developer with a passion
@@ -112,7 +112,7 @@ const AboutPageClient = () => {
         <div className="grid gap-6 sm:grid-cols-2">
           {/* Key Skills */}
           <div className="rounded-xl border border-border bg-card p-6">
-            <h2 className="mb-4 text-lg font-semibold">Key Skills</h2>
+            <h2 className="mb-4 font-display text-lg font-semibold">Key Skills</h2>
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <Badge
@@ -128,7 +128,7 @@ const AboutPageClient = () => {
 
           {/* Personal Interests */}
           <div className="rounded-xl border border-border bg-card p-6">
-            <h2 className="mb-4 text-lg font-semibold">Interests</h2>
+            <h2 className="mb-4 font-display text-lg font-semibold">Interests</h2>
             <div className="flex flex-wrap gap-2">
               {interests.map((interest) => (
                 <span

@@ -58,7 +58,7 @@ export function DesktopChat({
         <div
           className={`rounded-lg ${isDarkTheme ? "bg-slate-800/80" : "bg-slate-100"} shadow-lg`}
         >
-          <div className="flex items-center justify-between rounded-t-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
+          <div className="flex items-center justify-between rounded-t-lg bg-slate-800 p-3 dark:bg-slate-700">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5 text-white" />
               <span className="text-sm font-medium text-white"></span>
@@ -100,7 +100,7 @@ export function DesktopChat({
           >
             {messages.length === 0 && (
               <div className="flex flex-col items-center">
-                <div className="group relative mb-5 h-40 w-40 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="group relative mb-5 h-40 w-40 overflow-hidden rounded-full border-4 border-border shadow-xl transition-all duration-300 hover:scale-105">
                   <Image
                     fill
                     src="/blendi.jpg"
@@ -175,7 +175,7 @@ export function DesktopChat({
                   });
                 }}
                 size="icon"
-                className="absolute right-1.5 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                className="absolute right-1.5 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-slate-800 dark:bg-slate-600"
                 disabled={loading || message.trim() === ""}
               >
                 <ArrowUp className="h-4 w-4" />

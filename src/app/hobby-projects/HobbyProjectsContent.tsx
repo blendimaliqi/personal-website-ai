@@ -25,11 +25,11 @@ function HobbyProjectsContent() {
     <div className="container mx-auto py-12">
       <div className="mb-12 text-center">
         <div className="mb-4 flex justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm">
             <Code className="h-8 w-8" />
           </div>
         </div>
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] lg:text-5xl">
           Hobby Projects
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -59,7 +59,7 @@ function HobbyProjectsContent() {
           <DialogHeader>
             <div className="flex items-center space-x-4">
               {selectedProject && (
-                <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-blue-100 dark:border-blue-900/30">
+                <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-border">
                   <Image
                     src={selectedProject.logo}
                     alt={`${selectedProject.title} logo`}
@@ -70,7 +70,7 @@ function HobbyProjectsContent() {
                 </div>
               )}
               <div>
-                <DialogTitle className="text-xl">
+                <DialogTitle className="font-display text-xl">
                   {selectedProject?.title}
                 </DialogTitle>
                 <DialogDescription className="text-sm">
@@ -85,8 +85,8 @@ function HobbyProjectsContent() {
             </div>
 
             <div className="mb-6 mt-8">
-              <h3 className="mb-3 text-lg font-medium text-foreground">
-                Technologies Used:
+              <h3 className="mb-3 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Technologies
               </h3>
               <div className="flex flex-wrap gap-2">
                 {selectedProject?.technologies
@@ -94,7 +94,7 @@ function HobbyProjectsContent() {
                   .map((tech, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center rounded-md border border-blue-200/50 bg-blue-50/50 px-3 py-1.5 text-sm font-medium text-blue-700 shadow-sm dark:border-blue-800/50 dark:bg-blue-900/20 dark:text-blue-300"
+                      className="inline-flex items-center rounded-md border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground"
                     >
                       {tech.trim()}
                     </span>
@@ -108,7 +108,7 @@ function HobbyProjectsContent() {
                   href={selectedProject.chromeStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-blue-700 hover:shadow-md"
+                  className="flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-all hover:bg-foreground/90 hover:shadow-md"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Chrome Web Store
@@ -119,7 +119,7 @@ function HobbyProjectsContent() {
                   href={selectedProject.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-indigo-700 hover:shadow-md"
+                  className="flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-all hover:bg-foreground/90 hover:shadow-md"
                 >
                   <Globe className="mr-2 h-4 w-4" />
                   Live Website

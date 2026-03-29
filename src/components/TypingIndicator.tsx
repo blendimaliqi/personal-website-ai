@@ -4,7 +4,7 @@ function TypingIndicator() {
   return (
     <div className="flex space-x-1">
       <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
+        className="h-2 w-2 rounded-full bg-foreground/60"
         animate={{ y: [0, -5, 0] }}
         transition={{
           duration: 0.5,
@@ -14,7 +14,7 @@ function TypingIndicator() {
         }}
       />
       <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
+        className="h-2 w-2 rounded-full bg-foreground/60"
         animate={{ y: [0, -5, 0] }}
         transition={{
           duration: 0.5,
@@ -24,7 +24,7 @@ function TypingIndicator() {
         }}
       />
       <motion.div
-        className="h-2 w-2 rounded-full bg-blue-500"
+        className="h-2 w-2 rounded-full bg-foreground/60"
         animate={{ y: [0, -5, 0] }}
         transition={{
           duration: 0.5,

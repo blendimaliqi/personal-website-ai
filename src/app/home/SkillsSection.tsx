@@ -1,8 +1,41 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, Code, Cpu, Briefcase } from "lucide-react";
-import { skillCategories } from "~/data/skills";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { workExperiences } from "~/data/workExperiences";
+
+const skillGroups = [
+  {
+    label: "Frontend",
+    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+  },
+  {
+    label: "Backend",
+    skills: ["C#", ".NET", "SQL", "REST API"],
+  },
+  {
+    label: "Mobile",
+    skills: ["React Native", "Flutter"],
+  },
+  {
+    label: "Infra",
+    skills: ["Azure", "CI/CD", "Docker"],
+  },
+];
+
+const currentRoles = [
+  {
+    company: "Multiconsult",
+    role: "Fullstack Developer",
+    logo: "/multiconsult.png",
+  },
+  {
+    company: "SB Solutions",
+    role: "Co-founder",
+    logo: "/sbsolutions.png",
+  },
+];
 
 interface SkillsSectionProps {
   activeSection: string | null;
@@ -10,65 +43,101 @@ interface SkillsSectionProps {
   isMobile: boolean;
 }
 
-export default function SkillsSection({
-  activeSection,
-  handleSectionHover,
-  isMobile,
-}: SkillsSectionProps) {
-  const iconMap = {
-    Code: <Code className="h-5 w-5" />,
-    Cpu: <Cpu className="h-5 w-5" />,
-    Briefcase: <Briefcase className="h-5 w-5" />,
-  };
+function getYearsOfExperience(): number {
+  const earliest = workExperiences.reduce((min, exp) => {
+    const date = new Date(exp.startDate);
+    return date < min ? date : min;
+  }, new Date());
+  const years = (Date.now() - earliest.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.floor(years);
+}
 
+export default function SkillsSection({ isMobile }: SkillsSectionProps) {
   return (
     <section
       className={`mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 ${isMobile ? "hidden" : ""}`}
     >
-      <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold">My Skills</h2>
-        <p className="mt-2 text-muted-foreground">
-          Technologies and tools I work with
-        </p>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-3">
-        {skillCategories.map((category) => (
-          <div
-            key={category.name}
-            onMouseEnter={() => handleSectionHover(category.name)}
-            onMouseLeave={() => handleSectionHover(null)}
-            className={`group flex flex-col rounded-xl border p-6 transition-all duration-300 hover:border-blue-500/50 hover:shadow-md ${
-              activeSection === category.name
-                ? "border-blue-500/50 shadow-md"
-                : "border-border"
-            }`}
-          >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
-              {iconMap[category.iconName as keyof typeof iconMap]}
-            </div>
-            <h3 className="mb-3 text-xl font-semibold">{category.name}</h3>
-            <div className="mb-4 flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-            <div className="mt-auto">
-              <Link
-                href="/skills"
-                className="flex items-center text-sm text-blue-500 hover:text-blue-400"
-              >
-                <span>View all skills</span>
-                <ChevronRight className="ml-1 h-3 w-3" />
-              </Link>
-            </div>
+      <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
+        {/* Skills — spans 2 columns and 2 rows */}
+        <div className="row-span-2 rounded-2xl border border-border bg-card p-6 noise-subtle md:col-span-2">
+          <p className="mb-5 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            What I work with
+          </p>
+          <div className="space-y-5">
+            {skillGroups.map((group) => (
+              <div key={group.label}>
+                <p className="mb-2 font-display text-sm font-semibold text-foreground">
+                  {group.label}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-md border border-border bg-background px-3 py-1.5 text-sm text-foreground transition-colors hover:bg-muted"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+          <div className="mt-6 border-t border-border pt-4">
+            <Link
+              href="/skills"
+              className="inline-flex items-center gap-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+            >
+              All skills
+              <ArrowUpRight className="h-3 w-3" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Currently — top right */}
+        <div className="rounded-2xl border border-border bg-card p-6">
+          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            Currently
+          </p>
+          <div className="space-y-4">
+            {currentRoles.map((role) => (
+              <div key={role.company} className="flex items-center gap-3">
+                <div className="relative h-9 w-9 flex-shrink-0 overflow-hidden rounded-lg border border-border">
+                  <Image
+                    src={role.logo}
+                    alt={role.company}
+                    fill
+                    className="object-cover"
+                    sizes="36px"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate font-display text-sm font-semibold leading-tight">
+                    {role.company}
+                  </p>
+                  <p className="truncate text-xs text-muted-foreground">
+                    {role.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA — bottom right */}
+        <Link
+          href="/works"
+          className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 transition-colors hover:bg-muted/50"
+        >
+          <p className="font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            Experience
+          </p>
+          <div className="mt-4 flex items-end justify-between">
+            <p className="font-display text-3xl font-bold tracking-tight">
+              {getYearsOfExperience()}+ years
+            </p>
+            <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </div>
+        </Link>
       </div>
     </section>
   );

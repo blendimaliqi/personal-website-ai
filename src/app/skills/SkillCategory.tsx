@@ -18,7 +18,7 @@ export const SkillCategory: React.FC<SkillCategoryProps> = ({
   <div className="mb-6">
     <div className="mb-4 flex items-center">
       {icon && <span className="mr-2">{icon}</span>}
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <h3 className="font-display text-xl font-semibold">{title}</h3>
     </div>
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
       {skills

@@ -9,7 +9,6 @@ export default function HomePage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState("");
-  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showMobileChat, setShowMobileChat] = useState(false);
 
@@ -77,10 +76,6 @@ export default function HomePage() {
     };
   }, [handleSendMessage]);
 
-  function handleSectionHover(section: string | null) {
-    setActiveSection(section);
-  }
-
   function toggleMobileChat(isVisible: boolean) {
     setShowMobileChat(isVisible);
   }
@@ -100,8 +95,8 @@ export default function HomePage() {
       />
 
       <SkillsSection
-        activeSection={activeSection}
-        handleSectionHover={handleSectionHover}
+        activeSection={null}
+        handleSectionHover={() => {}}
         isMobile={isMobile && showMobileChat}
       />
     </div>

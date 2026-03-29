@@ -131,7 +131,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
                 <div
                   className={`relative max-w-[85%] space-y-1 rounded-2xl p-4 ${
                     msg.role === "user"
-                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+                      ? "bg-foreground text-background"
                       : embedded
                         ? isDarkTheme
                           ? "bg-slate-700"
@@ -146,7 +146,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
                       {msg.role === "user" ? (
                         <User className="h-3.5 w-3.5 text-white" />
                       ) : (
-                        <Bot className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
+                        <Bot className="h-3.5 w-3.5 text-muted-foreground" />
                       )}
                     </div>
                     <strong
@@ -208,7 +208,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
                 >
                   <div className="flex items-center gap-2 pb-1">
                     <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
-                      <Bot className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
+                      <Bot className="h-3.5 w-3.5 text-muted-foreground" />
                     </div>
                     <strong
                       className={`text-sm ${
@@ -233,7 +233,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
           <div className="flex h-full flex-col justify-between">
             <div className="flex flex-1 flex-col items-center justify-center">
               {!embedded && (
-                <div className="relative mb-3 h-32 w-32 overflow-hidden rounded-full border-4 border-blue-600 shadow-lg">
+                <div className="relative mb-3 h-32 w-32 overflow-hidden rounded-full border-4 border-border shadow-lg">
                   <Image
                     src="/blendi.jpg"
                     alt="Blendi"
@@ -270,7 +270,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
                   />
                   <a
                     href="mailto:blendi.maliqi93@gmail.com"
-                    className={`${isDarkTheme ? "text-slate-400 hover:text-blue-400" : "text-slate-500 hover:text-blue-600"} transition-colors`}
+                    className={`${isDarkTheme ? "text-slate-400 hover:text-white" : "text-slate-500 hover:text-slate-900"} transition-colors`}
                   >
                     blendi.maliqi93@gmail.com
                   </a>
@@ -288,8 +288,8 @@ function Chat({ messages, embedded = false }: ChatProps) {
                         key={suggestion}
                         className={`rounded-full ${
                           isDarkTheme
-                            ? "bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-blue-400"
-                            : "bg-slate-200 text-slate-600 hover:bg-blue-100 hover:text-blue-700"
+                            ? "bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white"
+                            : "bg-slate-200 text-slate-600 hover:bg-slate-300 hover:text-slate-900"
                         } px-3 py-1 text-sm transition-colors`}
                         onClick={() => {
                           // This will be handled by the parent component
@@ -312,7 +312,7 @@ function Chat({ messages, embedded = false }: ChatProps) {
       {showScrollButton && (
         <button
           onClick={scrollToBottom}
-          className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+          className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background shadow-lg transition-transform hover:scale-105 active:scale-95"
           aria-label="Scroll to bottom"
         >
           <ArrowDown className="h-5 w-5" />

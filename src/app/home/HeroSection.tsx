@@ -69,7 +69,7 @@ export default function HeroSection({
         isDarkTheme
           ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
           : "bg-gradient-to-br from-slate-50 via-white to-slate-100"
-      } px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
+      } noise-subtle px-4 py-8 shadow-xl sm:px-6 md:py-12 lg:px-8`}
     >
       {isMobile && localShowMobileChat && (
         <MobileChatButton toggleMobileChat={toggleMobileChat} />

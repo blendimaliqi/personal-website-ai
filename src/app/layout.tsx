@@ -1,15 +1,26 @@
 import "~/styles/globals.css";
-import { Inter } from "next/font/google";
+import { DM_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { cn } from "~/lib/utils";
 import { ThemeProvider } from "next-themes";
 import HeaderClient from "~/components/HeaderClient";
 import Footer from "~/components/Footer";
 import { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { SmoothScroll } from "~/components/SmoothScroll";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 export const viewport: Viewport = {
@@ -111,7 +122,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(inter.variable, "font-sans")}
+      className={cn(
+        dmSans.variable,
+        spaceGrotesk.variable,
+        jetbrainsMono.variable,
+        "font-sans",
+      )}
       suppressHydrationWarning
     >
       <head>
@@ -139,13 +155,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col">
-            <HeaderClient />
-            <main className="flex-1 px-4 pb-16 sm:px-6 lg:px-8">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <SmoothScroll>
+            <div className="flex min-h-screen flex-col">
+              <HeaderClient />
+              <main className="flex-1 px-4 pb-16 sm:px-6 lg:px-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </SmoothScroll>
         </ThemeProvider>
         <Script id="theme-switcher" strategy="beforeInteractive">
           {`

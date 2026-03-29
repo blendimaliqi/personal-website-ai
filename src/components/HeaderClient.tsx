@@ -85,9 +85,9 @@ export default function HeaderClient() {
           href="/"
           className="flex items-center space-x-1 text-xl font-bold tracking-tighter transition-colors duration-200"
         >
-          <div className="flex items-baseline">
+          <div className="flex items-baseline font-display">
             <span className="text-slate-900 dark:text-white">Blendi</span>
-            <span className="ml-1 text-blue-500 dark:text-blue-400">
+            <span className="ml-1 text-slate-500 dark:text-slate-400">
               Maliqi
             </span>
           </div>
@@ -105,7 +105,7 @@ export default function HeaderClient() {
           <button
             ref={hamburgerButtonRef}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 transition-colors hover:bg-blue-500/20 dark:text-blue-400"
+            className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-muted text-foreground transition-colors hover:bg-accent"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
@@ -134,7 +134,7 @@ export default function HeaderClient() {
                   href={path}
                   className={`flex items-center space-x-3 rounded-lg px-3 py-2 text-base ${
                     pathname === path
-                      ? "bg-blue-500/10 font-medium text-blue-600 dark:text-blue-400"
+                      ? "bg-muted font-medium text-foreground"
                       : "text-muted-foreground hover:bg-accent hover:text-foreground"
                   }`}
                 >

@@ -59,7 +59,7 @@ export function MobileChatOverlay({
               isDarkTheme ? "bg-slate-800" : "bg-white"
             } overflow-hidden shadow-2xl`}
           >
-            <div className="flex items-center justify-between rounded-t-xl bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
+            <div className="flex items-center justify-between rounded-t-xl bg-slate-800 p-3 dark:bg-slate-700">
               <div className="flex items-center gap-2">
                 <Bot className="h-5 w-5 text-white" />
               </div>
@@ -84,7 +84,7 @@ export function MobileChatOverlay({
               <div className="scrollbar-dark flex-1 overflow-y-auto p-4">
                 {messages.length === 0 && (
                   <div className="flex flex-col items-center">
-                    <div className="group relative mb-5 h-24 w-24 overflow-hidden rounded-full border-4 border-blue-500/40 shadow-xl">
+                    <div className="group relative mb-5 h-24 w-24 overflow-hidden rounded-full border-4 border-border shadow-xl">
                       <Image
                         fill
                         src="/blendi.jpg"
@@ -157,7 +157,7 @@ export function MobileChatOverlay({
                       });
                     }}
                     size="icon"
-                    className="absolute right-1.5 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"
+                    className="absolute right-1.5 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-slate-800 dark:bg-slate-600"
                     disabled={loading || message.trim() === ""}
                   >
                     <ArrowUp className="h-5 w-5" />

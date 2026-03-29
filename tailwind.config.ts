@@ -57,6 +57,8 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        display: ["var(--font-display)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,7 +86,11 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    require("tailwindcss-noise"),
+  ],
 } satisfies Config;
 
 export default config;

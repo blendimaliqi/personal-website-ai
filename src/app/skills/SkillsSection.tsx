@@ -122,10 +122,10 @@ const levelConfig: Record<
     dotClass: "bg-emerald-500",
   },
   Advanced: {
-    label: "Advanced",
-    bgClass: "bg-blue-500/10 dark:bg-blue-500/20",
-    textClass: "text-blue-700 dark:text-blue-400",
-    dotClass: "bg-blue-500",
+    label: "Confident",
+    bgClass: "bg-muted",
+    textClass: "text-foreground",
+    dotClass: "bg-foreground/60",
   },
   Intermediate: {
     label: "Intermediate",
@@ -171,14 +171,14 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
   return (
     <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md">
       {/* Header */}
-      <div className={`bg-gradient-to-r ${category.gradient} p-5 text-white`}>
+      <div className="border-b border-border p-5">
         <div className="flex items-center gap-3">
-          <div className="rounded-xl bg-white/20 p-2.5 backdrop-blur-sm">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-foreground">
             {category.icon}
           </div>
           <div>
-            <h3 className="text-lg font-bold">{category.name}</h3>
-            <p className="text-sm text-white/80">{category.description}</p>
+            <h3 className="font-display text-lg font-bold">{category.name}</h3>
+            <p className="text-sm text-muted-foreground">{category.description}</p>
           </div>
         </div>
       </div>
@@ -188,15 +188,15 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
         {/* Expert skills - highlighted */}
         {expertSkills.length > 0 && (
           <div className="mb-4">
-            <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-500">
+            <div className="mb-2 flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5" />
-              Core Expertise
+              Primary
             </div>
             <div className="flex flex-wrap gap-2">
               {expertSkills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800 transition-transform hover:scale-105 dark:bg-emerald-900/40 dark:text-emerald-300"
+                  className="rounded-md bg-foreground px-3 py-1.5 text-sm font-semibold text-background"
                 >
                   {skill.name}
                 </span>
@@ -208,14 +208,14 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
         {/* Advanced skills */}
         {advancedSkills.length > 0 && (
           <div className="mb-4">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-              Proficient
+            <div className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Confident
             </div>
             <div className="flex flex-wrap gap-2">
               {advancedSkills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-800 transition-transform hover:scale-105 dark:bg-blue-900/40 dark:text-blue-300"
+                  className="rounded-md border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground"
                 >
                   {skill.name}
                 </span>
@@ -227,14 +227,14 @@ const CategoryCard: React.FC<{ category: SkillCategoryData }> = ({
         {/* Other skills */}
         {otherSkills.length > 0 && (
           <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <div className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground">
               Familiar
             </div>
             <div className="flex flex-wrap gap-2">
               {otherSkills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground transition-transform hover:scale-105"
+                  className="rounded-md border border-dashed border-border px-3 py-1.5 text-sm text-muted-foreground"
                 >
                   {skill.name}
                 </span>
@@ -258,7 +258,7 @@ export const SkillsSection: React.FC = () => {
               <Star className="h-8 w-8" />
             </div>
           </div>
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
+          <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] lg:text-5xl">
             Skills & Expertise
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -268,22 +268,28 @@ export const SkillsSection: React.FC = () => {
         </div>
 
         {/* Legend */}
-        <div className="mb-8 flex flex-wrap items-center justify-center gap-6 text-sm">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-5 font-mono text-xs">
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-emerald-600" />
-            <span className="font-medium text-muted-foreground">
-              Expert — Daily driver, deep knowledge
+            <span className="inline-block rounded bg-foreground px-2 py-0.5 text-[10px] font-semibold text-background">
+              A
+            </span>
+            <span className="text-muted-foreground">
+              Primary — Go-to tools
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-blue-600" />
-            <span className="font-medium text-muted-foreground">
-              Proficient — Solid experience
+            <span className="inline-block rounded border border-border px-2 py-0.5 text-[10px] font-medium text-foreground">
+              B
+            </span>
+            <span className="text-muted-foreground">
+              Confident — Solid experience
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-slate-400" />
-            <span className="font-medium text-muted-foreground">
+            <span className="inline-block rounded border border-dashed border-border px-2 py-0.5 text-[10px] text-muted-foreground">
+              C
+            </span>
+            <span className="text-muted-foreground">
               Familiar — Working knowledge
             </span>
           </div>
