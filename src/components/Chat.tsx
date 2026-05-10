@@ -131,7 +131,9 @@ function Chat({ messages, embedded = false }: ChatProps) {
                 <div
                   className={`relative max-w-[85%] space-y-1 rounded-2xl p-4 ${
                     msg.role === "user"
-                      ? "bg-foreground text-background"
+                      ? isDarkTheme
+                        ? "bg-slate-600 text-white"
+                        : "bg-foreground text-background"
                       : embedded
                         ? isDarkTheme
                           ? "bg-slate-700"
@@ -142,9 +144,19 @@ function Chat({ messages, embedded = false }: ChatProps) {
                   }`}
                 >
                   <div className="flex items-center gap-2 pb-1">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                    <div
+                      className={`flex h-6 w-6 items-center justify-center rounded-full ${
+                        msg.role === "user" && isDarkTheme
+                          ? "bg-slate-950/10"
+                          : "bg-white/20"
+                      }`}
+                    >
                       {msg.role === "user" ? (
-                        <User className="h-3.5 w-3.5 text-white" />
+                        <User
+                          className={`h-3.5 w-3.5 ${
+                            isDarkTheme ? "text-white" : "text-background"
+                          }`}
+                        />
                       ) : (
                         <Bot className="h-3.5 w-3.5 text-muted-foreground" />
                       )}
@@ -152,7 +164,9 @@ function Chat({ messages, embedded = false }: ChatProps) {
                     <strong
                       className={`text-sm ${
                         msg.role === "user"
-                          ? "text-white/90"
+                          ? isDarkTheme
+                            ? "text-white"
+                            : "text-background"
                           : embedded
                             ? isDarkTheme
                               ? "text-gray-300"
@@ -169,7 +183,9 @@ function Chat({ messages, embedded = false }: ChatProps) {
                     <ReactMarkdown
                       className={`prose max-w-none text-sm ${
                         msg.role === "user"
-                          ? "prose-invert"
+                          ? isDarkTheme
+                            ? "prose-invert"
+                            : "prose-invert"
                           : embedded
                             ? isDarkTheme
                               ? "prose-invert"
