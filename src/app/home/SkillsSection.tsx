@@ -43,13 +43,60 @@ interface SkillsSectionProps {
   isMobile: boolean;
 }
 
+const monthIndexes: Record<string, number> = {
+  jan: 0,
+  feb: 1,
+  mar: 2,
+  apr: 3,
+  may: 4,
+  jun: 5,
+  jul: 6,
+  aug: 7,
+  sep: 8,
+  oct: 9,
+  nov: 10,
+  dec: 11,
+};
+
+function parseExperienceStartDate(startDate: string): Date | null {
+  const [month = "", year = ""] = startDate.trim().split(/\s+/);
+  const monthIndex = monthIndexes[month.toLowerCase().slice(0, 3)];
+  const yearNumber = Number(year);
+
+  if (monthIndex === undefined || !Number.isInteger(yearNumber)) {
+    return null;
+  }
+
+  return new Date(Date.UTC(yearNumber, monthIndex, 1));
+}
+
 function getYearsOfExperience(): number {
-  const earliest = workExperiences.reduce((min, exp) => {
-    const date = new Date(exp.startDate);
-    return date < min ? date : min;
-  }, new Date());
-  const years = (Date.now() - earliest.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  return Math.floor(years);
+  const earliest = workExperiences.reduce<Date | null>((min, exp) => {
+    const date = parseExperienceStartDate(exp.startDate);
+
+    if (!date) {
+      return min;
+    }
+
+    return !min || date < min ? date : min;
+  }, null);
+
+  if (!earliest) {
+    return 0;
+  }
+
+  const today = new Date();
+  let years = today.getUTCFullYear() - earliest.getUTCFullYear();
+  const hasReachedAnniversary =
+    today.getUTCMonth() > earliest.getUTCMonth() ||
+    (today.getUTCMonth() === earliest.getUTCMonth() &&
+      today.getUTCDate() >= earliest.getUTCDate());
+
+  if (!hasReachedAnniversary) {
+    years -= 1;
+  }
+
+  return Math.max(years, 0);
 }
 
 export default function SkillsSection({ isMobile }: SkillsSectionProps) {
