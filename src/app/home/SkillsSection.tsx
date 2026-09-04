@@ -30,11 +30,6 @@ const currentRoles = [
     role: "Fullstack Developer",
     logo: "/multiconsult.png",
   },
-  {
-    company: "SB Solutions",
-    role: "Co-founder",
-    logo: "/sbsolutions.png",
-  },
 ];
 
 interface SkillsSectionProps {
