@@ -5,14 +5,23 @@ export interface SkillCategory {
 }
 export const skillCategories: SkillCategory[] = [
   {
+    name: "Backend",
+    iconName: "Cpu",
+    skills: [
+      "C#",
+      ".NET 9",
+      "REST APIs",
+      "Entity Framework Core",
+      "PostgreSQL",
+      "SQL",
+      "Azure",
+      "Spring Boot",
+    ],
+  },
+  {
     name: "Frontend",
     iconName: "Code",
     skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-  },
-  {
-    name: "Backend",
-    iconName: "Cpu",
-    skills: ["C#", ".NET", "SQL", "REST API"],
   },
   {
     name: "Mobile",

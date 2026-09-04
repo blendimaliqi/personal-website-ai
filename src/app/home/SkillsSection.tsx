@@ -7,12 +7,21 @@ import { workExperiences } from "~/data/workExperiences";
 
 const skillGroups = [
   {
-    label: "Frontend",
-    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+    label: "Backend",
+    skills: [
+      "C#",
+      ".NET 9",
+      "REST APIs",
+      "Entity Framework Core",
+      "PostgreSQL",
+      "SQL",
+      "Spring Boot",
+      "API Integration",
+    ],
   },
   {
-    label: "Backend",
-    skills: ["C#", ".NET", "SQL", "REST API"],
+    label: "Frontend",
+    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
   },
   {
     label: "Mobile",
@@ -20,7 +29,7 @@ const skillGroups = [
   },
   {
     label: "Infra",
-    skills: ["Azure", "CI/CD", "Docker"],
+    skills: ["Azure", "Bicep / IaC", "CI/CD", "Docker", "Coolify"],
   },
 ];
 

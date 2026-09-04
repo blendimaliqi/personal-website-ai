@@ -18,6 +18,38 @@ interface SkillCategoryData {
 
 const skillCategories: SkillCategoryData[] = [
   {
+    name: "Backend Development",
+    description: "APIs, data, cloud infrastructure and secure services",
+    icon: <Server className="h-6 w-6" />,
+    gradient:
+      "from-emerald-700 to-emerald-800 dark:from-emerald-700 dark:to-emerald-800",
+    skills: [
+      { name: "C#", level: "Expert" },
+      { name: ".NET", level: "Expert" },
+      { name: "REST APIs", level: "Expert" },
+      { name: ".NET 9", level: "Advanced" },
+      { name: "Entity Framework Core", level: "Advanced" },
+      { name: "PostgreSQL", level: "Advanced" },
+      { name: "SQL", level: "Advanced" },
+      { name: "Azure", level: "Advanced" },
+      { name: "Azure DevOps", level: "Advanced" },
+      { name: "Azure Pipelines", level: "Advanced" },
+      { name: "API Integration", level: "Advanced" },
+      { name: "Database Design", level: "Advanced" },
+      { name: "Supabase", level: "Advanced" },
+      { name: "Stripe", level: "Advanced" },
+      { name: "Java", level: "Intermediate" },
+      { name: "Spring Boot", level: "Intermediate" },
+      { name: "Bicep/IaC", level: "Intermediate" },
+      { name: "Java Cryptography API", level: "Intermediate" },
+      { name: "Authentication", level: "Advanced" },
+      { name: "Docker", level: "Intermediate" },
+      { name: "Coolify", level: "Intermediate" },
+      { name: "MongoDB", level: "Intermediate" },
+      { name: "Firebase", level: "Intermediate" },
+    ],
+  },
+  {
     name: "Frontend Development",
     description: "Responsive and fast web applications",
     icon: <Layers className="h-6 w-6" />,
@@ -43,28 +75,6 @@ const skillCategories: SkillCategoryData[] = [
       { name: "Figma", level: "Intermediate" },
       { name: "Jest", level: "Intermediate" },
       { name: "Playwright", level: "Intermediate" },
-    ],
-  },
-  {
-    name: "Backend Development",
-    description: "Backend services and cloud setup",
-    icon: <Server className="h-6 w-6" />,
-    gradient:
-      "from-emerald-700 to-emerald-800 dark:from-emerald-700 dark:to-emerald-800",
-    skills: [
-      { name: "C#", level: "Expert" },
-      { name: ".NET", level: "Expert" },
-      { name: "REST API", level: "Expert" },
-      { name: "Azure", level: "Advanced" },
-      { name: "Azure DevOps", level: "Advanced" },
-      { name: "SQL", level: "Advanced" },
-      { name: "PostgreSQL", level: "Advanced" },
-      { name: "Azure Pipelines", level: "Advanced" },
-      { name: "Java", level: "Intermediate" },
-      { name: "Spring Boot", level: "Intermediate" },
-      { name: "Bicep/IaC", level: "Intermediate" },
-      { name: "MongoDB", level: "Intermediate" },
-      { name: "Firebase", level: "Intermediate" },
     ],
   },
   {
@@ -258,7 +268,8 @@ export const SkillsSection: React.FC = () => {
             Skills
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            The technologies and tools I use. Grouped by how well I know them.
+            Backend-first full-stack experience across APIs, data, cloud,
+            frontend and mobile. Grouped by how well I know each technology.
           </p>
         </div>
 

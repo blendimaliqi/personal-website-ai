@@ -9,7 +9,7 @@ export const workExperiences: WorkExperience[] = [
 
 We have just started with our standardization of technology process. We want to simplify the developing process and build tech to be used all over the firm on the new applications and likely the rewriting of the older ones. The tech stack we selected consists of React for the Front-end, .NET for Backend services, and Azure for the Cloud.
 
-My primary expertise is in frontend development, where I'm leading the way in establishing patterns and best practices. I'm also learning and assisting with infrastructure setup, including Azure pipelines and Bicep templates, to ensure we are set up correctly for the future. With this foundational capability in place, we will efficiently scale as we onboard more applications.
+My role spans the full stack. I build and maintain React applications, contribute to .NET backend services and API development, and help shape the patterns and best practices used across our applications. I also work with our Azure infrastructure, including pipelines and Bicep templates, so our services can be deployed consistently and scale as we bring more applications onto the platform.
 
 We have a design system based on Mantine that gives our various applications consistency and functionality while ensuring the special needs of our organization are maintained.
 
