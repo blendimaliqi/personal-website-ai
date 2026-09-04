@@ -268,8 +268,8 @@ export const SkillsSection: React.FC = () => {
             Skills
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Backend-first full-stack experience across APIs, data, cloud,
-            frontend and mobile. Grouped by how well I know each technology.
+            Fullstack experience across backend, frontend, data, cloud and
+            mobile. Grouped by how well I know each technology.
           </p>
         </div>
 
