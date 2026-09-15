@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Github, Linkedin, MapPin } from "lucide-react";
+import { Mail, Linkedin, MapPin } from "lucide-react";
 import React from "react";
 import { Badge } from "~/components/ui/badge";
 import Image from "next/image";
@@ -56,14 +56,6 @@ const AboutPageClient = () => {
 
               {/* Social Links */}
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <a
-                  href="https://github.com/blendimaliqi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
                 <a
                   href="https://linkedin.com/in/blendimaliqi"
                   target="_blank"

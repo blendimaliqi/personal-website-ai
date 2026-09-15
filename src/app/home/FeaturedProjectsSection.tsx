@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { ExternalLink, Github, Globe } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { featuredProjects } from "~/data/featured-projects";
 import { ScrollArea } from "~/components/ui/scroll-area";
@@ -189,17 +189,6 @@ export default function FeaturedProjectsSection({
                 </div>
 
                 <div className="mb-4 mt-6 flex flex-wrap gap-3">
-                  {selectedProject.githubUrl && (
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-slate-700 hover:shadow-md"
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      GitHub Repository
-                    </a>
-                  )}
                   {selectedProject.chromeStoreUrl && (
                     <a
                       href={selectedProject.chromeStoreUrl}

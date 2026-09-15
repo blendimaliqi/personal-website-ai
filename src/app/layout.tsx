@@ -99,10 +99,7 @@ function StructuredData() {
     jobTitle: "Software developer",
     description:
       "Professional software developer specializing in Next.js, React and .NET",
-    sameAs: [
-      "https://linkedin.com/in/blendimaliqi",
-      "https://github.com/blendimaliqi",
-    ],
+    sameAs: ["https://linkedin.com/in/blendimaliqi"],
   };
 
   return (

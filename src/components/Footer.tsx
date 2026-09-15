@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { cn } from "~/lib/utils";
 
 function Footer() {
@@ -25,15 +25,6 @@ function Footer() {
               aria-label="LinkedIn"
             >
               <FaLinkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="https://github.com/blendimaliqi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full p-2 transition-colors duration-300 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100"
-              aria-label="GitHub"
-            >
-              <FaGithub className="h-5 w-5" />
             </a>
             <a
               href="mailto:blendi.maliqi93@gmail.com"

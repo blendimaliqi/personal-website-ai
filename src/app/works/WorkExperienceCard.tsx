@@ -12,7 +12,6 @@ import { WorkExperience } from "~/types/work";
 import {
   CalendarRange,
   ExternalLink,
-  Github,
   Globe,
   ChevronDown,
 } from "lucide-react";
@@ -114,18 +113,6 @@ export function WorkExperienceCard({
 
         <div className="mt-5 flex w-full flex-col space-y-3">
           <div className="flex flex-wrap gap-2">
-            {experience.githubUrl && (
-              <button
-                onClick={(e) =>
-                  handleButtonClick(e, experience.githubUrl as string)
-                }
-                className="relative inline-flex items-center rounded-md border border-border bg-background px-3 py-1 text-xs font-medium text-foreground transition-all hover:z-10 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:ring-offset-1"
-                aria-label={`View ${experience.title} on GitHub (opens in new tab)`}
-              >
-                <Github className="mr-1.5 h-3.5 w-3.5" />
-                GitHub
-              </button>
-            )}
             {experience.websiteUrl && (
               <button
                 onClick={(e) =>

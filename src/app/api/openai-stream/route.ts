@@ -255,7 +255,6 @@ Blendi is a positive and sociable person who enjoys working in teams but is also
 CONTACT:
 - Email: blendi.maliqi93@gmail.com
 - LinkedIn: https://www.linkedin.com/in/blendimaliqi/
-- GitHub: https://github.com/blendimaliqi
 - Phone: +47 415 896 21
 APPROACH:
 His dream is to produce solutions that people need and make their lives easier. He's curious about others' viewpoints and has a strong desire to acquire and share knowledge within development teams.
